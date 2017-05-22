@@ -1,7 +1,7 @@
 {
-  "name": "__BONES_NEEDS_A_NAME__",
+  "name": "santa-swap",
   "version": "0.0.1",
-  "description": "A happy little skeleton.",
+  "description": "Organize Secret Santas with friends",
   "main": "index.js",
   "scripts": {
     "validate": "check-node-version --node '>= 6.7.0'",
@@ -23,19 +23,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/queerviolet/bones.git"
+    "url": "git+https://github.com/jamad91/santa-swap.git"
   },
   "keywords": [
     "react",
     "redux",
     "skeleton"
   ],
-  "author": "Ashi Krishnan <me@ashi.works>",
+  "author": "Jimmy DiColandrea <jdicolandrea@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/queerviolet/bones/issues"
+    "url": "https://github.com/jamad91/santa-swap/issues"
   },
-  "homepage": "https://github.com/queerviolet/bones#readme",
+  "homepage": "https://github.com/jamad91/santa-swap#readme",
   "dependencies": {
     "axios": "^0.15.2",
     "babel-preset-stage-2": "^6.18.0",
