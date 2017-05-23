@@ -5,8 +5,13 @@
 // to get access to the User model.
 
 const User = require('./user')
+const Exchange = require('./exchange')
 const OAuth = require('./oauth')
 
 OAuth.belongsTo(User)
 User.hasOne(OAuth)
-module.exports = {User}
+
+Exchange.belongsTo(User)
+User.hasMany(Exchange)
+
+module.exports = {User, Exchange}
