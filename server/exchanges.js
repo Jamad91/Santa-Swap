@@ -6,7 +6,7 @@ const router = require('express').Router();
 
 router.get('/', (req, res, next) => {
   Exchange.findAll()
-  .then(res.sent.bind(res))
+  .then(res.send.bind(res))
   .catch(next)
 })
 

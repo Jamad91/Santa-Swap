@@ -7,7 +7,7 @@ const seedUsers = () => db.Promise.map([
 ], user => db.model('users').create(user))
 
 const seedExchanges = () => db.Promise.map([
-  {title: 'Main One', members: ['Jimmy DiColandrea', 'Barack Obama']}
+  {title: 'Main One', organizer: 'so many', members: ['Jimmy DiColandrea', 'Barack Obama']}
 ], exchange => db.model('exchanges').create(exchange))
 
 db.didSync

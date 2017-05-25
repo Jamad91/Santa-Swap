@@ -8,6 +8,10 @@ const Exchange = db.define('exchanges', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  organizer: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   members: {
     type: Sequelize.ARRAY(Sequelize.STRING)
   }

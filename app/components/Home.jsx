@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import WhoAmI from './WhoAmI';
 import {connect} from 'react-redux';
+import CreateExchange from './Exchange/CreateExchange'
+import Exchanges from './Exchange/Exchanges'
 
 class Home extends Component {
   render() {
@@ -10,7 +12,8 @@ class Home extends Component {
           this.props.user
             ? <div>
                 <h1>Welcome, {this.props.user.name}, to Santa Swap!</h1>
-                <h3>Plan an Exchange!</h3>
+                <Exchanges />
+                <CreateExchange />
               </div>
             : <div>
                 <h1>Welcome to Santa Swap!</h1>

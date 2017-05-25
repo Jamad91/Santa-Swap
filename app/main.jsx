@@ -10,6 +10,7 @@ import WhoAmI from './components/WhoAmI'
 import NotFound from './components/NotFound'
 
 import Home from './components/Home'
+import Exchanges from './components/Exchange/Exchanges'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
