@@ -1,30 +1,38 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import {fetchUserExchanges} from '../../reducers/exchanges'
 
 class Exchanges extends Component {
+
   render() {
-    console.log(this.props);
+    const exchanges = this.props.exchanges;
+    console.log(this.props.user);
+
     return (
       <div>
         <h1>Exchanges</h1>
+        {exchanges.map(exchange => {
+          if (this.props.user.id === exchange.user_id) {
+            return (
+              <div key={exchange.id}>
+                {exchange.title}
+              </div>
+            )
+          }
+        })}
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  console.log('state', state);
   return {
-    exchanges: state.exchangeReducer
+    exchanges: state.exchangeReducer.exchanges,
+    user: state.auth
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-
-
-  }
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Exchanges)

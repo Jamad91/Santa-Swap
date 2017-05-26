@@ -11,6 +11,11 @@ import NotFound from './components/NotFound'
 
 import Home from './components/Home'
 import Exchanges from './components/Exchange/Exchanges'
+import {fetchUserExchanges} from './reducers/exchanges'
+
+const onAppEnter = function() {
+  store.dispatch(fetchUserExchanges())
+}
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -29,7 +34,7 @@ render (
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/home" />
-        <Route path="/home" component={Home} />
+        <Route path="/home" component={Home} onEnter={onAppEnter}/>
       </Route>
       <Route path='*' component={NotFound} />
     </Router>

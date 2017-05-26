@@ -4,6 +4,14 @@ import {connect} from 'react-redux';
 import CreateExchange from './Exchange/CreateExchange'
 import Exchanges from './Exchange/Exchanges'
 
+import {fetchUserExchanges} from '../reducers/exchanges'
+
+import store from '../store'
+
+const onExchangesEnter = function() {
+  store.dispatch(fetchUserExchanges())
+}
+
 class Home extends Component {
   render() {
     return (
@@ -12,7 +20,7 @@ class Home extends Component {
           this.props.user
             ? <div>
                 <h1>Welcome, {this.props.user.name}, to Santa Swap!</h1>
-                <Exchanges />
+                <Exchanges onEnter={fetchUserExchanges}/>
                 <CreateExchange />
               </div>
             : <div>
