@@ -17,7 +17,7 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
     case CREATE_EXCHANGE:
       let dummy = newState.exchanges.slice()
       dummy.push(action.exchangeInfo)
-      newState.exchanges = dummy.exchanges
+      newState.exchanges = dummy
       break
   }
   return newState
@@ -42,6 +42,7 @@ const addExchange = exchangeInfo => ({
 
 export const createExchange = function(exchangeInfo) {
   return dispatch => {
+    dispatch(addExchange(exchangeInfo))
     axios.post('/api/exchanges', exchangeInfo)
       .catch(err => console.error("Wasn't able to create exchange!"))
   }

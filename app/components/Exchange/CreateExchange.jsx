@@ -25,9 +25,7 @@ class CreateExchange extends Component {
   }
 
   handleSubmit(evt) {
-    console.log(this.state);
-    this.state.members = this.state.members.split(',')
-    console.log(this.state);
+    this.state.members = this.state.members.split(',').map(num => parseInt(num))
     evt.preventDefault();
 
     this.props.createExchange(this.state)
