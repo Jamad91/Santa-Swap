@@ -10,7 +10,6 @@ const DEFAULT_STATE = {
 
 export const exchangeReducer = (state = DEFAULT_STATE, action) => {
   let newState = Object.assign({}, state)
-  console.log('here',action);
   switch (action.type) {
     case RECEIVE_USERS_EXCHANGES:
       newState.exchanges = action.exchanges

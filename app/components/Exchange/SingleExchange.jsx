@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {fetchSingleExchange} from 'APP/app/reducers/exchanges'
-
 class SingleExchange extends Component {
   render() {
     return (
@@ -14,6 +12,7 @@ class SingleExchange extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('state',state);
   return {
     exchange: state.exchangeReducer.selectedExchange
   }

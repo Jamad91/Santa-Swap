@@ -13,6 +13,7 @@ import Home from './components/Home'
 import Exchanges from './components/Exchange/Exchanges'
 import SingleExchange from './components/Exchange/SingleExchange'
 import {fetchUserExchanges, fetchSingleExchange} from './reducers/exchanges'
+import {fetchUsers} from './reducers/users'
 
 const onAppEnter = function() {
   store.dispatch(fetchUserExchanges())
@@ -20,6 +21,7 @@ const onAppEnter = function() {
 
 const onExchangeEnter = function(nextRouterState) {
   store.dispatch(fetchSingleExchange(nextRouterState.params.id))
+  store.dispatch(fetchUsers())
 }
 
 const ExampleApp = connect(
