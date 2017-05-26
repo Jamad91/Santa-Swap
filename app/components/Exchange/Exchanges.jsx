@@ -9,9 +9,19 @@ class Exchanges extends Component {
 
     return (
       <div>
-        <h1>Exchanges</h1>
+        <h2>Manage Exchanges By You</h2>
         {exchanges.map(exchange => {
-          if (this.props.user.id === exchange.user_id) {
+          if (this.props.user.id === exchange.owner_id) {
+            return (
+              <div key={exchange.id}>
+                {exchange.title}
+              </div>
+            )
+          }
+        })}
+        <h2>Check out Exchanges You're in</h2>
+        {exchanges.map(exchange => {
+          if (exchange.members.includes(this.props.user.id)) {
             return (
               <div key={exchange.id}>
                 {exchange.title}

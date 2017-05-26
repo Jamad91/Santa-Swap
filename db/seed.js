@@ -1,14 +1,14 @@
 const db = require('APP/db')
 
 const seedUsers = () => db.Promise.map([
-  {name: 'so many', email: 'god@example.com', password: '1234', isAdmin: true},
+  {name: 'Jimmy DiColandrea', email: 'god@example.com', password: '1234', isAdmin: true},
   {name: 'Barack Obama', email: 'barack@example.gov', password: '1234', isAdmin: false},
-  {name: 'Jimmy DiColandrea', email: 'jdicolandrea@gmail.com', password: '1234', isAdmin: false}
+  {name: 'Joey DiColandrea', email: 'jdicolandrea@gmail.com', password: '1234', isAdmin: false}
 ], user => db.model('users').create(user))
 
 const seedExchanges = () => db.Promise.map([
-  {title: 'Main One', organizer: 'so many', members: ['Jimmy DiColandrea', 'Barack Obama'], user_id: 1},
-  {title: 'Second One', organizer: 'so many', members: ['Jimmy DiColandrea', 'Barack Obama'], user_id: 2}
+  {title: 'Main One', members: [1,2,3], owner_id: 1},
+  {title: 'Second One', members: [1, 3], owner_id: 2}
 ], exchange => db.model('exchanges').create(exchange))
 
 db.didSync
