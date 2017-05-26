@@ -5,7 +5,7 @@ class Exchanges extends Component {
 
   render() {
     const exchanges = this.props.exchanges;
-    console.log(this.props.user);
+    console.log('exchanges',exchanges);
 
     return (
       <div>

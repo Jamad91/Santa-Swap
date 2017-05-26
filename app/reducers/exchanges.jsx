@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from 'APP/app/store'
 
-import {RECEIVE_USERS_EXCHANGES} from '../constants'
+import {RECEIVE_USERS_EXCHANGES, CREATE_EXCHANGE} from '../constants'
 
 const DEFAULT_STATE = {
   exchanges: [],
@@ -13,6 +13,11 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case RECEIVE_USERS_EXCHANGES:
       newState.exchanges = action.exchanges
+      break
+    case CREATE_EXCHANGE:
+      let dummy = newState.exchanges.slice()
+      dummy.push(action.exchangeInfo)
+      newState.exchanges = dummy.exchanges
       break
   }
   return newState
@@ -27,5 +32,17 @@ export const fetchUserExchanges = function() {
   return dispatch => {
     axios.get('./api/exchanges')
     .then(res => {dispatch(receiveUsersExchanges(res.data))})
+  }
+}
+
+const addExchange = exchangeInfo => ({
+  type: CREATE_EXCHANGE,
+  exchangeInfo
+})
+
+export const createExchange = function(exchangeInfo) {
+  return dispatch => {
+    axios.post('/api/exchanges', exchangeInfo)
+      .catch(err => console.error("Wasn't able to create exchange!"))
   }
 }

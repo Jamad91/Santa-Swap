@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import WhoAmI from './WhoAmI';
 import {connect} from 'react-redux';
+import { Link } from 'react-router'
 import CreateExchange from './Exchange/CreateExchange'
 import Exchanges from './Exchange/Exchanges'
 
