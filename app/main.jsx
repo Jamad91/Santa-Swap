@@ -12,8 +12,10 @@ import NotFound from './components/NotFound'
 import Home from './components/Home'
 import Exchanges from './components/Exchange/Exchanges'
 import SingleExchange from './components/Exchange/SingleExchange'
+import User from './components/User'
+
 import {fetchUserExchanges, fetchSingleExchange} from './reducers/exchanges'
-import {fetchUsers} from 'APP/app/reducers/users'
+import {fetchUsers, fetchSingleUser} from 'APP/app/reducers/users'
 
 
 const onAppEnter = function() {
@@ -23,6 +25,10 @@ const onAppEnter = function() {
 const onExchangeEnter = function(nextRouterState) {
   store.dispatch(fetchUsers())
   store.dispatch(fetchSingleExchange(nextRouterState.params.id))
+}
+
+const onUserEnter = function(nextRouterState) {
+  store.dispatch(fetchSingleUser(nextRouterState.params.id))
 }
 
 const ExampleApp = connect(
@@ -44,6 +50,7 @@ render (
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} onEnter={onAppEnter}/>
         <Route path="/exchanges/:id" component={SingleExchange} onEnter={onExchangeEnter}/>
+        <Route path="/users/:id" component={User} onEnter={onUserEnter} />
       </Route>
       <Route path='*' component={NotFound} />
     </Router>

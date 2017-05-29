@@ -5,14 +5,17 @@ class Users extends Component {
   render() {
     return (
       <div>
-        <h1>Users</h1>
+        <h1>{this.props.user.name}</h1>
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return {}
+  console.log(state.userReducer);
+  return {
+    user: state.userReducer.selectedUser
+  }
 }
 
 export default connect(mapStateToProps)(Users)

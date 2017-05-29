@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import store from 'APP/app/store'
 import { Link } from 'react-router'
 
-import Users from '../Users'
+import User from '../User'
 import {fetchUsers} from 'APP/app/reducers/users'
 
 
