@@ -5,8 +5,6 @@ class Exchanges extends Component {
 
   render() {
     const exchanges = this.props.exchanges;
-    console.log('exchanges',exchanges);
-
     return (
       <div>
         <h2>Manage Exchanges By You</h2>
@@ -21,7 +19,6 @@ class Exchanges extends Component {
         })}
         <h2>Check out Exchanges You're in</h2>
         {exchanges.map(exchange => {
-          console.log('Members', exchange.members)
           if (exchange.members.includes(this.props.user.id)) {
             return (
               <div key={`${exchange.id}in`}>

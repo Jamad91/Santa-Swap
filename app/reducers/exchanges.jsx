@@ -44,7 +44,6 @@ const receiveSingleExchange = exchange => ({
 })
 
 export const fetchSingleExchange = function(exchangeId) {
-  console.log('exchangeId', exchangeId);
   return dispatch => {
     axios.get(`/api/exchanges/${exchangeId}`)
     .then(res => {dispatch(receiveSingleExchange(res.data))})

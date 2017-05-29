@@ -9,10 +9,6 @@ import {fetchUserExchanges} from '../reducers/exchanges'
 
 import store from '../store'
 
-const onExchangesEnter = function() {
-  store.dispatch(fetchUserExchanges())
-}
-
 class Home extends Component {
   render() {
     return (
@@ -21,7 +17,7 @@ class Home extends Component {
           this.props.user
             ? <div>
                 <h1>Welcome, {this.props.user.name}, to Santa Swap!</h1>
-                <Exchanges onEnter={fetchUserExchanges}/>
+                <Exchanges/>
                 <CreateExchange />
               </div>
             : <div>

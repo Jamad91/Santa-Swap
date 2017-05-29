@@ -4,11 +4,16 @@ import store from 'APP/app/store'
 import {RECEIVE_USERS} from '../constants'
 
 const DEFAULT_STATE = {
-  users: {}
+  users: []
 }
 
 export const userReducer = (state = DEFAULT_STATE, action) => {
   let newState = Object.assign({}, state)
+  switch (action.type) {
+    case RECEIVE_USERS:
+      newState.users = action.users
+      break;
+  }
   return newState
 }
 
@@ -19,7 +24,7 @@ const receiveUsers = users => ({
 
 export const fetchUsers = function() {
   return dispatch => {
-    axios.get('./api/users')
+    axios.get('/api/users')
     .then(res => {dispatch(receiveUsers(res.data))})
   }
 }
