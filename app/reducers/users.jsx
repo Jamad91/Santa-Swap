@@ -10,7 +10,6 @@ const DEFAULT_STATE = {
 
 export const userReducer = (state = DEFAULT_STATE, action) => {
   let newState = Object.assign({}, state)
-  console.log('action selectedUser', action.user);
   switch (action.type) {
     case RECEIVE_USERS:
       newState.users = action.users
