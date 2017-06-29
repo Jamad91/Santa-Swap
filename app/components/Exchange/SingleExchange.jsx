@@ -11,31 +11,14 @@ const onUsersEnter = function() {
   store.dispatch(fetchUsers())
 }
 
-function findMatches(wordToMatch, names) {
-  return names.filter(name => {
+function findMatches(wordToMatch, people, members) {
+  return people.filter(person => {
     const regex = new RegExp(wordToMatch, 'gi')
-    if (name.name.match(regex) && name.name.match(regex).length > 0) {
-      return name
+    if (person.name.match(regex) && !members.includes(person.id)) {
+      return person
     }
   })
 }
-
-function displayMatches() {
-  const matchArray = findMatches(this.value, this.props.users)
-  const html = matchArray.map(person => {
-    const regex = new RegExp(this.value, 'gi');
-    const name = person.name.replace(regex, `<span className="hl">${this.value}</span>`)
-    return `
-      <li>
-        <p>${name}</p>
-      </li>
-    `
-  }).join('');
-  suggestions.innerHTML = html;
-}
-
-const searchInput = document.querySelector('.search')
-const sugestions = document.querySelector('.suggestions')
 
 class SingleExchange extends Component {
 
@@ -69,18 +52,11 @@ class SingleExchange extends Component {
   render() {
 
     console.log('this state', this.state);
-    console.log('this state.search', this.state.search);
-    console.log('all users:',this.props.users);
-
-    // const searchResults = this.state..filter(name => {
-    //   const regex = new RegExp(wordToMatch, 'gi')
-    //   console.log('red',name.name.match(regex));
-    //   return name.name.match(regex)
-    // }
+    console.log('all users:',this.props.exchange.members);
 
     let searchResults;
     this.state.search.length > 0
-      ? searchResults = findMatches(this.state.search, this.props.users)
+      ? searchResults = findMatches(this.state.search, this.props.users, this.props.exchange.members)
       : searchResults = ''
     console.log('searchResults',searchResults);
 
