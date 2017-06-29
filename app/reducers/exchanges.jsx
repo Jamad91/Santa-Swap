@@ -65,8 +65,19 @@ export const createExchange = function(exchangeInfo) {
   }
 }
 
-const addUserToExchnage = (user, exchange) => ({
+const addUserToExchange = (personId, exchangeId) => ({
   type: ADD_PERSON_TO_EXCHANGE,
-  user,
-  exchange
+  personId,
+  exchangeId
 })
+
+export const addPersonToExchange = function(personId, exchangeId) {
+  return dispatch => {
+    dispatch(addUserToExchange(personId, exchangeId))
+    axios.get(`/api/exchanges/${exchangeId}`)
+      .then(exchange => {
+        exchange.members.push(personId)
+      })
+      .catch(err => console.error("Wasn't able to add person to exchange!"))
+  }
+}
