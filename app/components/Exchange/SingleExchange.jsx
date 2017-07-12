@@ -4,21 +4,8 @@ import store from 'APP/app/store'
 import { Link } from 'react-router'
 
 import User from '../User'
-import {fetchUsers, addPersonToExchange} from 'APP/app/reducers/users'
+import {addPersonToExchange} from 'APP/app/reducers/exchanges'
 
-
-const onUsersEnter = function() {
-  store.dispatch(fetchUsers())
-}
-
-function findMatches(wordToMatch, people, members) {
-  return people.filter(person => {
-    const regex = new RegExp(wordToMatch, 'gi')
-    if (person.name.match(regex) && !members.includes(person.id)) {
-      return person
-    }
-  })
-}
 
 class SingleExchange extends Component {
 
@@ -30,7 +17,19 @@ class SingleExchange extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.findMatches = this.findMatches.bind(this)
+    // this.addUser = this.addUser.bind(this)
   }
+
+  findMatches(wordToMatch, people, members) {
+    return people.filter(person => {
+      const regex = new RegExp(wordToMatch, 'gi')
+      if (person.name.match(regex) && !members.includes(person.id)) {
+        return person
+      }
+    })
+  }
+
 
   handleChange(evt) {
     let newState = {}
@@ -40,8 +39,6 @@ class SingleExchange extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-
-    // this.props.addPersonToExchange(this.state)
     this.state = {
       name: ""
     }
@@ -50,16 +47,12 @@ class SingleExchange extends Component {
 
 
   render() {
-
-    console.log('this state', this.state);
-    console.log('all users:',this.props.exchange.members);
-
     let searchResults;
     this.state.search.length > 0
-      ? searchResults = findMatches(this.state.search, this.props.users, this.props.exchange.members)
+      ? searchResults = this.findMatches(this.state.search, this.props.users, this.props.exchange.members)
       : searchResults = ''
-    console.log('searchResults',searchResults);
 
+    console.log('members',this.props.exchange.members)
 
     return (
       <div>
@@ -77,11 +70,16 @@ class SingleExchange extends Component {
           <form>
             <input placeholder="Name" className="search" onChange={this.handleChange}/>
             <br />
-            <button onClick={this.handleSubmit}>Add+</button>
           </form>
             {
               searchResults.length > 0
-                ? searchResults.map(person => <div key={person.id}>{person.name}</div>)
+                ? searchResults.map(person => <div key={person.id}>
+                  <button
+                    onClick={() => {
+                      this.props.addPersonToExchange(person.id, this.props.exchange.id)
+                      this.setState(() => {return {name: ""}})
+                    }}
+                  >{person.name} +</button></div>)
                 : null
             }
           <button>Generate List</button><br />
@@ -97,5 +95,18 @@ function mapStateToProps(state) {
     users: state.userReducer.users
   }
 }
+// addUser(personId, exchangeId) {
+//   return () => {
+//     store.dispatch(addPersonToExchange(personId,exchangeId))
+//   }
+// }
 
-export default connect(mapStateToProps)(SingleExchange)
+function mapDispatchToProps(dispatch) {
+  return {
+    addPersonToExchange: (personId, exchangeId) => {
+      dispatch(addPersonToExchange(personId, exchangeId))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleExchange)

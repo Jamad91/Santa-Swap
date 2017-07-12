@@ -10,6 +10,7 @@ const DEFAULT_STATE = {
 
 export const exchangeReducer = (state = DEFAULT_STATE, action) => {
   let newState = Object.assign({}, state)
+  let dummy
   switch (action.type) {
     case RECEIVE_USERS_EXCHANGES:
       newState.exchanges = action.exchanges
@@ -18,13 +19,18 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       newState.selectedExchange = action.exchange
       break
     case CREATE_EXCHANGE:
-      let dummy = newState.exchanges.slice()
+      dummy = newState.exchanges.slice()
       dummy.push(action.exchangeInfo)
       newState.exchanges = dummy
       break
     case ADD_PERSON_TO_EXCHANGE:
+      dummy = newState.selectedExchange
+      dummy.members.push(action.personId)
+      newState.selectedExchange = dummy
+      console.log('action newstate members',newState.selectedExchange.members);
       break
   }
+  console.log('newState', newState);
   return newState
 }
 
@@ -72,11 +78,17 @@ const addUserToExchange = (personId, exchangeId) => ({
 })
 
 export const addPersonToExchange = function(personId, exchangeId) {
+  console.log('reducer',{personId, exchangeId});
+
   return dispatch => {
     dispatch(addUserToExchange(personId, exchangeId))
-    axios.get(`/api/exchanges/${exchangeId}`)
+    axios.put(`/api/exchanges/${exchangeId}`)
+      // .then(res => res.data)
       .then(exchange => {
-        exchange.members.push(personId)
+        console.log('PRE exchange members',exchange.data.members);
+        exchange.data.members.push(personId)
+        console.log('POST exchange members',exchange.data.members);
+        return exchange
       })
       .catch(err => console.error("Wasn't able to add person to exchange!"))
   }

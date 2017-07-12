@@ -23,6 +23,19 @@ router.put('/:id', (req, res, next) => {
   .catch(next)
 })
 
+router.get('/:id/members', (req, res, next) => {
+  Exchange.findById(req.params.id)
+  .then(exchange => res.json(exchange.members))
+  .catch(next)
+})
+
+router.put('/:id/members', (req, res, next) => {
+  Exchange.findById(req.params.id)
+  .then(exchange => exchange.members.update(req.body))
+  .then(updated => res.status(201).json(updated))
+  .catch(next)
+})
+
 router.post('/', (req, res, next) => {
   Exchange.create(req.body)
   .then(exchange => res.status(201).json(exchange))
