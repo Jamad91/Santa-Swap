@@ -27,10 +27,8 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       dummy = newState.selectedExchange
       dummy.members.push(action.personId)
       newState.selectedExchange = dummy
-      console.log('action newstate members',newState.selectedExchange.members);
       break
   }
-  console.log('newState', newState);
   return newState
 }
 
@@ -82,12 +80,9 @@ export const addPersonToExchange = function(personId, exchangeId) {
 
   return dispatch => {
     dispatch(addUserToExchange(personId, exchangeId))
-    axios.put(`/api/exchanges/${exchangeId}`)
-      // .then(res => res.data)
+    axios.put(`/api/exchanges/${exchangeId}/members`, personId)
       .then(exchange => {
-        console.log('PRE exchange members',exchange.data.members);
-        exchange.data.members.push(personId)
-        console.log('POST exchange members',exchange.data.members);
+        console.log('EXCHANGE OBJECT', exchange);
         return exchange
       })
       .catch(err => console.error("Wasn't able to add person to exchange!"))

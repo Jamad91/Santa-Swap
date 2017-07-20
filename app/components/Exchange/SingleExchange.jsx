@@ -52,8 +52,6 @@ class SingleExchange extends Component {
       ? searchResults = this.findMatches(this.state.search, this.props.users, this.props.exchange.members)
       : searchResults = ''
 
-    console.log('members',this.props.exchange.members)
-
     return (
       <div>
         <h1>{this.props.exchange.title}</h1>
@@ -95,11 +93,6 @@ function mapStateToProps(state) {
     users: state.userReducer.users
   }
 }
-// addUser(personId, exchangeId) {
-//   return () => {
-//     store.dispatch(addPersonToExchange(personId,exchangeId))
-//   }
-// }
 
 function mapDispatchToProps(dispatch) {
   return {
