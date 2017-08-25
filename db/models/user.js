@@ -18,6 +18,18 @@ const User = db.define('users', {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   },
+  phone: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  address1: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  address2: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
 
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING, // This column stores the hashed password in the DB, via the beforeCreate/beforeUpdate hooks

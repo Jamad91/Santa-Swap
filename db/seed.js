@@ -1,9 +1,9 @@
 const db = require('APP/db')
 
 const seedUsers = () => db.Promise.map([
-  {name: 'Jimmy DiColandrea', email: 'god@example.com', password: '1234', isAdmin: true},
-  {name: 'Barack Obama', email: 'barack@example.gov', password: '1234', isAdmin: false},
-  {name: 'Joey DiColandrea', email: 'jdicolandrea@gmail.com', password: '1234', isAdmin: false}
+  {name: 'Jimmy DiColandrea', email: 'god@example.com', password: '1234', isAdmin: true, phone: "123", address1: '60-24', address2: 'Woodbine ST'},
+  {name: 'Barack Obama', email: 'barack@example.gov', password: '1234', isAdmin: false, phone: "123", address1: '60-50', address2: 'Woodbine ST'},
+  {name: 'Joey DiColandrea', email: 'jdicolandrea@gmail.com', password: '1234', isAdmin: false, phone: "123", address1: '60-66', address2: 'Woodbine ST'}
 ], user => db.model('users').create(user))
 
 const seedExchanges = () => db.Promise.map([

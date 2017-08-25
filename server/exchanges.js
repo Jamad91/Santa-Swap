@@ -12,16 +12,31 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   Exchange.findById(req.params.id)
-  .then(exchange => res.json(exchange))
+  .then(exchange => {
+    console.log(exchange);
+    return res.json(exchange)
+  })
   .catch(next)
 })
 
 router.put('/:id', (req, res, next) => {
   Exchange.findById(req.params.id)
-  .then(exchange => exchange.update(req.body))
-  .then(updated => res.status(201).json(updated))
-  .catch(next)
+    .then(exchange => {
+      console.log(req.body);
+      var id = parseInt(Object.keys(req.body)[0])
+      console.log(id);
+      let newMembers = exchange.members
+      newMembers.push(id)
+      return exchange.update({members: newMembers})
+    })
+    .catch(next)
 })
+
+// router.get('/:id/members', (req, res, next) => {
+//   Exchange.findById(req.params.id)
+//   .then(exchange => res.json(exchange.members))
+//   .catch(next)
+// })
 
 router.post('/', (req, res, next) => {
   Exchange.create(req.body)

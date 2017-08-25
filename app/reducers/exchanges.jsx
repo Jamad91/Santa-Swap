@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from 'APP/app/store'
 
-import {RECEIVE_USERS_EXCHANGES, RECEIVE_SINGLE_EXCHANGE, CREATE_EXCHANGE} from '../constants'
+import {RECEIVE_USERS_EXCHANGES, RECEIVE_SINGLE_EXCHANGE, CREATE_EXCHANGE, ADD_PERSON_TO_EXCHANGE} from '../constants'
 
 const DEFAULT_STATE = {
   exchanges: [],
@@ -10,6 +10,7 @@ const DEFAULT_STATE = {
 
 export const exchangeReducer = (state = DEFAULT_STATE, action) => {
   let newState = Object.assign({}, state)
+  let dummy
   switch (action.type) {
     case RECEIVE_USERS_EXCHANGES:
       newState.exchanges = action.exchanges
@@ -18,9 +19,15 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       newState.selectedExchange = action.exchange
       break
     case CREATE_EXCHANGE:
-      let dummy = newState.exchanges.slice()
+      dummy = newState.exchanges.slice()
       dummy.push(action.exchangeInfo)
       newState.exchanges = dummy
+      break
+    case ADD_PERSON_TO_EXCHANGE:
+      dummy = newState.selectedExchange
+      if (!dummy.members[0]) {dummy.members = []}
+      dummy.members.push(action.personId)
+      newState.selectedExchange = dummy
       break
   }
   return newState
@@ -43,10 +50,12 @@ const receiveSingleExchange = exchange => ({
   exchange
 })
 
-export const fetchSingleExchange = function(exchangeId) {
+export const fetchSingleExchange = function(exchangeId) {;
   return dispatch => {
     axios.get(`/api/exchanges/${exchangeId}`)
-    .then(res => {dispatch(receiveSingleExchange(res.data))})
+    .then(res => {
+      dispatch(receiveSingleExchange(res.data))
+    })
   }
 }
 
@@ -60,5 +69,30 @@ export const createExchange = function(exchangeInfo) {
     dispatch(addExchange(exchangeInfo))
     axios.post('/api/exchanges', exchangeInfo)
       .catch(err => console.error("Wasn't able to create exchange!"))
+  }
+}
+
+const addUserToExchange = (personId, exchangeId) => ({
+  type: ADD_PERSON_TO_EXCHANGE,
+  personId,
+  exchangeId
+})
+
+export const addPersonToExchange = function(personId, exchangeId) {
+  console.log('reducer',{personId, exchangeId});
+
+  return dispatch => {
+    dispatch(addUserToExchange(personId, exchangeId))
+    return axios.put(`/api/exchanges/${exchangeId}`, personId)
+      .then(exchange => {
+        // if (!exchange.data.members[0]) {exchange.data.members = []}
+        console.log('EXCHANGE OBJECT', exchange.data);
+        // exchange.data.members.push(personId)
+        console.log('EXCHANGE', exchange);
+        console.log('EXCHANGE OBJECT', exchange.data);
+        console.log('MEMBERS', exchange.data.members);
+        return exchange
+      })
+      .catch(err => console.error("Wasn't able to add person to exchange!"))
   }
 }
