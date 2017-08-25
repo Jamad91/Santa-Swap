@@ -19,51 +19,38 @@ router.get('/:id', (req, res, next) => {
 // NB:This is me trying to PUT the actual selectedExchange object
 
 // router.put('/:id', (req, res, next) => {
-// //   console.log('IN THE SERVER');
-// //   console.log(req.params.id);
-// //   console.log('+++++++++++++++');
-//   Exchange.findById(req.params.id)
-//   // .then(exchange => exchange)
+//   console.log('IN THE SERVER');
+//   return Exchange.findById(req.params.id)
 //   .then(exchange => {
-//     console.log('BODY',req.body);
-//     console.log('+++++++++++++++');
-//     console.log('DATA VALUES',exchange.dataValues);
-//     // console.log(parseInt(Object.keys(req.body)[0]));
-//     // var id = parseInt(Object.keys(req.body)[0])
-//     // exchange.dataValues.members
+//     var id = parseInt(Object.keys(req.body)[0])
+//     exchange.members.push(id)
 //     exchange.update(req.body)
-//     // console.log(exchange.dataValues.members);
-//     // exchange.dataValues.members.push(id)
 //     return exchange
 //   })
 //   .then(updated => {
-//
-//     res.status(201).json(updated)
+//     updated.save();
+//     // console.log('HERE',updated);
+//     return res.status(202).json(updated)
 //   })
 //   .catch(next)
 // })
 
+router.put('/:id', (req, res, next) => {
+  Exchange.findById(req.params.id)
+    .then(exchange => {
+      console.log(req.body);
+      var id = parseInt(Object.keys(req.body)[0])
+      console.log(id);
+      let newMembers = exchange.members
+      newMembers.push(id)
+      return exchange.update({members: newMembers})
+    })
+    .catch(next)
+})
+
 router.get('/:id/members', (req, res, next) => {
   Exchange.findById(req.params.id)
   .then(exchange => res.json(exchange.members))
-  .catch(next)
-})
-
-
-// NB:This is me trying to PUT the members array of the selectedExchange object
-router.put('/:id/members', (req, res, next) => {
-  Exchange.findById(req.params.id)
-  .then(exchange => exchange.update(req.body))
-  // .then(exchange => exchange.update(req.body))
-  // .then(exchange => {
-  //   // exchange.members.update(req.body)
-  //   exchange.update(req.body)
-  //   return exchange
-  // })
-  .then(updated => {
-    res.status(201).json(updated)
-    return res
-  })
   .catch(next)
 })
 

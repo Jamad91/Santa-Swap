@@ -9,6 +9,7 @@ import {addPersonToExchange} from 'APP/app/reducers/exchanges'
 
 class SingleExchange extends Component {
 
+
   constructor(props) {
     super(props);
     const names = [];
@@ -47,6 +48,7 @@ class SingleExchange extends Component {
 
 
   render() {
+    // console.log(this.props);
     let searchResults;
     this.state.search.length > 0
       ? searchResults = this.findMatches(this.state.search, this.props.users, this.props.exchange.members)
@@ -88,7 +90,9 @@ class SingleExchange extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
+    auth: state.auth,
     exchange: state.exchangeReducer.selectedExchange,
     users: state.userReducer.users
   }

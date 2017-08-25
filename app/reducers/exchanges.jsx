@@ -25,6 +25,7 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       break
     case ADD_PERSON_TO_EXCHANGE:
       dummy = newState.selectedExchange
+      if (!dummy.members[0]) {dummy.members = []}
       dummy.members.push(action.personId)
       newState.selectedExchange = dummy
       break
@@ -49,10 +50,12 @@ const receiveSingleExchange = exchange => ({
   exchange
 })
 
-export const fetchSingleExchange = function(exchangeId) {
+export const fetchSingleExchange = function(exchangeId) {;
   return dispatch => {
     axios.get(`/api/exchanges/${exchangeId}`)
-    .then(res => {dispatch(receiveSingleExchange(res.data))})
+    .then(res => {
+      dispatch(receiveSingleExchange(res.data))
+    })
   }
 }
 
@@ -80,9 +83,14 @@ export const addPersonToExchange = function(personId, exchangeId) {
 
   return dispatch => {
     dispatch(addUserToExchange(personId, exchangeId))
-    axios.put(`/api/exchanges/${exchangeId}/members`, personId)
+    return axios.put(`/api/exchanges/${exchangeId}`, personId)
       .then(exchange => {
-        console.log('EXCHANGE OBJECT', exchange);
+        // if (!exchange.data.members[0]) {exchange.data.members = []}
+        console.log('EXCHANGE OBJECT', exchange.data);
+        // exchange.data.members.push(personId)
+        console.log('EXCHANGE', exchange);
+        console.log('EXCHANGE OBJECT', exchange.data);
+        console.log('MEMBERS', exchange.data.members);
         return exchange
       })
       .catch(err => console.error("Wasn't able to add person to exchange!"))
