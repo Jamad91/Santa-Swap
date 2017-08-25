@@ -34,6 +34,7 @@ class CreateExchange extends Component {
       members: "",
       owner_id: this.props.user.id
     })
+    window.location.reload()
   }
 
   render() {

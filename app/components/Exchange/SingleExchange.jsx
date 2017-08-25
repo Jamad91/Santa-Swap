@@ -77,7 +77,10 @@ class SingleExchange extends Component {
                   <button
                     onClick={() => {
                       this.props.addPersonToExchange(person.id, this.props.exchange.id)
-                      this.setState(() => {return {name: ""}})
+                      this.setState(() => {
+                        window.location.reload()
+                        return {name: ""}
+                      })
                     }}
                   >{person.name} +</button></div>)
                 : null
