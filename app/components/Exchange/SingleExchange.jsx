@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import store from 'APP/app/store'
 import { Link } from 'react-router'
-
 import User from '../User'
 import {addPersonToExchange} from 'APP/app/reducers/exchanges'
 
@@ -49,6 +48,7 @@ class SingleExchange extends Component {
 
   render() {
     // console.log(this.props);
+    console.log(this.props.users);
     let searchResults;
     this.state.search.length > 0
       ? searchResults = this.findMatches(this.state.search, this.props.users, this.props.exchange.members)
@@ -93,7 +93,7 @@ class SingleExchange extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
+  console.log('single exchange',state);
   return {
     auth: state.auth,
     exchange: state.exchangeReducer.selectedExchange,

@@ -17,7 +17,6 @@ class Users extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.userReducer);
   return {
     user: state.userReducer.selectedUser
   }

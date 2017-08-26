@@ -84,15 +84,7 @@ export const addPersonToExchange = function(personId, exchangeId) {
   return dispatch => {
     dispatch(addUserToExchange(personId, exchangeId))
     return axios.put(`/api/exchanges/${exchangeId}`, personId)
-      .then(exchange => {
-        // if (!exchange.data.members[0]) {exchange.data.members = []}
-        console.log('EXCHANGE OBJECT', exchange.data);
-        // exchange.data.members.push(personId)
-        console.log('EXCHANGE', exchange);
-        console.log('EXCHANGE OBJECT', exchange.data);
-        console.log('MEMBERS', exchange.data.members);
-        return exchange
-      })
+      .then(exchange => exchange)
       .catch(err => console.error("Wasn't able to add person to exchange!"))
   }
 }

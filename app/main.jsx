@@ -19,6 +19,7 @@ import {fetchUsers, fetchSingleUser} from 'APP/app/reducers/users'
 
 
 const onAppEnter = function() {
+  store.dispatch(fetchUsers())
   store.dispatch(fetchUserExchanges())
 }
 
