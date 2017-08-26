@@ -7,8 +7,8 @@ const seedUsers = () => db.Promise.map([
 ], user => db.model('users').create(user))
 
 const seedExchanges = () => db.Promise.map([
-  {title: 'Main One', members: [1,2,3], owner_id: 1},
-  {title: 'Second One', members: [1, 3], owner_id: 2}
+  {title: 'Main One', members: [1,2,3], list: [{giver: 1, receiver: 2}], owner_id: 1},
+  {title: 'Second One', members: [1, 3], list: [], owner_id: 2}
 ], exchange => db.model('exchanges').create(exchange))
 
 db.didSync

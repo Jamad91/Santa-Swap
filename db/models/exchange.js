@@ -10,7 +10,9 @@ const Exchange = db.define('exchanges', {
   },
   members: {
     type: Sequelize.ARRAY(Sequelize.INTEGER),
-    // defaultValue: []
+  },
+  list: {
+    type: Sequelize.ARRAY(Sequelize.JSON)
   }
 })
 
