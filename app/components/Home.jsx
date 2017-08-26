@@ -11,8 +11,6 @@ import store from '../store'
 
 class Home extends Component {
   render() {
-    console.log('home store',store);
-    // console.log('home props', this.props);
     return (
       <div>
         {

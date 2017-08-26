@@ -12,7 +12,7 @@ class Exchanges extends Component {
         {exchanges.map(exchange => {
           if (this.props.user.id === exchange.owner_id) {
             return (
-              <div key={`${exchange.id}byme`}>
+              <div key={`${exchange.title}`}>
                 <Link href={`/exchanges/${exchange.id}`}>{exchange.title}</Link>
               </div>
             )

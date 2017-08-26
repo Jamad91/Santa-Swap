@@ -68,6 +68,7 @@ export const createExchange = function(exchangeInfo) {
   return dispatch => {
     dispatch(addExchange(exchangeInfo))
     axios.post('/api/exchanges', exchangeInfo)
+      .then(exchange => exchange)
       .catch(err => console.error("Wasn't able to create exchange!"))
   }
 }
@@ -79,9 +80,7 @@ const addUserToExchange = (personId, exchangeId) => ({
 })
 
 export const addPersonToExchange = function(personId, exchangeId) {
-  console.log('reducer',{personId, exchangeId});
-
-  return dispatch => {
+    return dispatch => {
     dispatch(addUserToExchange(personId, exchangeId))
     return axios.put(`/api/exchanges/${exchangeId}`, personId)
       .then(exchange => exchange)
