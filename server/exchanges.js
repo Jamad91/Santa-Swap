@@ -12,10 +12,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   Exchange.findById(req.params.id)
-  .then(exchange => {
-    console.log(exchange);
-    return res.json(exchange)
-  })
+  .then(exchange => res.json(exchange))
   .catch(next)
 })
 
