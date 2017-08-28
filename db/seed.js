@@ -6,8 +6,10 @@ const seedUsers = () => db.Promise.map([
   {name: 'Joey DiColandrea', email: 'jdicolandrea@gmail.com', password: '1234', isAdmin: false, phone: "123", address1: '60-66', address2: 'Woodbine ST'}
 ], user => db.model('users').create(user))
 
+// {giver: 1, receiver: 2}
+
 const seedExchanges = () => db.Promise.map([
-  {title: 'Main One', members: [1,2,3], list: [{giver: 1, receiver: 2}], owner_id: 1},
+  {title: 'Main One', members: [1,2,3], list: [], owner_id: 1},
   {title: 'Second One', members: [1, 3], list: [], owner_id: 2}
 ], exchange => db.model('exchanges').create(exchange))
 
