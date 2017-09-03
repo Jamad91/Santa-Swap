@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from 'APP/app/store'
 
-import {RECEIVE_USERS_EXCHANGES, RECEIVE_SINGLE_EXCHANGE, CREATE_EXCHANGE, ADD_PERSON_TO_EXCHANGE} from '../constants'
+import {RECEIVE_USERS_EXCHANGES, RECEIVE_SINGLE_EXCHANGE, CREATE_EXCHANGE, ADD_PERSON_TO_EXCHANGE, MAKE_LIST} from '../constants'
 
 const DEFAULT_STATE = {
   exchanges: [],
@@ -28,6 +28,9 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       if (!dummy.members[0]) {dummy.members = []}
       dummy.members.push(action.personId)
       newState.selectedExchange = dummy
+      break
+    case MAKE_LIST:
+      dummy = newState.selectedExchange
       break
   }
   return newState
@@ -85,5 +88,20 @@ export const addPersonToExchange = function(personId, exchangeId) {
     return axios.put(`/api/exchanges/${exchangeId}`, personId)
       .then(exchange => exchange)
       .catch(err => console.error("Wasn't able to add person to exchange!"))
+  }
+}
+
+const addList = (exchangeId, exchangeInfo) => ({
+  type: MAKE_LIST,
+  exchangeId,
+  exchangeInfo
+})
+
+export const makeList = function(exchangeId, exchangeInfo) {
+  return dispatch => {
+    dispatch(addList(exchangeId, exchangeInfo))
+    return axios.put(`/api/exchanges/${exchangeId}`, exchangeInfo)
+      .then(exchange => exchange)
+      .catch(err => console.error("Wasn't able to create list!"))
   }
 }

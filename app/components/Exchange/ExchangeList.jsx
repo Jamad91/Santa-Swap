@@ -79,7 +79,7 @@ class ExchangeList extends Component {
         {
           matchUps.map(match =>
             <div key={match.giver.name}>
-              <span>Giver: {match.giver.name}</span>
+              <span>Giver: {match.giver.name}</span><br />
               <span>Receiver: {match.receiver.name}</span>
               <hr />
             </div>

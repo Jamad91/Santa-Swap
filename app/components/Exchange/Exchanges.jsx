@@ -8,26 +8,12 @@ class Exchanges extends Component {
     const exchanges = this.props.exchanges;
     return (
       <div>
-        <h2>Manage Exchanges By You</h2>
-        {exchanges.map(exchange => {
-          if (this.props.user.id === exchange.owner_id) {
-            return (
-              <div key={`${exchange.title}`}>
-                <Link href={`/exchanges/${exchange.id}`}>{exchange.title}</Link>
-              </div>
-            )
-          }
-        })}
-        <h2>Check out Exchanges You're in</h2>
-        {exchanges.map(exchange => {
-          if (exchange.members.includes(this.props.user.id)) {
-            return (
-              <div key={`${exchange.id}in`}>
-                <Link href={`/exchanges/${exchange.id}`}>{exchange.title}</Link>
-              </div>
-            )
-          }
-        })}
+        <h2>Manage Exchanges</h2>
+        {exchanges.map(exchange =>
+          <div key={`${exchange.title}`}>
+            <Link href={`/exchanges/${exchange.id}`}>{exchange.title}</Link>
+          </div>
+        )}
       </div>
     )
   }
