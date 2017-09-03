@@ -52,7 +52,7 @@ render (
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} onEnter={onAppEnter}/>
         <Route path="/exchanges/:id" component={SingleExchange} onEnter={onExchangeEnter}/>
-        <Route path="/exchanges/:id/join" component={JoinForm} />
+        <Route path="/exchanges/:id/join" component={JoinForm} onEnter={onExchangeEnter}/>
         <Route path="/users/:id" component={User} onEnter={onUserEnter} />
       </Route>
       <Route path='*' component={NotFound} />

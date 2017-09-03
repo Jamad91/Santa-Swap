@@ -6,6 +6,7 @@ import {addPersonToExchange} from 'APP/app/reducers/exchanges'
 import ExchangeList from './ExchangeList'
 
 
+
 class SingleExchange extends Component {
 
   render() {

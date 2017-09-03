@@ -40,6 +40,7 @@ class CreateExchange extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <h3>Plan an Exchange!</h3>
