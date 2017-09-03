@@ -12,6 +12,5 @@ OAuth.belongsTo(User)
 User.hasOne(OAuth)
 
 Exchange.belongsTo(User, {as: 'owner'})
-// User.hasMany(Exchange)
 
 module.exports = {User, Exchange}
