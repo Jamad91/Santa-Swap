@@ -24,12 +24,9 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       newState.exchanges = dummy
       break
     case ADD_PERSON_TO_EXCHANGE:
-      console.log('action', action.exchangeInfo);
       dummy = newState.selectedExchange
-      // if (!dummy.members[0]) {dummy.members = []}
       dummy.members.push(action.exchangeInfo)
       newState.selectedExchange = dummy
-      console.log('newState', newState);
       break
     case MAKE_LIST:
       dummy = newState.selectedExchange
@@ -73,7 +70,6 @@ export const createExchange = function(exchangeInfo) {
   return dispatch => {
     dispatch(addExchange(exchangeInfo))
     axios.post('/api/exchanges', exchangeInfo)
-      .then(exchange => exchange)
       .catch(err => console.error("Wasn't able to create exchange!"))
   }
 }
@@ -85,15 +81,9 @@ const addUserToExchange = (exchangeId, exchangeInfo) => ({
 })
 
 export const addPersonToExchange = function(exchangeId, exchangeInfo) {
-    console.log('exchangeId', exchangeId);
-    console.log('exchangeInfo', exchangeInfo);
     return dispatch => {
       dispatch(addUserToExchange(exchangeId, exchangeInfo))
       return axios.put(`/api/exchanges/${exchangeId}`, exchangeInfo)
-        .then(exchange => {
-          console.log('add person', exchange);
-          return exchange
-        })
         .catch(err => console.error("Wasn't able to add person to exchange!"))
   }
 }
@@ -108,7 +98,6 @@ export const makeList = function(exchangeId, exchangeInfo) {
   return dispatch => {
     dispatch(addList(exchangeId, exchangeInfo))
     return axios.put(`/api/exchanges/${exchangeId}`, exchangeInfo)
-      .then(exchange => exchange)
       .catch(err => console.error("Wasn't able to create list!"))
   }
 }

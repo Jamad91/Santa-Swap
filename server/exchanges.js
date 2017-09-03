@@ -19,8 +19,6 @@ router.get('/:id', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   Exchange.findById(req.params.id)
     .then(exchange => {
-      // console.log('exchange',exchange.members);
-      console.log('req', req.body);
       let newMembers = exchange.members
       newMembers.push(req.body)
       return exchange.update({members: newMembers})
