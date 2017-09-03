@@ -12,6 +12,7 @@ import NotFound from './components/NotFound'
 import Home from './components/Home'
 import Exchanges from './components/Exchange/Exchanges'
 import SingleExchange from './components/Exchange/SingleExchange'
+import JoinForm from './components/Exchange/JoinForm'
 import User from './components/User'
 
 import {fetchUserExchanges, fetchSingleExchange} from './reducers/exchanges'
@@ -51,6 +52,7 @@ render (
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} onEnter={onAppEnter}/>
         <Route path="/exchanges/:id" component={SingleExchange} onEnter={onExchangeEnter}/>
+        <Route path="/exchanges/:id/join" component={JoinForm} />
         <Route path="/users/:id" component={User} onEnter={onUserEnter} />
       </Route>
       <Route path='*' component={NotFound} />

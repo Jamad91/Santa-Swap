@@ -6,6 +6,7 @@ class Exchanges extends Component {
 
   render() {
     const exchanges = this.props.exchanges;
+    console.log(exchanges);
     return (
       <div>
         <h2>Manage Exchanges</h2>
