@@ -36,7 +36,6 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       newState.selectedExchange = dummy
       break
     case REMOVE_PERSON_FROM_EXCHANGE:
-
       dummy = newState.selectedExchange
       let idx;
       for (var i = 0; !idx && i < dummy.members.length; i++) {
@@ -45,13 +44,13 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
         }
       }
       dummy.members.splice(idx, 1)
-      console.log('dummy', dummy);
       newState.selectedExchange = dummy
       break
     case MAKE_LIST:
       dummy = newState.selectedExchange
       break
   }
+
   return newState
 }
 
@@ -60,39 +59,36 @@ const receiveUsersExchanges = exchanges => ({
   exchanges
 })
 
-export const fetchUserExchanges = function() {
-  return dispatch => {
+export const fetchUserExchanges = () =>
+  dispatch => {
     axios.get('./api/exchanges')
     .then(res => {dispatch(receiveUsersExchanges(res.data))})
   }
-}
 
 const receiveSingleExchange = exchange => ({
   type: RECEIVE_SINGLE_EXCHANGE,
   exchange
 })
 
-export const fetchSingleExchange = function(exchangeId) {;
-  return dispatch => {
+export const fetchSingleExchange = exchangeId =>
+  dispatch => {
     axios.get(`/api/exchanges/${exchangeId}`)
     .then(res => {
       dispatch(receiveSingleExchange(res.data))
     })
   }
-}
 
 const addExchange = exchangeInfo => ({
   type: CREATE_EXCHANGE,
   exchangeInfo
 })
 
-export const createExchange = function(exchangeInfo) {
-  return dispatch => {
+export const createExchange = exchangeInfo =>
+  dispatch => {
     dispatch(addExchange(exchangeInfo))
     axios.post('/api/exchanges', exchangeInfo)
       .catch(err => console.error("Wasn't able to create exchange!"))
   }
-}
 
 const addUserToExchange = (exchangeId, exchangeInfo) => ({
   type: ADD_PERSON_TO_EXCHANGE,
@@ -100,13 +96,12 @@ const addUserToExchange = (exchangeId, exchangeInfo) => ({
   exchangeInfo
 })
 
-export const addPersonToExchange = function(exchangeId, exchangeInfo) {
-    return dispatch => {
+export const addPersonToExchange = (exchangeId, exchangeInfo) =>
+    dispatch => {
       dispatch(addUserToExchange(exchangeId, exchangeInfo))
       return axios.put(`/api/exchanges/${exchangeId}`, exchangeInfo)
         .catch(err => console.error("Wasn't able to add person to exchange!"))
   }
-}
 
 const deleteMember = (exchangeId, personId) => ({
   type: REMOVE_PERSON_FROM_EXCHANGE,
@@ -115,7 +110,6 @@ const deleteMember = (exchangeId, personId) => ({
 })
 
 export const removeMember = (exchangeId, personId) => {
-  console.log('removing', exchangeId, personId);
   return dispatch => {
     dispatch(deleteMember(exchangeId, personId))
     return axios.put(`/api/exchanges/${exchangeId}`, personId)
@@ -129,10 +123,9 @@ const addList = (exchangeId, exchangeInfo) => ({
   exchangeInfo
 })
 
-export const makeList = function(exchangeId, exchangeInfo) {
-  return dispatch => {
+export const makeList = (exchangeId, exchangeInfo) =>
+  dispatch => {
     dispatch(addList(exchangeId, exchangeInfo))
     return axios.put(`/api/exchanges/${exchangeId}`, exchangeInfo)
       .catch(err => console.error("Wasn't able to create list!"))
   }
-}

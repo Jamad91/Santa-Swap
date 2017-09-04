@@ -91,7 +91,6 @@ class ExchangeList extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('state', state);
   return {
     // auth: state.auth,
     // exchange: state.exchangeReducer.selectedExchange,

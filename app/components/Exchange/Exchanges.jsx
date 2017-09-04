@@ -6,7 +6,6 @@ class Exchanges extends Component {
 
   render() {
     const exchanges = this.props.exchanges;
-    console.log(exchanges);
     return (
       <div>
         <h2>Manage Exchanges</h2>
@@ -27,8 +26,4 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Exchanges)
+export default connect(mapStateToProps)(Exchanges)

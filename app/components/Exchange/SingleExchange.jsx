@@ -5,18 +5,12 @@ import { Link } from 'react-router'
 import {removeMember} from 'APP/app/reducers/exchanges'
 import ExchangeList from './ExchangeList'
 
-
-
 class SingleExchange extends Component {
 
   constructor(props) {
     super(props)
 
     this.removeMember = this.removeMember.bind(this)
-  }
-
-  removeMember() {
-    console.log('click', prop);
   }
 
   render() {
@@ -30,7 +24,11 @@ class SingleExchange extends Component {
             ? exchange.members.map(member =>
               <div key={member.id}>
                 {member.firstName} {member.lastName}
-                <span onClick={() => this.props.removeMember(exchange.id, member.id)}>X</span>
+                <span onClick={() => {
+                    window.location.reload()
+                    this.props.removeMember(exchange.id, member.id)
+                  }
+                }>X</span>
 
               </div>
             )
@@ -50,7 +48,5 @@ function mapStateToProps(state) {
     exchange: state.exchangeReducer.selectedExchange
   }
 }
-
-// function mapDispatchToProps
 
 export default connect(mapStateToProps, {removeMember})(SingleExchange)
