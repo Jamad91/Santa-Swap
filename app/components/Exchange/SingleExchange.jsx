@@ -7,12 +7,6 @@ import ExchangeList from './ExchangeList'
 
 class SingleExchange extends Component {
 
-  constructor(props) {
-    super(props)
-
-    this.removeMember = this.removeMember.bind(this)
-  }
-
   render() {
     let exchange = this.props.exchange
     return (
