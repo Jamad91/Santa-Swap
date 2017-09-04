@@ -11,6 +11,7 @@ const seedUsers = () => db.Promise.map([
 const seedExchanges = () => db.Promise.map([
   {title: 'Main One', members: [
     {
+      id: 1,
       firstName: "Jimmy",
       lastName: "DiColandrea",
       email: "jdicolandrea@gmail.com",
@@ -22,6 +23,7 @@ const seedExchanges = () => db.Promise.map([
       misc: "n/a"
     },
     {
+      id: 2,
       firstName: "Joey",
       lastName: "DiColandrea",
       email: "jdicolandrea@gmail.com",
@@ -33,6 +35,7 @@ const seedExchanges = () => db.Promise.map([
       misc: "n/a"
     },
     {
+      id: 3,
       firstName: "Barack",
       lastName: "Obama",
       email: "jdicolandrea@gmail.com",

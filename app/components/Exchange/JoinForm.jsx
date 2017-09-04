@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {addPersonToExchange} from 'APP/app/reducers/exchanges'
-import { Redirect } from 'react-router'
+import { Link } from 'react-router'
 
 class JoinForm extends Component {
   constructor(props) {
@@ -33,6 +33,7 @@ class JoinForm extends Component {
     e.preventDefault()
 
     let newState = {
+      id: Math.floor(Math.random() * 100000) + 1,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
@@ -122,6 +123,7 @@ class JoinForm extends Component {
             : null
         }
         </form>
+        <Link href='/home'>Home</Link>
       </div>
     )
   }

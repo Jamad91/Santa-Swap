@@ -10,11 +10,20 @@ import ExchangeList from './ExchangeList'
 class SingleExchange extends Component {
 
   render() {
-
-    console.log(this.props.exchange);
+    let exchange = this.props.exchange
+    console.log(exchange);
     return (
       <div>
         <h1>{this.props.exchange.title}</h1>
+        <p>Current attendees</p>
+        {
+          exchange.members
+            ? exchange.members.map(member =>
+              <div key={member.id}>{member.firstName} {member.lastName}</div>
+            )
+            : null
+        }
+        <Link href={`/exchanges/${exchange.id}/join`}>Join</Link><br />
         <Link href="/home">Home</Link>
       </div>
     )
