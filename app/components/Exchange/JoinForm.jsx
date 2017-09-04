@@ -45,23 +45,16 @@ class JoinForm extends Component {
       misc: this.state.misc
     }
 
-    console.log('here');
-
     this.setState({
       redirect: true
     })
 
-    console.log(window.location)
     this.props.addPersonToExchange(this.props.exchange.id, newState)
 
     window.location.href = `${window.location.origin}/submitted`
   }
 
   render() {
-    console.log('redirect', this.state.redirect);
-
-    const { from } = '/'
-    const { fireRedirect } = this.state.redirect
 
     return (
       <div>
@@ -123,9 +116,6 @@ class JoinForm extends Component {
           /><br />
         <button onClick={this.handleSubmit}>Go</button>
         </form>
-        {fireRedirect && (
-          <Redirect to='/submitted'/>
-        )}
       </div>
     )
   }
