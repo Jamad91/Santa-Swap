@@ -16,8 +16,7 @@ class JoinForm extends Component {
       address2: "",
       likes: "",
       dislikes: "",
-      misc: "",
-      redirect: false
+      misc: ""
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -45,17 +44,12 @@ class JoinForm extends Component {
       misc: this.state.misc
     }
 
-    this.setState({
-      redirect: true
-    })
-
     this.props.addPersonToExchange(this.props.exchange.id, newState)
 
     window.location.href = `${window.location.origin}/submitted`
   }
 
   render() {
-
     return (
       <div>
         <h1>Join {this.props.exchange.title}</h1>
@@ -114,7 +108,19 @@ class JoinForm extends Component {
             name="misc"
             value={this.state.misc}
           /><br />
-        <button onClick={this.handleSubmit}>Go</button>
+        {
+          this.state.firstName &&
+          this.state.lastName &&
+          this.state.email &&
+          this.state.phone &&
+          this.state.address1 &&
+          this.state.address2 &&
+          this.state.likes &&
+          this.state.dislikes &&
+          this.state.misc
+            ? <button onClick={this.handleSubmit}>Go</button>
+            : null
+        }
         </form>
       </div>
     )

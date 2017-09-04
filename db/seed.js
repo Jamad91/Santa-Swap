@@ -9,7 +9,41 @@ const seedUsers = () => db.Promise.map([
 // {giver: 1, receiver: 2}
 
 const seedExchanges = () => db.Promise.map([
-  {title: 'Main One', members: [], list: [], owner_id: 1},
+  {title: 'Main One', members: [
+    {
+      firstName: "Jimmy",
+      lastName: "DiColandrea",
+      email: "jdicolandrea@gmail.com",
+      phone: "3472556257",
+      address1: "60-24 Woodbine St.",
+      address2: "Ridgewood, NY 11385",
+      likes: "stuff",
+      dislikes: "other stuff",
+      misc: "n/a"
+    },
+    {
+      firstName: "Joey",
+      lastName: "DiColandrea",
+      email: "jdicolandrea@gmail.com",
+      phone: "3472556257",
+      address1: "60-24 Woodbine St.",
+      address2: "Ridgewood, NY 11385",
+      likes: "stuff",
+      dislikes: "other stuff",
+      misc: "n/a"
+    },
+    {
+      firstName: "Barack",
+      lastName: "Obama",
+      email: "jdicolandrea@gmail.com",
+      phone: "3472556257",
+      address1: "60-24 Woodbine St.",
+      address2: "Ridgewood, NY 11385",
+      likes: "stuff",
+      dislikes: "other stuff",
+      misc: "n/a"
+    },
+  ], list: [], owner_id: 1},
   {title: 'Second One', members: [], list: [], owner_id: 2}
 ], exchange => db.model('exchanges').create(exchange))
 

@@ -10,6 +10,8 @@ import ExchangeList from './ExchangeList'
 class SingleExchange extends Component {
 
   render() {
+
+    console.log(this.props.exchange);
     return (
       <div>
         <h1>{this.props.exchange.title}</h1>
