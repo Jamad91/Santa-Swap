@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {addPersonToExchange} from 'APP/app/reducers/exchanges'
+import { Redirect } from 'react-router'
 
 class JoinForm extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class JoinForm extends Component {
       address2: "",
       likes: "",
       dislikes: "",
-      misc: ""
+      misc: "",
+      redirect: false
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -43,22 +45,24 @@ class JoinForm extends Component {
       misc: this.state.misc
     }
 
-    this.props.addPersonToExchange(newState)
+    console.log('here');
 
     this.setState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      address1: "",
-      address2: "",
-      likes: "",
-      dislikes: "",
-      misc: ""
+      redirect: true
     })
+
+    console.log(window.location)
+    this.props.addPersonToExchange(this.props.exchange.id, newState)
+
+    window.location.href = `${window.location.origin}/submitted`
   }
 
   render() {
+    console.log('redirect', this.state.redirect);
+
+    const { from } = '/'
+    const { fireRedirect } = this.state.redirect
+
     return (
       <div>
         <h1>Join {this.props.exchange.title}</h1>
@@ -116,9 +120,12 @@ class JoinForm extends Component {
             placeholder="misc"
             name="misc"
             value={this.state.misc}
-          />
-          <span onClick={() => {this.props.addPersonToExchange(this.props.exchange.id, this.state)}}>Go</span>
+          /><br />
+        <button onClick={this.handleSubmit}>Go</button>
         </form>
+        {fireRedirect && (
+          <Redirect to='/submitted'/>
+        )}
       </div>
     )
   }
