@@ -1,7 +1,14 @@
 import axios from 'axios'
 import store from 'APP/app/store'
 
-import {RECEIVE_USERS_EXCHANGES, RECEIVE_SINGLE_EXCHANGE, CREATE_EXCHANGE, ADD_PERSON_TO_EXCHANGE, MAKE_LIST} from '../constants'
+import {
+  RECEIVE_USERS_EXCHANGES,
+  RECEIVE_SINGLE_EXCHANGE,
+  CREATE_EXCHANGE,
+  ADD_PERSON_TO_EXCHANGE,
+  REMOVE_PERSON_FROM_EXCHANGE,
+  MAKE_LIST
+} from '../constants'
 
 const DEFAULT_STATE = {
   exchanges: [],
@@ -26,6 +33,19 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
     case ADD_PERSON_TO_EXCHANGE:
       dummy = newState.selectedExchange
       dummy.members.push(action.exchangeInfo)
+      newState.selectedExchange = dummy
+      break
+    case REMOVE_PERSON_FROM_EXCHANGE:
+
+      dummy = newState.selectedExchange
+      let idx;
+      for (var i = 0; !idx && i < dummy.members.length; i++) {
+        if (action.personId === dummy.members[i].id) {
+          idx = i
+        }
+      }
+      dummy.members.splice(idx, 1)
+      console.log('dummy', dummy);
       newState.selectedExchange = dummy
       break
     case MAKE_LIST:
@@ -85,6 +105,21 @@ export const addPersonToExchange = function(exchangeId, exchangeInfo) {
       dispatch(addUserToExchange(exchangeId, exchangeInfo))
       return axios.put(`/api/exchanges/${exchangeId}`, exchangeInfo)
         .catch(err => console.error("Wasn't able to add person to exchange!"))
+  }
+}
+
+const deleteMember = (exchangeId, personId) => ({
+  type: REMOVE_PERSON_FROM_EXCHANGE,
+  exchangeId,
+  personId
+})
+
+export const removeMember = (exchangeId, personId) => {
+  console.log('removing', exchangeId, personId);
+  return dispatch => {
+    dispatch(deleteMember(exchangeId, personId))
+    return axios.put(`/api/exchanges/${exchangeId}`, personId)
+      .catch(err => console.error("Wasn't able to remove person from exchange!"))
   }
 }
 

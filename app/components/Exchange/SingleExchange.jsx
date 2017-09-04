@@ -2,16 +2,25 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import store from 'APP/app/store'
 import { Link } from 'react-router'
-import {addPersonToExchange} from 'APP/app/reducers/exchanges'
+import {removeMember} from 'APP/app/reducers/exchanges'
 import ExchangeList from './ExchangeList'
 
 
 
 class SingleExchange extends Component {
 
+  constructor(props) {
+    super(props)
+
+    this.removeMember = this.removeMember.bind(this)
+  }
+
+  removeMember() {
+    console.log('click', prop);
+  }
+
   render() {
     let exchange = this.props.exchange
-    console.log(exchange);
     return (
       <div>
         <h1>{this.props.exchange.title}</h1>
@@ -19,7 +28,11 @@ class SingleExchange extends Component {
         {
           exchange.members
             ? exchange.members.map(member =>
-              <div key={member.id}>{member.firstName} {member.lastName}</div>
+              <div key={member.id}>
+                {member.firstName} {member.lastName}
+                <span onClick={() => this.props.removeMember(exchange.id, member.id)}>X</span>
+
+              </div>
             )
             : null
         }
@@ -38,4 +51,6 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(SingleExchange)
+// function mapDispatchToProps
+
+export default connect(mapStateToProps, {removeMember})(SingleExchange)
