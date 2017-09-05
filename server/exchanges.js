@@ -19,21 +19,26 @@ router.get('/:id', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   Exchange.findById(req.params.id)
     .then(exchange => {
+      console.log('REQ.BODY', Object.keys(req.body[0])[0]);
       let newMembers = exchange.members
-      if (Object.keys(req.body).length > 1) {
-        newMembers.push(req.body)
+      let newList = exchange.list
+      if (Object.keys(req.body[0])[0] === 'giver') {
+        newList = req.body;
       }
-      else {
-        let id = parseInt(Object.keys(req.body))
-        let idx
-        for (var i = 0; i < newMembers.length && !idx; i++) {
-          if (id === newMembers[i].id) {
-            idx = i
-          }
-        }
-        newMembers.splice(idx, 1)
-      }
-      return exchange.update({members: newMembers})
+      // else if (Object.keys(req.body).length > 1) {
+      //   newMembers.push(req.body)
+      // }
+      // else {
+      //   let id = parseInt(Object.keys(req.body))
+      //   let idx
+      //   for (var i = 0; i < newMembers.length && !idx; i++) {
+      //     if (id === newMembers[i].id) {
+      //       idx = i
+      //     }
+      //   }
+      //   newMembers.splice(idx, 1)
+      // }
+      return exchange.update({members: newMembers, list: newList})
     })
     .catch(next)
 })

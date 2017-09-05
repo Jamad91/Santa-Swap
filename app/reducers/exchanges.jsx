@@ -50,6 +50,19 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       dummy = newState.selectedExchange
       dummy.list = action.listInfo
       newState.selectedExchange = dummy
+
+
+      // let newArr = this.shuffle(arr.slice());
+      // let exchange = [];
+      // for (var i = 0; i < arr.length; i++) {
+      //   if (arr[i].id === newArr[i].id) {
+      //     newArr = this.shuffle(newArr);
+      //     i = -1;
+      //     exchange = [];
+      //   } else {
+      //     exchange.push({ giver: arr[i], receiver: newArr[i] });
+      //   }
+      // }
       break
   }
 
@@ -125,9 +138,12 @@ const addList = (exchangeId, listInfo) => ({
   listInfo
 })
 
-export const makeList = (exchangeId, listInfo) =>
-  dispatch => {
+export const makeList = (exchangeId, listInfo) =>{
+  console.log('listInfo',listInfo);
+  return dispatch => {
+    console.log('HERE');
     dispatch(addList(exchangeId, listInfo))
     return axios.put(`/api/exchanges/${exchangeId}`, listInfo)
       .catch(err => console.error("Wasn't able to create list!"))
   }
+}

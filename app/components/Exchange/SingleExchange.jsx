@@ -56,7 +56,7 @@ class SingleExchange extends Component {
         }
         {
           exchange.list
-          ? <ExchangeList members={exchange.members}/>
+          ? <ExchangeList members={exchange.members} />
           : null
         }
 

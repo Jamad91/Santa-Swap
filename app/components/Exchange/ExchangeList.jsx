@@ -15,9 +15,11 @@ class ExchangeList extends Component {
 
   componentWillReceiveProps(props) {
     this.matchMaker(props.members)
+    this.props.makeList(this.props.exchange.id, this.props.list)
   }
 
   matchMaker(arr) {
+    console.log(arr);
     let newArr = this.shuffle(arr.slice());
     let exchange = [];
     for (var i = 0; i < arr.length; i++) {
@@ -29,9 +31,10 @@ class ExchangeList extends Component {
         exchange.push({ giver: arr[i], receiver: newArr[i] });
       }
     }
-    this.setState({
-      list: exchange
-    })
+    // this.setState({
+    //   list: exchange
+    // })
+    this.props.makeList(this.props.exchange.id, exchange);
     // return exchange
   }
 
@@ -53,14 +56,18 @@ class ExchangeList extends Component {
 
   render() {
     console.log('this', this.props);
-    console.log('list',this.state.list, 'members',this.props.members);
+    console.log('list',this.props.exchange.list, 'members',this.props.members);
 
     return (
       <div>
         <h3>List</h3>
-        <div onClick={() => this.matchMaker(this.props.members)}>Make List</div>
         {
-          this.state.list.map(match =>
+          this.props.exchange.list.length === 0
+            ? <div onClick={() => this.matchMaker(this.props.members)}>Make List</div>
+            : null
+        }
+        {
+          this.props.exchange.list.map(match =>
             <div key={match.giver.id}>
               <span>Giver: {match.giver.firstName}</span><br />
               <span>Receiver: {match.receiver.firstName}</span>
@@ -75,7 +82,7 @@ class ExchangeList extends Component {
 
 function mapStateToProps(state) {
   return {
-
+    exchange: state.exchangeReducer.selectedExchange
   }
 }
 
