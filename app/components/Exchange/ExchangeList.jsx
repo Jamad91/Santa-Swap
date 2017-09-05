@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import store from 'APP/app/store'
+import { makeList } from 'APP/app/reducers/exchanges'
 
 class ExchangeList extends Component {
   constructor(props) {
@@ -17,20 +18,22 @@ class ExchangeList extends Component {
   }
 
   matchMaker(arr) {
-  let newArr = this.shuffle(arr.slice());
-  let exchange = [];
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i].id === newArr[i].id) {
-      newArr = this.shuffle(newArr);
-      i = -1;
-      exchange = [];
-    } else {
-      exchange.push({ giver: arr[i], receiver: newArr[i] });
+    let newArr = this.shuffle(arr.slice());
+    let exchange = [];
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].id === newArr[i].id) {
+        newArr = this.shuffle(newArr);
+        i = -1;
+        exchange = [];
+      } else {
+        exchange.push({ giver: arr[i], receiver: newArr[i] });
+      }
     }
+    this.setState({
+      list: exchange
+    })
+    // return exchange
   }
-  console.log(exchange);
-  return exchange;
-}
 
   // goodMatch(el1, el2, arr) {
   //   for (var i = 0; i < arr.length; i++) {
@@ -48,35 +51,16 @@ class ExchangeList extends Component {
     return a;
   }
 
-  displayPeople(idArr, memberArr) {
-    let peopleList = [];
-    for (let i = 0; i < idArr.length; i++) {
-      let current = {giver: null, receiver: null};
-      let idx = 0;
-      while (!current.giver || !current.receiver) {
-        if (!current.giver && idArr[i].giver === memberArr[idx].id) {
-          current.giver = memberArr[idx]
-        }
-        if (!current.receiver && idArr[i].receiver === memberArr[idx].id) {
-          current.receiver = memberArr[idx]
-        }
-        idx++
-      }
-      peopleList.push(current)
-    }
-    return peopleList;
-  }
-
   render() {
     console.log('this', this.props);
-    console.log('check', this.state.list, this.props.users);
-    let matchUps = this.matchMaker(this.props.members);
-    console.log('matchUps',matchUps);
+    console.log('list',this.state.list, 'members',this.props.members);
+
     return (
       <div>
-        <button>Generate List</button><br />
+        <h3>List</h3>
+        <div onClick={() => this.matchMaker(this.props.members)}>Make List</div>
         {
-          matchUps.map(match =>
+          this.state.list.map(match =>
             <div key={match.giver.id}>
               <span>Giver: {match.giver.firstName}</span><br />
               <span>Receiver: {match.receiver.firstName}</span>
@@ -95,4 +79,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(ExchangeList)
+export default connect(mapStateToProps, {makeList})(ExchangeList)

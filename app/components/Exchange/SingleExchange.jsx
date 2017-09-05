@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import store from 'APP/app/store'
 import { Link } from 'react-router'
-import {removeMember, makeList} from 'APP/app/reducers/exchanges'
+import {removeMember} from 'APP/app/reducers/exchanges'
 import ExchangeList from './ExchangeList'
 
 class SingleExchange extends Component {
@@ -55,9 +55,9 @@ class SingleExchange extends Component {
             : null
         }
         {
-          this.state.madeList
+          exchange.list
           ? <ExchangeList members={exchange.members}/>
-          : <div onClick={this.makeList}>Make list</div>
+          : null
         }
 
         <Link href={`/exchanges/${exchange.id}/join`}>Join Link</Link><br />
@@ -75,4 +75,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {removeMember, makeList})(SingleExchange)
+export default connect(mapStateToProps, {removeMember})(SingleExchange)

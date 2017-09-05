@@ -48,6 +48,8 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       break
     case MAKE_LIST:
       dummy = newState.selectedExchange
+      dummy.list = action.listInfo
+      newState.selectedExchange = dummy
       break
   }
 
@@ -117,15 +119,15 @@ export const removeMember = (exchangeId, personId) => {
   }
 }
 
-const addList = (exchangeId, exchangeInfo) => ({
+const addList = (exchangeId, listInfo) => ({
   type: MAKE_LIST,
   exchangeId,
-  exchangeInfo
+  listInfo
 })
 
-export const makeList = (exchangeId, exchangeInfo) =>
+export const makeList = (exchangeId, listInfo) =>
   dispatch => {
-    dispatch(addList(exchangeId, exchangeInfo))
-    return axios.put(`/api/exchanges/${exchangeId}`, exchangeInfo)
+    dispatch(addList(exchangeId, listInfo))
+    return axios.put(`/api/exchanges/${exchangeId}`, listInfo)
       .catch(err => console.error("Wasn't able to create list!"))
   }
