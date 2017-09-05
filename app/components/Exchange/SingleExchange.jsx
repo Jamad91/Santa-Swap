@@ -2,10 +2,32 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import store from 'APP/app/store'
 import { Link } from 'react-router'
-import {removeMember} from 'APP/app/reducers/exchanges'
+import {removeMember, makeList} from 'APP/app/reducers/exchanges'
 import ExchangeList from './ExchangeList'
 
 class SingleExchange extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      userIncluded: false,
+      madeList: false
+    }
+
+    if (this.props.list) {
+      this.setState({madeList: true})
+    }
+
+    this.makeList = this.makeList.bind(this)
+  }
+
+  makeList() {
+    // if (this.props.user)
+
+    console.log('making list');
+    this.setState({madeList: true})
+  }
 
   render() {
     let exchange = this.props.exchange
@@ -18,17 +40,27 @@ class SingleExchange extends Component {
             ? exchange.members.map(member =>
               <div key={member.id}>
                 {member.firstName} {member.lastName}
-                <span onClick={() => {
-                    window.location.reload()
-                    this.props.removeMember(exchange.id, member.id)
-                  }
-                }>X</span>
+                {
+                  this.props.auth
+                    ? <span onClick={() => {
+                        window.location.reload()
+                        this.props.removeMember(exchange.id, member.id)
+                      }
+                    }>X</span>
+                  : null
+                }
 
               </div>
             )
             : null
         }
-        <Link href={`/exchanges/${exchange.id}/join`}>Join</Link><br />
+        {
+          this.state.madeList
+          ? <ExchangeList members={exchange.members}/>
+          : <div onClick={this.makeList}>Make list</div>
+        }
+
+        <Link href={`/exchanges/${exchange.id}/join`}>Join Link</Link><br />
         <Link href="/home">Home</Link>
       </div>
     )
@@ -43,4 +75,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {removeMember})(SingleExchange)
+export default connect(mapStateToProps, {removeMember, makeList})(SingleExchange)
