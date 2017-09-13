@@ -41,16 +41,12 @@ class CreateExchange extends Component {
 
   render() {
     return (
-      <div>
-        <h3>Plan an Exchange!</h3>
+      <div className="content-box" id="plan-form">
+        <h2>Plan an Exchange!</h2>
         <form onSubmit={ this.handleSubmit }>
-          <div>
-            Title
+          <div className="form-input">
+            <span>What do you want to call it?</span><br />
             <textarea rows="2" cols="50" name="title" value={this.state.title} onChange={this.handleChange} />
-          </div>
-          <div>
-            Members
-            <textarea rows="2" cols="50" name="searchMembers" onChange={this.handleChange} />
           </div>
           <input type="submit" value="Create" />
         </form>

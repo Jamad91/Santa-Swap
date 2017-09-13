@@ -34,12 +34,12 @@ const onUserEnter = function(nextRouterState) {
   store.dispatch(fetchSingleUser(nextRouterState.params.id))
 }
 
-const ExampleApp = connect(
+const LoginInfo = connect(
   ({ auth }) => ({ user: auth })
 ) (
   ({ user, children }) =>
     <div>
-      <nav>
+      <nav id="login-info">
         {user ? <WhoAmI/> : <Login/>}
       </nav>
       {children}
@@ -49,7 +49,7 @@ const ExampleApp = connect(
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
+      <Route path="/" component={LoginInfo}>
         <IndexRedirect to="/home" />
         <Route path="/home" component={Home} onEnter={onAppEnter}/>
         <Route path="/exchanges/:id" component={SingleExchange} onEnter={onExchangeEnter}/>

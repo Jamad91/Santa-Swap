@@ -12,13 +12,15 @@ import store from '../store'
 class Home extends Component {
   render() {
     return (
-      <div>
+      <div className="page-content">
         {
           this.props.user
             ? <div>
-                <h1>Welcome, {this.props.user.name}, to Santa Swap!</h1>
-                <Exchanges/>
-                <CreateExchange />
+                <h1 id="greeting">Welcome, {this.props.user.name}, to Santa Swap!</h1>
+                <div className="main-content">
+                  <Exchanges/>
+                  <CreateExchange />
+                </div>
               </div>
             : <div>
                 <h1>Welcome to Santa Swap!</h1>

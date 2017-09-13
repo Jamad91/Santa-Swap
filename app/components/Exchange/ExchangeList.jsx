@@ -13,9 +13,8 @@ class ExchangeList extends Component {
     this.shuffle = this.shuffle.bind(this)
   }
 
-  componentWillReceiveProps(props) {
-    this.matchMaker(props.members)
-    this.props.makeList(this.props.exchange.id, this.props.list)
+  componentWillUpdate() {
+    this.props.exchange.list.length > 0
   }
 
   matchMaker(arr) {

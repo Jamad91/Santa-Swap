@@ -7,8 +7,8 @@ class Exchanges extends Component {
   render() {
     const exchanges = this.props.exchanges;
     return (
-      <div>
-        <h2>Manage Exchanges</h2>
+      <div className="content-box" id="managing">
+        <h2>Exchanges I'm managing</h2>
         {exchanges.map(exchange =>
           <div key={`${exchange.title}`}>
             <Link href={`/exchanges/${exchange.id}`}>{exchange.title}</Link>
