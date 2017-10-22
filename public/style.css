@@ -31,8 +31,8 @@ body, html {
   justify-content: center;
   align-items: center;
   border-radius: 15%;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 #greeting {
@@ -59,9 +59,15 @@ body, html {
   float: left;
 }
 
+.exchange-listing {
+  color: green;
+  border: solid 1px black;
+  margin-bottom: 3%;
+}
+
 #plan-form {
   float: right;
-  margin-right: -10%;
+  margin-right: 0%;
 }
 
 .form-input {

@@ -35,6 +35,7 @@ class ExchangeList extends Component {
     // })
     this.props.makeList(this.props.exchange.id, exchange);
     // return exchange
+    window.location.reload();
   }
 
   // goodMatch(el1, el2, arr) {

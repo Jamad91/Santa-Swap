@@ -53,6 +53,8 @@ class JoinForm extends Component {
   render() {
     return (
       <div>
+        <div className="page-content">
+          <div className="main-content">
         <h1>Join {this.props.exchange.title}</h1>
         <form>
           <input
@@ -124,6 +126,8 @@ class JoinForm extends Component {
         }
         </form>
         <Link href='/home'>Home</Link>
+      </div>
+      </div>
       </div>
     )
   }

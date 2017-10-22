@@ -31,39 +31,56 @@ class SingleExchange extends Component {
 
   render() {
     let exchange = this.props.exchange
-    return (
-      <div>
-        <h1>{this.props.exchange.title}</h1>
-        <p>Current attendees</p>
-        {
-          exchange.members
-            ? exchange.members.map(member =>
-              <div key={member.id}>
-                {member.firstName} {member.lastName}
-                {
-                  this.props.auth
-                    ? <span onClick={() => {
-                        window.location.reload()
-                        this.props.removeMember(exchange.id, member.id)
+    if (this.props.auth) {
+      return (
+        <div className="page-content">
+          <div className="main-content">
+            <div>
+
+              <h1>Manage {this.props.exchange.title}</h1>
+              <p>Current attendees</p>
+              {
+                exchange.members
+                  ? exchange.members.map(member =>
+                    <div key={member.id}>
+                      {member.firstName} {member.lastName}
+                      {
+                        this.props.auth
+                          ? <span onClick={() => {
+                              window.location.reload()
+                              this.props.removeMember(exchange.id, member.id)
+                            }
+                          }>X</span>
+                        : null
                       }
-                    }>X</span>
+
+                    </div>
+                  )
                   : null
-                }
+              }
+              {
+                exchange.list
+                ? <ExchangeList members={exchange.members} />
+                : null
+              }
 
-              </div>
-            )
-            : null
-        }
-        {
-          exchange.list
-          ? <ExchangeList members={exchange.members} />
-          : null
-        }
-
-        <Link href={`/exchanges/${exchange.id}/join`}>Join Link</Link><br />
-        <Link href="/home">Home</Link>
-      </div>
-    )
+              <Link href={`/exchanges/${exchange.id}/join`}>Join Link</Link><br />
+              <Link href="/home">Home</Link>
+            </div>
+          </div>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div className="page-content">
+          <div className="main-content">
+            <p>You don't have access to this page, please return to the homepage!</p>
+            <Link href="/home">Home</Link>
+          </div>
+        </div>
+      )
+    }
   }
 
 }

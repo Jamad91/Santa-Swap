@@ -24,6 +24,7 @@ class Home extends Component {
               </div>
             : <div>
                 <h1>Welcome to Santa Swap!</h1>
+                <h2>Please log in!</h2>
               </div>
         }
       </div>

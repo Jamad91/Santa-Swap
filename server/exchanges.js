@@ -5,6 +5,9 @@ const Exchange = db.model('exchanges')
 const router = require('express').Router();
 const nodemailer = require('nodemailer')
 const login_info = require('./login_info');
+const twilio = require('twilio');
+const twilio_info = require('./twilio_info');
+const client = new twilio(twilio_info.API_KEY, twilio_info.SECRET);
 
 router.get('/', (req, res, next) => {
   Exchange.findAll()
@@ -21,37 +24,70 @@ router.get('/:id', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   Exchange.findById(req.params.id)
     .then(exchange => {
-      console.log('REQ.BODY', Object.keys(req.body[0])[0]);
-      console.log('REQ.BODY', req.body);
+      // console.log('REQ.BODY', Object.keys(req.body[0])[0]);
+      // console.log('REQ.BODY', req.body);
       let newMembers = exchange.members
       let newList = exchange.list
       if (Object.keys(req.body[0])[0] === 'giver') {
         newList = req.body;
 
-        // var transporter = nodemailer.createTransport({
-        //   service: 'gmail',
-        //   auth: login_info
-        //   //login_info is an exported object with a user and a password key
-        //   // info corresponds to a google account, in this case santaswap25
-        // });
-        // for (var i = 0; i < req.body.length; i++) {
-        //   let currentGiver = req.body[i].giver
-        //   let currentReceiver = req.body[i].receiver
-        //   let mailOptions = {
-        //     from: 'santaswap25@gmail.com',
-        //     to: currentGiver.email,
-        //     subject: 'Email Example',
-        //     text: `Hello ${currentGiver.firstName}. You are getting a present for ${currentReceiver.firstName}`
-        //   }
-        //   transporter.sendMail(mailOptions, function(error, info){
-        //     if(error){
-        //       console.log('ERROR:', error);
-        //     }else{
-        //       console.log('Message sent: ' + info.response);
-        //       res.json({yo: info.response});
-        //     };
-        //   });
-        // }
+
+        var transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: login_info
+          //login_info is an exported object with a user and a password key
+          // info corresponds to a google account, in this case santaswap25
+        });
+        client.messages.create({
+          to: '3472556257',
+          from: '+12017343979',
+          body: `This is not a test. I repeat, this is not a test. But let Jimmy know you got this anyway`
+        });
+        console.log('Client', client.httpClient);
+        for (var i = 0; i < req.body.length; i++) {
+          let currentGiver = req.body[i].giver
+          let currentReceiver = req.body[i].receiver
+          // console.log(currentGiver);
+          // client.messages.create({
+          //   to: currentGiver.phone,
+          //   from: '+12017343979',
+          //   body: `Hello, ${currentGiver.firstName}. You are getting a present for ${currentReceiver.firstName} ${currentReceiver.lastName}. Please check your email for more information. Text Jimmy to confirm message.`
+          // });
+          // console.log('Client',client.httpClient);
+          // console.log('------------------------------');
+          // console.log('Messages',client.messages);
+          // let mailOptions = {
+          //   from: 'santaswap25@gmail.com',
+          //   to: currentGiver.email,
+          //   subject: `Test Email for ${currentGiver.firstName}`,
+          //   text: `
+          //     <div>
+          //       Hello ${currentGiver.firstName}. You are getting a present for ${currentReceiver.firstName} ${currentReceiver.lastName}<br />
+          //       Their address is: <br />
+          //       ${currentReceiver.address1}<br />
+          //       ${currentReceiver.address2}<br />
+          //       <br />
+          //       They like: <br />
+          //       ${currentReceiver.likes}
+          //       <br />
+          //       They dislike: <br />
+          //       ${currentReceiver.dislikes}
+          //       <br /><br />
+          //       Anything else to know about them: <br />
+          //       ${currentReceiver.misc}
+          //     </div>
+          //   `
+          // }
+
+          // transporter.sendMail(mailOptions, function(error, info){
+          //   if(error){
+          //     console.log('ERROR:', error);
+          //   }else{
+          //     // console.log('Message sent: ' + info.response);
+          //     res.json({yo: info.response});
+          //   };
+          // });
+        }
 
 
       }
