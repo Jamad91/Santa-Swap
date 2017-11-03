@@ -23,9 +23,6 @@ class SingleExchange extends Component {
   }
 
   makeList() {
-    // if (this.props.user)
-
-    console.log('making list');
     this.setState({madeList: true})
   }
 

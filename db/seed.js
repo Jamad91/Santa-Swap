@@ -20,43 +20,53 @@ const seedExchanges = () => db.Promise.map([
       address2: "Cincinnati, OH",
       likes: "jimmy's things",
       dislikes: "not jimmy's things",
-      misc: "no mushrooms"
+      misc: "no mushrooms",
+      restricted: [2]
     },
     {
       id: 2,
       firstName: "Joey",
       lastName: "DiColandrea",
-      email: "josephdicolandrea@gmail.com",
-      phone: "9177414603",
+      email: "jdicolandrea@gmail.com",
+      phone: "3472556257",
+      // email: "josephdicolandrea@gmail.com",
+      // phone: "9177414603",
       address1: "Joey's House",
       address2: "Bedstuy, NY",
       likes: "pigeons",
       dislikes: "scruples",
-      misc: "don't care for beaches"
+      misc: "don't care for beaches",
+      restricted: [1]
     },
     {
       id: 3,
       firstName: "Gary",
       lastName: "Donofrio",
-      email: "gspectred@gmail.com",
-      phone: "9172045125",
+      email: "jdicolandrea@gmail.com",
+      phone: "3472556257",
+      // email: "gspectred@gmail.com",
+      // phone: "9172045125",
       address1: "Gary's House",
       address2: "Maspeth, NY",
       likes: "punisher",
       dislikes: "donald's bitching and moaning",
-      misc: "has to be shipped in several boxes, regardless of size"
+      misc: "has to be shipped in several boxes, regardless of size",
+      restricted: []
     },
     {
       id: 4,
       firstName: "Matt",
       lastName: "Putre",
-      email: "bud424@gmail.com",
-      phone: "6466233065",
+      email: "jdicolandrea@gmail.com",
+      phone: "3472556257",
+      // email: "bud424@gmail.com",
+      // phone: "6466233065",
       address1: "Matt's House",
       address2: "Middle Village, NY",
       likes: "Paul Freck",
       dislikes: "Andrew Zeni",
-      misc: "must be hand delivered, but beware of Al"
+      misc: "must be hand delivered, but beware of Al",
+      restricted: []
     },
   ], list: [], owner_id: 1},
   {title: 'Second One', members: [], list: [], owner_id: 2}

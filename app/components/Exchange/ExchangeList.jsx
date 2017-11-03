@@ -17,17 +17,17 @@ class ExchangeList extends Component {
     this.props.exchange.list.length > 0
   }
 
-  matchMaker(arr) {
-    console.log(arr);
-    let newArr = this.shuffle(arr.slice());
+  matchMaker(givers) {
+    console.log(givers);
+    let receivers = this.shuffle(givers.slice());
     let exchange = [];
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i].id === newArr[i].id) {
-        newArr = this.shuffle(newArr);
+    for (var i = 0; i < givers.length; i++) {
+      if (givers[i].id === receivers[i].id || givers[i].restricted.includes(receivers[i].id)) {
+        receivers = this.shuffle(receivers);
         i = -1;
         exchange = [];
       } else {
-        exchange.push({ giver: arr[i], receiver: newArr[i] });
+        exchange.push({ giver: givers[i], receiver: receivers[i] });
       }
     }
     // this.setState({
@@ -37,14 +37,6 @@ class ExchangeList extends Component {
     // return exchange
     window.location.reload();
   }
-
-  // goodMatch(el1, el2, arr) {
-  //   for (var i = 0; i < arr.length; i++) {
-  //
-  //     if(arr[i].includes(el1) && arr[i].includes(el2)) {return false}
-  //   }
-  //   return true;
-  // }
 
   shuffle(a) {
     for (let i = a.length; i; i--) {

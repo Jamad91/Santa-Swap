@@ -38,12 +38,6 @@ router.put('/:id', (req, res, next) => {
           //login_info is an exported object with a user and a password key
           // info corresponds to a google account, in this case santaswap25
         });
-        client.messages.create({
-          to: '3472556257',
-          from: '+12017343979',
-          body: `This is not a test. I repeat, this is not a test. But let Jimmy know you got this anyway`
-        });
-        console.log('Client', client.httpClient);
         for (var i = 0; i < req.body.length; i++) {
           let currentGiver = req.body[i].giver
           let currentReceiver = req.body[i].receiver

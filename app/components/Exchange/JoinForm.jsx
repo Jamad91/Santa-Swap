@@ -16,7 +16,8 @@ class JoinForm extends Component {
       address2: "",
       likes: "",
       dislikes: "",
-      misc: ""
+      misc: "",
+      restricted: []
     }
 
     this.handleChange = this.handleChange.bind(this)
