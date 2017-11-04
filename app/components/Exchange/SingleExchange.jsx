@@ -4,6 +4,7 @@ import store from 'APP/app/store'
 import { Link } from 'react-router'
 import {removeMember} from 'APP/app/reducers/exchanges'
 import ExchangeList from './ExchangeList'
+import {Checkbox, CheckboxGroup} from 'react-checkbox-group';
 
 class SingleExchange extends Component {
 
@@ -45,10 +46,26 @@ class SingleExchange extends Component {
                         this.props.auth
                           ?
                             <span>
-                              <span onClick={() => {
+                              <div onClick={() => {
                               window.location.reload()
                               this.props.removeMember(exchange.id, member.id)
-                              }}>X</span>
+                            }}>Delete</div>
+                              <div>
+                                {
+                                  exchange.members.map(restricted_member =>
+                                    restricted_member.id != member.id
+                                      ?
+                                        <CheckboxGroup name="restricted" value={member.restricted}key={`restricted_${restricted_member.id}`}>
+                                          <span>
+                                            {restricted_member.firstName}<Checkbox value={restricted_member.id} checked={true}></Checkbox>
+                                          </span>
+
+                                        </CheckboxGroup>
+                                      : null
+                              )
+                            }
+                              </div>
+                              <br />
                             </span>
                         : null
                       }
