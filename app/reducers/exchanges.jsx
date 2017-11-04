@@ -65,7 +65,7 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       // }
       break
   }
-
+  console.log(newState);
   return newState
 }
 

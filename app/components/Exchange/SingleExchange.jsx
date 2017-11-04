@@ -43,11 +43,13 @@ class SingleExchange extends Component {
                       {member.firstName} {member.lastName}
                       {
                         this.props.auth
-                          ? <span onClick={() => {
+                          ?
+                            <span>
+                              <span onClick={() => {
                               window.location.reload()
                               this.props.removeMember(exchange.id, member.id)
-                            }
-                          }>X</span>
+                              }}>X</span>
+                            </span>
                         : null
                       }
 

@@ -6,7 +6,12 @@ const seedUsers = () => db.Promise.map([
   {name: 'Joey DiColandrea', email: 'jdicolandrea@gmail.com', password: '1234', isAdmin: false}
 ], user => db.model('users').create(user))
 
-// {giver: 1, receiver: 2}
+// email: "josephdicolandrea@gmail.com",
+// phone: "9177414603",
+// email: "gspectred@gmail.com",
+// phone: "9172045125",
+// email: "bud424@gmail.com",
+// phone: "6466233065",
 
 const seedExchanges = () => db.Promise.map([
   {title: 'Main One', members: [
@@ -29,8 +34,6 @@ const seedExchanges = () => db.Promise.map([
       lastName: "DiColandrea",
       email: "jdicolandrea@gmail.com",
       phone: "3472556257",
-      // email: "josephdicolandrea@gmail.com",
-      // phone: "9177414603",
       address1: "Joey's House",
       address2: "Bedstuy, NY",
       likes: "pigeons",
@@ -44,8 +47,6 @@ const seedExchanges = () => db.Promise.map([
       lastName: "Donofrio",
       email: "jdicolandrea@gmail.com",
       phone: "3472556257",
-      // email: "gspectred@gmail.com",
-      // phone: "9172045125",
       address1: "Gary's House",
       address2: "Maspeth, NY",
       likes: "punisher",
@@ -59,8 +60,6 @@ const seedExchanges = () => db.Promise.map([
       lastName: "Putre",
       email: "jdicolandrea@gmail.com",
       phone: "3472556257",
-      // email: "bud424@gmail.com",
-      // phone: "6466233065",
       address1: "Matt's House",
       address2: "Middle Village, NY",
       likes: "Paul Freck",

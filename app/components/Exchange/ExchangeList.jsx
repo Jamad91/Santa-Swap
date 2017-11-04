@@ -34,7 +34,7 @@ class ExchangeList extends Component {
     //   list: exchange
     // })
     this.props.makeList(this.props.exchange.id, exchange);
-    // return exchange
+    return exchange
     window.location.reload();
   }
 
