@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import store from 'APP/app/store'
 import { Link } from 'react-router'
-import {removeMember} from 'APP/app/reducers/exchanges'
+import {removeMember } from 'APP/app/reducers/exchanges'
 import ExchangeList from './ExchangeList'
-import {Checkbox, CheckboxGroup} from 'react-checkbox-group';
+import Restrictions from './Restrictions'
 
 class SingleExchange extends Component {
 
@@ -50,22 +49,7 @@ class SingleExchange extends Component {
                               window.location.reload()
                               this.props.removeMember(exchange.id, member.id)
                             }}>Delete</div>
-                              <div>
-                                {
-                                  exchange.members.map(restricted_member =>
-                                    restricted_member.id != member.id
-                                      ?
-                                        <CheckboxGroup name="restricted" value={member.restricted}key={`restricted_${restricted_member.id}`}>
-                                          <span>
-                                            {restricted_member.firstName}<Checkbox value={restricted_member.id} checked={true}></Checkbox>
-                                          </span>
 
-                                        </CheckboxGroup>
-                                      : null
-                              )
-                            }
-                              </div>
-                              <br />
                             </span>
                         : null
                       }
@@ -74,6 +58,9 @@ class SingleExchange extends Component {
                   )
                   : null
               }
+
+              <Restrictions />
+
               {
                 exchange.list
                 ? <ExchangeList members={exchange.members} />

@@ -13,6 +13,9 @@ const Exchange = db.define('exchanges', {
   },
   list: {
     type: Sequelize.ARRAY(Sequelize.JSON)
+  },
+  restrictions: {
+    type: Sequelize.ARRAY(Sequelize.ARRAY(Sequelize.INTEGER))
   }
 })
 

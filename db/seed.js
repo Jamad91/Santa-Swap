@@ -25,8 +25,7 @@ const seedExchanges = () => db.Promise.map([
       address2: "Cincinnati, OH",
       likes: "jimmy's things",
       dislikes: "not jimmy's things",
-      misc: "no mushrooms",
-      restricted: [2]
+      misc: "no mushrooms"
     },
     {
       id: 2,
@@ -38,8 +37,7 @@ const seedExchanges = () => db.Promise.map([
       address2: "Bedstuy, NY",
       likes: "pigeons",
       dislikes: "scruples",
-      misc: "don't care for beaches",
-      restricted: [1]
+      misc: "don't care for beaches"
     },
     {
       id: 3,
@@ -51,8 +49,7 @@ const seedExchanges = () => db.Promise.map([
       address2: "Maspeth, NY",
       likes: "punisher",
       dislikes: "donald's bitching and moaning",
-      misc: "has to be shipped in several boxes, regardless of size",
-      restricted: []
+      misc: "has to be shipped in several boxes, regardless of size"
     },
     {
       id: 4,
@@ -64,10 +61,9 @@ const seedExchanges = () => db.Promise.map([
       address2: "Middle Village, NY",
       likes: "Paul Freck",
       dislikes: "Andrew Zeni",
-      misc: "must be hand delivered, but beware of Al",
-      restricted: []
+      misc: "must be hand delivered, but beware of Al"
     },
-  ], list: [], owner_id: 1},
+  ], list: [], restrictions: [[1,2]],owner_id: 1},
   {title: 'Second One', members: [], list: [], owner_id: 2}
 ], exchange => db.model('exchanges').create(exchange))
 

@@ -7,6 +7,7 @@ import {
   CREATE_EXCHANGE,
   ADD_PERSON_TO_EXCHANGE,
   REMOVE_PERSON_FROM_EXCHANGE,
+  RESTRICT_PERSON,
   MAKE_LIST
 } from '../constants'
 
@@ -46,6 +47,12 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       dummy.members.splice(idx, 1)
       newState.selectedExchange = dummy
       break
+    case RESTRICT_PERSON:
+      dummy = newState.selectedExchange
+      console.log(dummy);
+      dummy.members.filter(id => id === action.personId).push(action.personId)
+      newState.selectedExchange = dummy;
+      break
     case MAKE_LIST:
       dummy = newState.selectedExchange
       dummy.list = action.listInfo
@@ -65,7 +72,7 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       // }
       break
   }
-  console.log(newState);
+
   return newState
 }
 
@@ -124,13 +131,26 @@ const deleteMember = (exchangeId, personId) => ({
   personId
 })
 
-export const removeMember = (exchangeId, personId) => {
-  return dispatch => {
+export const removeMember = (exchangeId, personId) =>
+  dispatch => {
     dispatch(deleteMember(exchangeId, personId))
     return axios.put(`/api/exchanges/${exchangeId}`, personId)
       .catch(err => console.error("Wasn't able to remove person from exchange!"))
   }
-}
+
+const addRestriction = (exchangeId, personId) => ({
+  type: RESTRICT_PERSON,
+  exchangeId,
+  personId
+})
+
+export const restrictPerson = (exchangeId, personId) =>
+  dispatch => {
+    console.log('excahnge', exchangeId);
+    dispatch(addRestriction(exchangeId, personId))
+    return axios.put(`/api/exchanges/${exchangeId}`, personId)
+      .catch(err => console.error("Wasn't able to restrict person!"))
+  }
 
 const addList = (exchangeId, listInfo) => ({
   type: MAKE_LIST,
