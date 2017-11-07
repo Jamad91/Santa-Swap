@@ -46,7 +46,6 @@ class Restrictions extends Component {
 
   render() {
 
-    console.log('here',this.props.exchange);
     return (
       <div>
         <h2>Restrictions</h2>
@@ -91,7 +90,6 @@ class Restrictions extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.exchangeReducer.selectedExchange);
   return {
     exchange: state.exchangeReducer.selectedExchange
   }

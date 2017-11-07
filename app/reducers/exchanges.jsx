@@ -51,7 +51,6 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       dummy = newState.selectedExchange
       dummy.restrictions.push(action.newRestriction)
       newState.restrictions = dummy
-      console.log('newState',newState);
       break
     case MAKE_LIST:
       dummy = newState.selectedExchange
@@ -146,7 +145,6 @@ const addRestriction = (exchangeId, newRestriction) => ({
 
 export const restrictPair = (exchangeId, newRestriction) =>
   dispatch => {
-    console.log('excahnge', exchangeId);
     dispatch(addRestriction(exchangeId, newRestriction))
     return axios.put(`/api/exchanges/${exchangeId}`, newRestriction)
       .catch(err => console.error("Wasn't able to restrict pair!"))
@@ -159,7 +157,6 @@ const addList = (exchangeId, listInfo) => ({
 })
 
 export const makeList = (exchangeId, listInfo) =>{
-  console.log('listInfo',listInfo);
   return dispatch => {
     console.log('HERE');
     dispatch(addList(exchangeId, listInfo))
