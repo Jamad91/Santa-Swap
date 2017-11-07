@@ -12,7 +12,7 @@ class SingleExchange extends Component {
 
     this.state = {
       userIncluded: false,
-      madeList: false
+      madeList: false,
     }
 
     if (this.props.list) {
@@ -22,12 +22,15 @@ class SingleExchange extends Component {
     this.makeList = this.makeList.bind(this)
   }
 
+
   makeList() {
     this.setState({madeList: true})
   }
 
   render() {
+
     let exchange = this.props.exchange
+
     if (this.props.auth) {
       return (
         <div className="page-content">
