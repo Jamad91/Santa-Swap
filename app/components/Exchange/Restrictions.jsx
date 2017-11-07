@@ -14,6 +14,7 @@ class Restrictions extends Component {
     this.onSelectPerson = this.onSelectPerson.bind(this)
     this.onAddNew = this.onAddNew.bind(this)
     this.nameFinder = this.nameFinder.bind(this)
+    this.goodMatch = this.goodMatch.bind(this)
   }
 
   onSelectPerson(e) {
@@ -25,11 +26,20 @@ class Restrictions extends Component {
 
   onAddNew(e) {
     console.log(this.state);
+    let newRestriction = [parseInt(this.state.person1), parseInt(this.state.person2)]
+    console.log(newRestriction);
   }
 
   nameFinder(id) {
     let found = this.props.exchange.members.filter(member => {if (id === member.id) { return member}})[0]
     return `${found.firstName} ${found.lastName}`
+  }
+
+  goodMatch(arr, id1, id2) {
+    for (var i = 0; i < arr.length; i++) {
+      if ((arr[i][0] === id1 && arr[i][1] === id2) || (arr[i][0] === id2 && arr[i][1] === id1)) {return false}
+    }
+    return true
   }
 
   render() {
@@ -67,7 +77,11 @@ class Restrictions extends Component {
               : null
             }
           </select><br />
-        <span onClick={this.onAddNew}>Add New Restriction</span>
+        {
+          this.state.person1 === 0 || this.state.person2 === 0 || this.state.person1 === this.state.person2 || this.goodMatch(this.props.exchange.restrictions, parseInt(this.state.person1), parseInt(this.state.person2))
+          ? <span>Please Select a match</span>
+          : <span onClick={this.onAddNew}>Add New Restriction</span>
+      }
         </form>
       </div>
     )
