@@ -24,8 +24,10 @@ router.get('/:id', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   Exchange.findById(req.params.id)
     .then(exchange => {
+      console.log(req.body);
       let newMembers = exchange.members
       let newList = exchange.newList
+      let newRestrictions = exchange.restrictions
       if (Object.keys(req.body).length === 1) {
         let id = parseInt(Object.keys(req.body))
         let idx
@@ -92,11 +94,15 @@ router.put('/:id', (req, res, next) => {
 
 
       }
+      else if (req.body.length === 2) {
+        newRestrictions.push(req.body)
+
+      }
       else if (Object.keys(req.body).length > 1) {
         console.log('adding a perason');
         newMembers.push(req.body)
       }
-      return exchange.update({members: newMembers, list: newList})
+      return exchange.update({members: newMembers, list: newList, restrictions: newRestrictions})
     })
     .catch(next)
 })

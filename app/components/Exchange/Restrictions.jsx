@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { restrictPerson } from 'APP/app/reducers/exchanges'
+import { restrictPair } from 'APP/app/reducers/exchanges'
 
 class Restrictions extends Component {
 
@@ -20,14 +20,13 @@ class Restrictions extends Component {
   onSelectPerson(e) {
     let newState = {}
     newState[e.target.name] = e.target.value
-    console.log(newState);
     this.setState(newState)
   }
 
   onAddNew(e) {
-    console.log(this.state);
     let newRestriction = [parseInt(this.state.person1), parseInt(this.state.person2)]
-    console.log(newRestriction);
+    this.props.restrictPair(this.props.exchange.id, newRestriction)
+    window.location.reload();
   }
 
   nameFinder(id) {
@@ -36,8 +35,11 @@ class Restrictions extends Component {
   }
 
   goodMatch(arr, id1, id2) {
+
     for (var i = 0; i < arr.length; i++) {
-      if ((arr[i][0] === id1 && arr[i][1] === id2) || (arr[i][0] === id2 && arr[i][1] === id1)) {return false}
+      if ((arr[i][0] === id1 && arr[i][1] === id2) || (arr[i][0] === id2 && arr[i][1] === id1)) {
+        return false
+      }
     }
     return true
   }
@@ -78,7 +80,7 @@ class Restrictions extends Component {
             }
           </select><br />
         {
-          this.state.person1 === 0 || this.state.person2 === 0 || this.state.person1 === this.state.person2 || this.goodMatch(this.props.exchange.restrictions, parseInt(this.state.person1), parseInt(this.state.person2))
+          this.state.person1 === 0 || this.state.person2 === 0 || this.state.person1 === this.state.person2 || !this.goodMatch(this.props.exchange.restrictions, this.state.person1, this.state.person2)
           ? <span>Please Select a match</span>
           : <span onClick={this.onAddNew}>Add New Restriction</span>
       }
@@ -95,4 +97,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Restrictions)
+export default connect(mapStateToProps, {restrictPair})(Restrictions)
