@@ -8,6 +8,7 @@ import {
   ADD_PERSON_TO_EXCHANGE,
   REMOVE_PERSON_FROM_EXCHANGE,
   RESTRICT_PAIR,
+  REMOVE_RESTRICTION,
   MAKE_LIST
 } from '../constants'
 
@@ -19,6 +20,7 @@ const DEFAULT_STATE = {
 export const exchangeReducer = (state = DEFAULT_STATE, action) => {
   let newState = Object.assign({}, state)
   let dummy
+  let idx;
   switch (action.type) {
     case RECEIVE_USERS_EXCHANGES:
       newState.exchanges = action.exchanges
@@ -38,7 +40,6 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       break
     case REMOVE_PERSON_FROM_EXCHANGE:
       dummy = newState.selectedExchange
-      let idx;
       for (var i = 0; !idx && i < dummy.members.length; i++) {
         if (action.personId === dummy.members[i].id) {
           idx = i
@@ -52,6 +53,15 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       dummy.restrictions.push(action.newRestriction)
       newState.restrictions = dummy
       break
+    case REMOVE_RESTRICTION:
+      dummy = newState.selectedExchange
+      for (var i = 0; !idx && i < dummy.restrictions.length; i++) {
+        if (action.person1 === dummy.restrictions[i][0] && action.person2 === dummy.restrictions[i][1]) {
+          idx = 1
+        }
+      }
+      newState.selectedExchange = dummy
+      break;
     case MAKE_LIST:
       dummy = newState.selectedExchange
       dummy.list = action.listInfo
@@ -146,19 +156,34 @@ const addRestriction = (exchangeId, newRestriction) => ({
 export const restrictPair = (exchangeId, newRestriction) =>
   dispatch => {
     dispatch(addRestriction(exchangeId, newRestriction))
+    newRestriction = [parseInt(newRestriction[0]), parseInt(newRestriction[1]), 1]
     return axios.put(`/api/exchanges/${exchangeId}`, newRestriction)
       .catch(err => console.error("Wasn't able to restrict pair!"))
+  }
+
+const removeRestriction = (exchangeId, restrictedPair) => ({
+  type: REMOVE_RESTRICTION,
+  exchangeId,
+  restrictedPair
+})
+
+export const unrestrictPair = (exchangeId, restrictedPair) =>
+  dispatch => {
+    restrictedPair = [parseInt(restrictedPair[0]), parseInt(restrictedPair[1]), 0]
+    dispatch(removeRestriction(exchangeId, restrictedPair))
+    return axios.put(`/api/exchanges/${exchangeId}`, restrictedPair)
+      .catch(err => console.error("Wasn't able to remove restriction"))
   }
 
 const addList = (exchangeId, listInfo) => ({
   type: MAKE_LIST,
   exchangeId,
-  listInfo
+  listInfo,
+
 })
 
 export const makeList = (exchangeId, listInfo) =>{
   return dispatch => {
-    console.log('HERE');
     dispatch(addList(exchangeId, listInfo))
     return axios.put(`/api/exchanges/${exchangeId}`, listInfo)
       .catch(err => console.error("Wasn't able to create list!"))

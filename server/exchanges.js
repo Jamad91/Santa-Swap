@@ -28,9 +28,9 @@ router.put('/:id', (req, res, next) => {
       let newMembers = exchange.members
       let newList = exchange.newList
       let newRestrictions = exchange.restrictions
+      let idx
       if (Object.keys(req.body).length === 1) {
         let id = parseInt(Object.keys(req.body))
-        let idx
         for (var i = 0; i < newMembers.length && !idx; i++) {
           if (id === newMembers[i].id) {
             idx = i
@@ -94,12 +94,22 @@ router.put('/:id', (req, res, next) => {
 
 
       }
-      else if (req.body.length === 2) {
-        newRestrictions.push(req.body)
+      else if (req.body.length === 3) {
+        console.log(req.body);
+        if (req.body[2] === 0) {
+          for (var i = 0; i < newRestrictions.length && !idx; i++) {
+            if (newRestrictions[i][0] === req.body[0] && newRestrictions[i][1] === req.body[1]) {
+              idx = i
+            }
+          }
+          newRestrictions.splice(idx, 1)
+        } else {
+          newRestrictions.push(req.body)
+        }
 
       }
       else if (Object.keys(req.body).length > 1) {
-        console.log('adding a perason');
+        console.log('adding a person');
         newMembers.push(req.body)
       }
       return exchange.update({members: newMembers, list: newList, restrictions: newRestrictions})

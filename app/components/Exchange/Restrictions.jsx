@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { restrictPair } from 'APP/app/reducers/exchanges'
+import { restrictPair, unrestrictPair } from 'APP/app/reducers/exchanges'
 
 class Restrictions extends Component {
 
@@ -13,7 +13,8 @@ class Restrictions extends Component {
     }
     this.onSelectPerson = this.onSelectPerson.bind(this)
     this.onAddNew = this.onAddNew.bind(this)
-    this.nameFinder = this.nameFinder.bind(this)
+    this.personFinder = this.personFinder.bind(this)
+    this.deleteRestriction = this.deleteRestriction.bind(this)
     this.goodMatch = this.goodMatch.bind(this)
   }
 
@@ -29,9 +30,13 @@ class Restrictions extends Component {
     window.location.reload();
   }
 
-  nameFinder(id) {
-    let found = this.props.exchange.members.filter(member => {if (id === member.id) { return member}})[0]
-    return `${found.firstName} ${found.lastName}`
+  deleteRestriction(e) {
+    this.props.unrestrictPair(this.props.exchange.id, e.target.id.split('-'));
+    window.location.reload();
+  }
+
+  personFinder(id) {
+    return this.props.exchange.members.filter(member => {if (id === member.id) { return member}})[0]
   }
 
   goodMatch(arr, id1, id2) {
@@ -52,7 +57,7 @@ class Restrictions extends Component {
         {
           this.props.exchange.restrictions
           ? this.props.exchange.restrictions.map(restriction =>
-            <div key={`${restriction[0]-restriction[1]}`}>{this.nameFinder(restriction[0])}, {this.nameFinder(restriction[1])}</div>
+            <div key={`${this.personFinder(restriction[0]).id}-${this.personFinder(restriction[1]).id}`}>{this.personFinder(restriction[0]).firstName} {this.personFinder(restriction[0]).lastName} &  {this.personFinder(restriction[1]).firstName} {this.personFinder(restriction[1]).lastName}<div onClick={this.deleteRestriction} id={`${this.personFinder(restriction[0]).id}-${this.personFinder(restriction[1]).id}`}>Delete</div></div>
           )
           : null
         }
@@ -63,7 +68,7 @@ class Restrictions extends Component {
             <option value="0" checked>----------------------</option>
             {this.props.exchange.members
               ? this.props.exchange.members.map(member =>
-                  <option key={`select-two${member.id}`} value={member.id}>{member.firstName} {member.lastName}</option>
+                  <option key={`select-one${member.id}`} value={member.id}>{member.firstName} {member.lastName}</option>
                 )
               : null
             }
@@ -95,4 +100,15 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {restrictPair})(Restrictions)
+function mapDispatchToProps(dispatch) {
+  return {
+    restrictPair: () => {
+      dispatch(restrictPair)
+    },
+    unrestrictPair: () => {
+      dispatch(unrestrictPair)
+    }
+  }
+}
+
+export default connect(mapStateToProps, {restrictPair, unrestrictPair})(Restrictions)

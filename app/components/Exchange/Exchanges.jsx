@@ -6,7 +6,6 @@ class Exchanges extends Component {
 
   render() {
     const exchanges = this.props.exchanges;
-    console.log(exchanges);
     return (
       <div className="content-box" id="managing">
         <h2>Exchanges I'm managing</h2>
