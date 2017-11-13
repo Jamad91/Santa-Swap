@@ -19,9 +19,28 @@ class SingleExchange extends Component {
       this.setState({madeList: true})
     }
 
+    this.memberRemoval = this.memberRemoval.bind(this)
     this.makeList = this.makeList.bind(this)
   }
 
+  memberRemoval(exchangeId, memberId) {
+    let exchange = this.props.exchange
+    let restrictions = exchange.restrictions
+    let beingRestricted = false;
+    for(var i = 0; !beingRestricted && i < restrictions.length; i++) {
+      if (restrictions[i][0] === memberId || restrictions[i][1] === memberId) {
+        beingRestricted = true
+      }
+    }
+    if (beingRestricted) {
+      let member = exchange.members.filter(member => memberId == member.id)[0]
+      alert(`Remove any restrictions that ${member.firstName} ${member.lastName} is in first before removing them from exchange!`)
+    }
+    else {
+      this.props.removeMember(exchangeId, memberId)
+    }
+
+  }
 
   makeList() {
     this.setState({madeList: true})
@@ -49,8 +68,8 @@ class SingleExchange extends Component {
                           ?
                             <span>
                               <div onClick={() => {
-                              window.location.reload()
-                              this.props.removeMember(exchange.id, member.id)
+                              this.memberRemoval(exchange.id, member.id)
+                              // window.location.reload()
                             }}>Delete</div>
 
                             </span>
