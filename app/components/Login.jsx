@@ -5,9 +5,9 @@ export const Login = ({ login }) => (
     evt.preventDefault()
     login(evt.target.username.value, evt.target.password.value)
   } }>
-    <input name="username" />
-    <input name="password" type="password" />
-    <input type="submit" value="Login" />
+    <input className="login-field" name="username" />
+    <input className="login-field" name="password" type="password" /><br />
+    <button id="login-button" type="submit" value="Login" />
   </form>
 )
 

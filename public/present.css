@@ -1,0 +1,71 @@
+#santa-box {
+  display: flex;
+  width: 100%;
+  padding: 10% 0 20% 0;
+  background: #bacacc;
+}
+
+#present-box {
+  width: 8%;
+  padding: 7% 0 0% 0;
+  position: absolute;
+  z-index: 10;
+  background-color: blue;
+  margin-left: 25%;
+  margin-top: 0.5%;
+}
+
+#hat-body {
+  z-index: 2;
+  border: px solid black;
+  position: absolute;
+  background-color: red;
+  color: red;
+  padding: 4.5%;
+  -webkit-clip-path: polygon(0% 99%, 2% 93%, 5% 87%, 9% 80%, 12% 73%, 15% 69%, 18% 64%, 22% 57%, 26% 52%, 30% 48%, 36% 44%, 41% 40%, 47% 37%, 53% 35%, 60% 33%, 67% 32%, 73% 32%, 80% 32%, 85% 34%, 91% 38%, 95% 42%, 98% 47%, 91% 49%, 84% 47%, 78% 49%, 73% 53%, 70% 58%, 68% 63%, 67% 69%, 66% 75%, 68% 80%, 71% 84%, 73% 88%, 75% 94%, 76% 98%, 78% 100%);
+  clip-path: polygon(0% 99%, 2% 93%, 5% 87%, 9% 80%, 12% 73%, 15% 69%, 18% 64%, 22% 57%, 26% 52%, 30% 48%, 36% 44%, 41% 40%, 47% 37%, 53% 35%, 60% 33%, 67% 32%, 73% 32%, 80% 32%, 85% 34%, 91% 38%, 95% 42%, 98% 47%, 91% 49%, 84% 47%, 78% 49%, 73% 53%, 70% 58%, 68% 63%, 67% 69%, 66% 75%, 68% 80%, 71% 84%, 73% 88%, 75% 94%, 76% 98%, 78% 100%);
+  margin-left: 25.5%;
+  margin-top: -11.5%;
+}
+
+#hat-brim {
+  z-index: 3;
+  position: absolute;
+  background-color: white;
+  width: 6%;
+  /*height: 2.5%;*/
+  padding: 0.85%;
+
+  margin-left: 25.1%;
+  margin-top: -3.65%;
+  border-radius: 40%;
+  border: solid 1px #cccbcb;
+}
+
+#pom-pom {
+  z-index: 3;
+  position: absolute;
+  background-color: white;
+  padding: 0.85%;
+  border-radius: 50%;
+  margin-left: 33%;
+  margin-top: -8%;
+  border: solid 1px #cccbcb;
+  /*z-index: 3;
+  position: absolute;
+  background-color: white;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;*/
+}
+
+#santa-head {
+  z-index: 1;
+  position: absolute;
+  background-color: #fceec7;
+  border-radius: 50%;
+  width: 7%;
+  padding: 3.5% 0 3% 0;
+  margin-top: -4%;
+  margin-left: 25.5%;
+}

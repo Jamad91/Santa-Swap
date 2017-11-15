@@ -14,16 +14,6 @@ body, html {
   background-color: red;
 }
 
-#login-info {
-  /*background-color: #f2f2f2;*/
-  background-color: #38ae13;
-  float: right;
-  border-radius: 10%;
-  padding: 0.25%;
-  margin-top: -5%;
-  margin-right: 1%;
-}
-
 .page-content {
   background-color: #f2f2f2;
   display: flex;
@@ -31,8 +21,59 @@ body, html {
   justify-content: center;
   align-items: center;
   border-radius: 15%;
-  margin-left: 15%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#home-columns {
+  display:flex;
+  padding: 4%;
+}
+
+#home-right {
+  border: solid 1px black;
+  font-size: 125%;
+  padding-left: -15%;
+}
+
+#home-left > img {
+  height: 50%;
+}
+
+#home-left {
+  border: solid 1px black;
   margin-right: 15%;
+}
+
+#mission-statement {
+  display: block;
+  background-color: orange;
+}
+
+#login-box {
+  /*padding: 0 15% 0 25%;*/
+  margin-right: -50%;
+  border: solid 1px green;
+  background-color: #38ae13;
+}
+
+.login-field {
+  padding: 2%;
+}
+
+#login-button {
+  background-color: orange;
+  padding: 5%;
+  border-radius: 33%;
+}
+
+#login-info {
+  /*background-color: #f2f2f2;*/
+  /*float: right;*/
+  /*border-radius: 10%;*/
+  /*padding: 0.25%;*/
+  /*margin-top: -5%;*/
+  /*margin-right: 1%;*/
 }
 
 #greeting {
