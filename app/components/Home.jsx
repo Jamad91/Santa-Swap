@@ -26,9 +26,11 @@ class Home extends Component {
                 </div>
               </div>
             : <div>
+                <SantaBox />
+                <div></div>
                 <div id="home-columns">
                   <div id="home-left">
-                    <SantaBox />
+                    <h1 id="home-greeting">Ho ho ho! Welcome!</h1>
                     <div id="mission-statement">
                       <p>Santa Swap is a tool that'll allow you to organize a secret santa gift exchange while still being a part of the fun! With Santa Swap you can customize your gift exchange to your liking! You're able to set up any restrictions you might need between significan others, family members, exes, etc.</p><br />
                       <p>All gift givers have to do is fill out a form, and then when the list of people is filled up to your content, Santa Swap will notify everyone who they have to get a present for!</p><br />
@@ -37,7 +39,7 @@ class Home extends Component {
                   </div>
                   <div id="home-right">
                     <div id="login-box">
-                      <h2>Please log in!</h2>
+                      <h2>Log in</h2>
                       <LoginInfo />
                     </div>
                   </div>

@@ -6,7 +6,7 @@
 body > h1 {
   text-align: center;
   color: #f2f2f2;
-  font-size: 450%;
+  font-size: 550%;
 }
 
 body, html {
@@ -25,36 +25,47 @@ body, html {
   margin-right: 5%;
 }
 
+#home-greeting {
+  margin: -15% 0 5% 5%;
+  font-size: 400%;
+  padding-right: 40%;
+}
+
 #home-columns {
   display:flex;
   padding: 4%;
 }
 
 #home-right {
-  border: solid 1px black;
+  /*border: solid 1px black;*/
   font-size: 125%;
-  padding-left: -15%;
-}
-
-#home-left > img {
-  height: 50%;
+  /*padding-left: 5%;*/
+  position: absolute;
+  z-index: 2;
+  margin: 0 0 0 50%;
 }
 
 #home-left {
-  border: solid 1px black;
-  margin-right: 15%;
+  margin: -7% 3% 0 0;
 }
 
 #mission-statement {
   display: block;
   background-color: orange;
+  border-radius: 5%;
+  padding: 5%;
+  font-size: 125%;
+  margin: 0 50% 0 5%;
 }
 
 #login-box {
-  /*padding: 0 15% 0 25%;*/
-  margin-right: -50%;
-  border: solid 1px green;
+  padding: 25% 25% 25% 25%;
+  margin-right: -80%;
+  /*margin-left: 15%;*/
+  /*border: solid 1px green;*/
+  border-radius: 5%;
   background-color: #38ae13;
+  font-size: 125%;
 }
 
 .login-field {

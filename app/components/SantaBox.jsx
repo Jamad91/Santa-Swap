@@ -34,6 +34,7 @@ export default class SantaBox extends Component {
           <div id="nose"></div>
           <div id="beard"></div>
         </div>
+
       </div>
     )
   }
