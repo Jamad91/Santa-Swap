@@ -80,8 +80,10 @@ body, html {
 }
 
 #login-button {
-  background-color: orange;
+  background-color: #f66565;
   border-radius: 33%;
+  font-size: 65%;
+  padding: 2%;
 }
 
 #greeting {

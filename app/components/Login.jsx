@@ -7,7 +7,7 @@ export const Login = ({ login }) => (
   } }>
     <input placeholder="Email" className="login-field" name="username" /><br />
     <input placeholder="Password" className="login-field" name="password" type="password" /><br />
-    <span id="login-button" type="submit" value="Login">Login</span>
+    <input id="login-button" type="submit" value="Login"></input>
   </form>
 )
 
