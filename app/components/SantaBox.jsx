@@ -4,7 +4,9 @@ export default class SantaBox extends Component {
   render() {
     return(
       <div id="santa-box">
-        <div id="present-box"></div>
+        <div id="present-box">
+          <div className="stripe"></div>
+        </div>
         <div id="santa-hat">
           <div id="pom-pom"></div>
           <div id="hat-body"></div>
