@@ -4,8 +4,20 @@ export default class SantaBox extends Component {
   render() {
     return(
       <div id="santa-box">
+        <div id="present-lid">
+          <div id="bow">
+            <div id="bow-knot"></div>
+            <div id="ribbon-left">
+              <div id="left-gap"></div>
+            </div>
+            <div id="ribbon-right">
+              <div id="right-gap"></div>
+            </div>
+          </div>
+          <div id="lid-stripe"></div>
+        </div>
         <div id="present-box">
-          <div className="stripe"></div>
+          <div id="box-stripe"></div>
         </div>
         <div id="santa-hat">
           <div id="pom-pom"></div>
