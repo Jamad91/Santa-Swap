@@ -56,7 +56,7 @@ class JoinForm extends Component {
       <div>
         <div className="page-content">
           <div className="main-content">
-        <h1>Join {this.props.exchange.title}</h1>
+        <h1 className="header-font">Join {this.props.exchange.title}</h1>
         <form>
           <input
             onChange={this.handleChange}

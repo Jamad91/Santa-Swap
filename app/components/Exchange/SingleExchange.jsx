@@ -56,8 +56,8 @@ class SingleExchange extends Component {
           <div className="main-content">
             <div>
 
-              <h1>Manage {this.props.exchange.title}</h1>
-              <p>Current attendees</p>
+              <h1 className="header-font">Manage {this.props.exchange.title}</h1>
+              <h2 className="header-font">Current attendees</h2>
               {
                 exchange.members
                   ? exchange.members.map(member =>
