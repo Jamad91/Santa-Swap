@@ -53,7 +53,7 @@ class Restrictions extends Component {
 
     return (
       <div>
-        <h2>Restrictions</h2>
+        <h2 className="header-font">Restrictions</h2>
         {
           this.props.exchange.restrictions && this.props.exchange.restrictions.length > 0
           ? this.props.exchange.restrictions.map(restriction =>

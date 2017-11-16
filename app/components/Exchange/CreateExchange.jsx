@@ -42,7 +42,7 @@ class CreateExchange extends Component {
   render() {
     return (
       <div className="content-box" id="plan-form">
-        <h2>Plan an Exchange!</h2>
+        <h2 className="header-font">Plan an Exchange!</h2>
         <form onSubmit={ this.handleSubmit }>
           <div className="form-input">
             <span>What do you want to call it?</span><br />
