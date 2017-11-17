@@ -46,7 +46,7 @@ class CreateExchange extends Component {
         <form onSubmit={ this.handleSubmit }>
           <div className="form-input">
             <span>What do you want to call it?</span><br />
-            <textarea rows="2" cols="30" name="title" value={this.state.title} onChange={this.handleChange} />
+            <textarea rows="3" cols="30" name="title" value={this.state.title} onChange={this.handleChange} />
             <input type="submit" value="Create" />
           </div>
         </form>

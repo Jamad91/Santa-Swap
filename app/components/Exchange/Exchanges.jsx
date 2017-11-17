@@ -13,9 +13,9 @@ class Exchanges extends Component {
           <div key={`${exchange.title}`} className="exchange-listing">
             <Link href={`/exchanges/${exchange.id}`} style={{ textDecoration: 'none' }}>
               <div>
-                <h3>{exchange.title}</h3>
-                <p>Members: {exchange.members.length}</p>
-                <p>List Made: {exchange.list.length > 0 ? <span>Yes</span> : <span>No</span>}
+                <h2 className="header-font">{exchange.title}</h2>
+                <p className="exchange-info">Members: {exchange.members.length}</p>
+                <p className="exchange-info">List Made: {exchange.list.length > 0 ? <span>Yes</span> : <span>No</span>}
                 </p>
               </div>
             </Link>
