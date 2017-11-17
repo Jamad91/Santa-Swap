@@ -57,21 +57,26 @@ class SingleExchange extends Component {
           <div className="signedin-body">
             <SantaBox />
             <h1 className="header-font page-greeting">Manage {this.props.exchange.title}</h1>
+            <div>
+
+              <Link href={`/exchanges/${exchange.id}/join`}>Join Link</Link><br />
+              <Link href="/home">Home</Link>
+            </div>
             <div className="main-content">
               <div className="content-box">
                 <h1 className="header-font">Current attendees</h1>
                 {
                   exchange.members
                     ? exchange.members.map(member =>
-                      <div key={member.id}>
+                      <div className="listing" key={member.id}>
                         {member.firstName} {member.lastName}
                         {
                           this.props.auth
                             ?
                               <span>
-                                <div onClick={() => {
+                                <div className="delete-btn"onClick={() => {
                                 this.memberRemoval(exchange.id, member.id)
-                                // window.location.reload()
+                                window.location.reload()
                               }}>Delete</div>
 
                               </span>
@@ -94,8 +99,6 @@ class SingleExchange extends Component {
                   : null
                 }
 
-                <Link href={`/exchanges/${exchange.id}/join`}>Join Link</Link><br />
-                <Link href="/home">Home</Link>
               </div>
             </div>
           </div>

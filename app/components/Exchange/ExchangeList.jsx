@@ -69,7 +69,10 @@ class ExchangeList extends Component {
         <h1 className="header-font">List</h1 >
         {
           this.props.exchange.list.length === 0
-            ? <div onClick={() => this.matchMaker(this.props.members, this.props.exchange.restrictions)}>Make List</div>
+            ? <div>
+                <h2 className="header-font">No list made yet!</h2>
+                <div onClick={() => this.matchMaker(this.props.members, this.props.exchange.restrictions)}>Make List</div>
+              </div>
             : null
         }
         {
