@@ -57,37 +57,39 @@ class Restrictions extends Component {
         {
           this.props.exchange.restrictions && this.props.exchange.restrictions.length > 0
           ? this.props.exchange.restrictions.map(restriction =>
-            <div key={`${this.personFinder(restriction[0]).id}-${this.personFinder(restriction[1]).id}`}>{this.personFinder(restriction[0]).firstName} {this.personFinder(restriction[0]).lastName} &  {this.personFinder(restriction[1]).firstName} {this.personFinder(restriction[1]).lastName}<div onClick={this.deleteRestriction} id={`${this.personFinder(restriction[0]).id}-${this.personFinder(restriction[1]).id}`}>Delete</div></div>
+            <div className="listing" key={`${this.personFinder(restriction[0]).id}-${this.personFinder(restriction[1]).id}`}>{this.personFinder(restriction[0]).firstName} {this.personFinder(restriction[0]).lastName} &  {this.personFinder(restriction[1]).firstName} {this.personFinder(restriction[1]).lastName}<div className="delete-btn restriction-delete" onClick={this.deleteRestriction} id={`${this.personFinder(restriction[0]).id}-${this.personFinder(restriction[1]).id}`}>Delete</div></div>
           )
           : <span>No Restrictions Made Yet!</span>
         }
 
         <form>
-          <h3>Add a new restriction</h3>
-          Person 1: <select name="person1" onChange={this.onSelectPerson}>
-            <option value="0" checked>----------------------</option>
-            {this.props.exchange.members
-              ? this.props.exchange.members.map(member =>
-                  <option key={`select-one${member.id}`} value={member.id}>{member.firstName} {member.lastName}</option>
-                )
-              : null
-            }
-          </select><br />
-        Person 2: <select name="person2" onChange={this.onSelectPerson}>
+          <h2 className="header-font">Add a new restriction</h2>
+            <div className="form-input">
+              Person 1: <select name="person1" onChange={this.onSelectPerson}>
+                <option value="0" checked>----------------------</option>
+                {this.props.exchange.members
+                  ? this.props.exchange.members.map(member =>
+                      <option key={`select-one${member.id}`} value={member.id}>{member.firstName} {member.lastName}</option>
+                    )
+                  : null
+                }
+              </select><br />
+            Person 2: <select name="person2" onChange={this.onSelectPerson}>
 
-            <option value="0" checked>----------------------</option>
-            {this.props.exchange.members
-              ? this.props.exchange.members.map(member =>
-                <option key={`select-two${member.id}`} value={member.id}>{member.firstName} {member.lastName}</option>
-              )
-              : null
+                <option value="0" checked>----------------------</option>
+                {this.props.exchange.members
+                  ? this.props.exchange.members.map(member =>
+                    <option key={`select-two${member.id}`} value={member.id}>{member.firstName} {member.lastName}</option>
+                  )
+                  : null
+                }
+              </select><br />
+            {
+              this.state.person1 === 0 || this.state.person2 === 0 || this.state.person1 === this.state.person2 || !this.goodMatch(this.props.exchange.restrictions, this.state.person1, this.state.person2)
+              ? <span>Please Select a match</span>
+              : <span onClick={this.onAddNew}>Add New Restriction</span>
             }
-          </select><br />
-        {
-          this.state.person1 === 0 || this.state.person2 === 0 || this.state.person1 === this.state.person2 || !this.goodMatch(this.props.exchange.restrictions, this.state.person1, this.state.person2)
-          ? <span>Please Select a match</span>
-          : <span onClick={this.onAddNew}>Add New Restriction</span>
-      }
+          </div>
         </form>
       </div>
     )

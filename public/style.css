@@ -156,8 +156,8 @@ body, html {
   background: linear-gradient(160deg, #f66565, #cc0000);
   border: solid 2px #bc1010;
   border-radius: 33%;
-  padding: 0% 1% 0 1%;
-  width: 17%;
+  padding: 0% 1.5% 0 1%;
+  width: 21%;
   float: right;
   margin-top: -0.7%;
 }
@@ -168,4 +168,15 @@ body, html {
 
 .single-ex {
   margin-right: 3%;
+}
+
+.restriction-delete {
+  /*background: linear-gradient(160deg, #f66565, #cc0000);*/
+  /*border: solid 2px #bc1010;*/
+  /*border-radius: 33%;*/
+  /*padding: 0% 1.5% 0 1%;*/
+  /*width: 21%;*/
+  float:none;
+  margin-top: 2%;
+  /*margin-top: -0.7%;*/
 }
