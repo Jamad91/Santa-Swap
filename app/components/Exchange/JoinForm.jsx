@@ -68,7 +68,7 @@ class JoinForm extends Component {
         </div>
         <div className="content-box" id="join-form-box">
 
-        <form id="plan-form">
+        <form id="join-form">
           <div className="join-form-row">
             <div className="join-form-col">
               First Name: <input

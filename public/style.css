@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  /*border: solid black 1px;*/
 }
 
 body > h1 {
@@ -107,7 +106,6 @@ body, html {
   display: inline-block;
   margin-top: 3%;
   padding: 0 5% 5% 5%;
-  /*border: solid 1px black;*/
 }
 
 .content-box > h1 {
@@ -136,7 +134,7 @@ body, html {
 
 .form-input {
   border: solid 2px #bc1010;
-  padding: 5%;
+  padding: 3%;
   border-radius: 5%;
   background-color: #e9c3c3;
   font-size: 115%;
@@ -172,7 +170,6 @@ body, html {
 
 .main-content {
   display: flex;
-  border: solid 1px black;
 }
 
 .single-ex {
@@ -199,12 +196,16 @@ body, html {
 
 #join-form-box {
   width: 33%;
-  /*border: solid black 1px;*/
   margin-left: 2%;
 }
 
 #join-form {
-  display: block;
+  background-color: #c3e9c9;
+  border: solid 2px green;
+  border-radius: 4%;
+  padding: 2%;
+  margin-bottom: 3%;
+  font-family: 'Antic', sans-serif;
 }
 
 .join-form-row {
@@ -224,7 +225,5 @@ body, html {
   border: solid 2px #bc1010;
   margin-bottom: 5%;
   display: block;
-  border-radius: 5%;
-  /*background-color: #e9c3c3;*/
   font-size: 110%;
 }
