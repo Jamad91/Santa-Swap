@@ -10,7 +10,7 @@ class Exchanges extends Component {
       <div className="content-box" id="managing">
         <h1 className="header-font">Exchanges I'm managing</h1>
         {exchanges.map(exchange =>
-          <div key={`${exchange.title}`} className="exchange-listing">
+          <div key={`${exchange.title}`} className="listing">
             <Link href={`/exchanges/${exchange.id}`} style={{ textDecoration: 'none' }}>
               <div>
                 <h2 className="header-font">{exchange.title}</h2>

@@ -23,7 +23,7 @@ body, html {
   margin-right: 5%;
 }
 
-#home-greeting {
+.page-greeting {
   margin: -15% 0 3.25% 7%;
   font-size: 400%;
   padding-right: 40%;
@@ -80,7 +80,7 @@ body, html {
   padding: 2%;
 }
 
-#home-signedin {
+.signedin-body {
   width: 100%;
 }
 
@@ -116,7 +116,7 @@ body, html {
   float: left;
 }
 
-.exchange-listing {
+.listing {
   background-color: #c3e9c9;
   border: solid 2px green;
   border-radius: 4%;
@@ -150,4 +150,10 @@ body, html {
   font-size: 75%;
   width: 18%;
   padding: 2% 0% 2% 0%;
+}
+
+.main-content {
+  border: solid 1px black;
+  /*width: 100%;*/
+  /*margin-left: -40%;*/
 }

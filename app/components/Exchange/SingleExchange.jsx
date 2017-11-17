@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import {removeMember } from 'APP/app/reducers/exchanges'
 import ExchangeList from './ExchangeList'
 import Restrictions from './Restrictions'
+import SantaBox from '../SantaBox'
 
 class SingleExchange extends Component {
 
@@ -53,44 +54,49 @@ class SingleExchange extends Component {
     if (this.props.auth) {
       return (
         <div className="page-content">
-          <div className="main-content">
-            <div>
+          <div className="signedin-body">
+            <SantaBox />
+            <h1 className="header-font page-greeting">Manage {this.props.exchange.title}</h1>
+            <div className="main-content">
+              <div className="content-box">
+                <h1 className="header-font">Current attendees</h1>
+                {
+                  exchange.members
+                    ? exchange.members.map(member =>
+                      <div key={member.id}>
+                        {member.firstName} {member.lastName}
+                        {
+                          this.props.auth
+                            ?
+                              <span>
+                                <div onClick={() => {
+                                this.memberRemoval(exchange.id, member.id)
+                                // window.location.reload()
+                              }}>Delete</div>
 
-              <h1 className="header-font">Manage {this.props.exchange.title}</h1>
-              <h2 className="header-font">Current attendees</h2>
-              {
-                exchange.members
-                  ? exchange.members.map(member =>
-                    <div key={member.id}>
-                      {member.firstName} {member.lastName}
-                      {
-                        this.props.auth
-                          ?
-                            <span>
-                              <div onClick={() => {
-                              this.memberRemoval(exchange.id, member.id)
-                              // window.location.reload()
-                            }}>Delete</div>
+                              </span>
+                          : null
+                        }
 
-                            </span>
-                        : null
-                      }
+                      </div>
+                    )
+                    : null
+                }
+              </div>
+              <div className="content-box">
+                <Restrictions />
+              </div>
 
-                    </div>
-                  )
+              <div className="content-box">
+                {
+                  exchange.list
+                  ? <ExchangeList members={exchange.members} />
                   : null
-              }
+                }
 
-              <Restrictions />
-
-              {
-                exchange.list
-                ? <ExchangeList members={exchange.members} />
-                : null
-              }
-
-              <Link href={`/exchanges/${exchange.id}/join`}>Join Link</Link><br />
-              <Link href="/home">Home</Link>
+                <Link href={`/exchanges/${exchange.id}/join`}>Join Link</Link><br />
+                <Link href="/home">Home</Link>
+              </div>
             </div>
           </div>
         </div>
