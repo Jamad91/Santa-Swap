@@ -64,7 +64,6 @@ const seedExchanges = () => db.Promise.map([
       misc: "must be hand delivered, but beware of Al"
     }
   ], list: [], restrictions: [[1,2,1], [1,3,1]],owner_id: 1},
-  {title: 'Second One', members: [], list: [], owner_id: 2}
 ], exchange => db.model('exchanges').create(exchange))
 
 db.didSync

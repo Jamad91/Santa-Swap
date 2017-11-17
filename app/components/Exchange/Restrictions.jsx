@@ -43,9 +43,11 @@ class Restrictions extends Component {
 
     for (var i = 0; i < arr.length; i++) {
       if ((arr[i][0] === id1 && arr[i][1] === id2) || (arr[i][0] === id2 && arr[i][1] === id1)) {
+        console.log('BAD MATCh', id1, id2);
         return false
       }
     }
+    console.log('MATCH uP');
     return true
   }
 

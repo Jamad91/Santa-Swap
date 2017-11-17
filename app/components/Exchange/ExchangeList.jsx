@@ -20,6 +20,7 @@ class ExchangeList extends Component {
 
   matchMaker(givers, restrictions) {
     let receivers = this.shuffle(givers.slice());
+    console.log('R',receivers);
     let exchange = [];
     let restrictObject = {}
 
@@ -38,7 +39,8 @@ class ExchangeList extends Component {
     }
 
     for (var i = 0; i < givers.length; i++) {
-      if (givers[i].id === receivers[i].id || (restrictObject[givers[i].id] && restrictObject[givers[i].id].includes(receivers[i].id))) {
+
+      if (givers[i].id === receivers[i].id || (restrictObject[givers[i].id] && restrictObject[givers[i].id].includes(receivers[i].id)) || (restrictObject[receivers[i].id] && restrictObject[receivers[i].id].includes(givers[i].id))) {
         receivers = this.shuffle(receivers);
         i = -1;
         exchange = [];
@@ -52,7 +54,7 @@ class ExchangeList extends Component {
     //   list: exchange
     // })
     this.props.makeList(this.props.exchange.id, exchange);
-    window.location.reload();
+    // window.location.reload();
     // return exchange
   }
 
