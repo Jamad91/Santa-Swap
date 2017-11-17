@@ -160,7 +160,12 @@ body, html {
   width: 21%;
   float: right;
   margin-top: -0.7%;
+}
 
+#links {
+  margin: -3% 0 0% 7%;
+  font-size: 130%;
+  font-family: 'Antic', sans-serif;
 }
 
 .main-content {
