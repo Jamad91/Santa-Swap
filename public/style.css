@@ -154,12 +154,13 @@ body, html {
 
 .delete-btn {
   background: linear-gradient(160deg, #f66565, #cc0000);
-  border: solid 2px #bc1010;
+  border: solid 1px #bc1010;
   border-radius: 33%;
   padding: 0% 1.5% 0 1%;
   width: 21%;
   float: right;
   margin-top: -0.7%;
+
 }
 
 .main-content {
@@ -167,16 +168,19 @@ body, html {
 }
 
 .single-ex {
-  margin-right: 3%;
+  margin-right: 1%;
+  font-family: 'Antic', sans-serif;
 }
 
 .restriction-delete {
-  /*background: linear-gradient(160deg, #f66565, #cc0000);*/
-  /*border: solid 2px #bc1010;*/
-  /*border-radius: 33%;*/
-  /*padding: 0% 1.5% 0 1%;*/
-  /*width: 21%;*/
   float:none;
   margin-top: 2%;
-  /*margin-top: -0.7%;*/
+}
+
+.list-entry {
+  border: solid 2px #bc1010;
+  padding: 5%;
+  border-radius: 5%;
+  background-color: #e9c3c3;
+  margin-right: -50%;
 }

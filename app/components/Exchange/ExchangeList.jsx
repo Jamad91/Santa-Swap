@@ -78,8 +78,10 @@ class ExchangeList extends Component {
         {
           this.props.exchange.list.map(match =>
             <div key={match.giver.id}>
-              <span>Giver: {match.giver.firstName}</span><br />
-              <span>Receiver: {match.receiver.firstName}</span>
+              <div className="list-entry">
+                <span>Giver: {match.giver.firstName} {match.giver.lastName}</span><br />
+                <span>Receiver: {match.receiver.firstName} {match.receiver.lastName}</span>
+              </div>
               <hr />
             </div>
           )
