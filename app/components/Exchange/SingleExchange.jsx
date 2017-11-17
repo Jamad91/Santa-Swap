@@ -107,9 +107,9 @@ class SingleExchange extends Component {
     else {
       return (
         <div className="page-content">
-          <div className="main-content">
-            <p>You don't have access to this page, please return to the homepage!</p>
-            <Link href="/home">Home</Link>
+          <div id="denied-access">
+            <img src="http://media.tumblr.com/3168ff7903ec0ede7b77c3ece227fa78/tumblr_inline_mw9vlaR79q1sp2a15.gif" />
+            <h1 className="header-font">You don't have access to this page, please return to the <Link href="/home">homepage</Link></h1>
           </div>
         </div>
       )

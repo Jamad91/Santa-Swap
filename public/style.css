@@ -227,3 +227,10 @@ body, html {
   display: block;
   font-size: 110%;
 }
+
+#denied-access {
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
