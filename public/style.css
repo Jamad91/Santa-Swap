@@ -104,8 +104,8 @@ body, html {
 
 .content-box {
   display: inline-block;
-  margin-bottom: 3%;
-  padding: 5%;
+  margin-top: 3%;
+  padding: 0 5% 5% 5%;
 }
 
 .content-box > h1 {
@@ -160,4 +160,12 @@ body, html {
   width: 17%;
   float: right;
   margin-top: -0.7%;
+}
+
+.main-content {
+  display: flex;
+}
+
+.single-ex {
+  margin-right: 3%;
 }

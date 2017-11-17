@@ -63,7 +63,7 @@ class SingleExchange extends Component {
               <Link href="/home">Home</Link>
             </div>
             <div className="main-content">
-              <div className="content-box">
+              <div className="content-box single-ex">
                 <h1 className="header-font">Current attendees</h1>
                 {
                   exchange.members
@@ -88,11 +88,11 @@ class SingleExchange extends Component {
                     : null
                 }
               </div>
-              <div className="content-box">
+              <div className="content-box single-ex">
                 <Restrictions />
               </div>
 
-              <div className="content-box">
+              <div className="content-box single-ex">
                 {
                   exchange.list
                   ? <ExchangeList members={exchange.members} />

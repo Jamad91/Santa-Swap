@@ -52,7 +52,7 @@ class Restrictions extends Component {
   render() {
 
     return (
-      <div>
+      <div id="restrictions">
         <h1 className="header-font">Restrictions</h1>
         {
           this.props.exchange.restrictions && this.props.exchange.restrictions.length > 0
