@@ -8,7 +8,7 @@ class Exchanges extends Component {
     const exchanges = this.props.exchanges;
     return (
       <div className="content-box" id="managing">
-        <h2 className="header-font">Exchanges I'm managing</h2>
+        <h1 className="header-font">Exchanges I'm managing</h1>
         {exchanges.map(exchange =>
           <div key={`${exchange.title}`} className="exchange-listing">
             <Link href={`/exchanges/${exchange.id}`} style={{ textDecoration: 'none' }}>

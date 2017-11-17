@@ -7,11 +7,11 @@ body > h1 {
   text-align: center;
   color: #f2f2f2;
   font-size: 550%;
-}
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
 
 body, html {
   height: 100%;
-  background-color: red;
+  background-color: #eb0000;
 }
 
 .page-content {
@@ -85,19 +85,6 @@ body, html {
   padding: 2%;
 }
 
-.whoami {
-  border: solid 1px black;
-  margin: -2% 0% 0 7%;
-}
-
-.logout {
-  padding: 0.6% 1.2% 0.6% 1.2%;
-  border-radius: 30%;
-  background: linear-gradient(0deg, #1a53ff, #72bee4);
-  font-size: 110%;
-  font-family: 'Antic', sans-serif;
-}
-
 #home-signedin {
   border: solid black 1px;
   width: 100%;
@@ -109,41 +96,53 @@ body, html {
   padding-right: 40%;
 }
 
+.whoami {
+  /*border: solid 1px black;*/
+  margin: -2% 0% 0 7%;
+}
+
+.logout {
+  padding: 0.6% 1.2% 0.6% 1.2%;
+  border-radius: 30%;
+  background: linear-gradient(0deg, #1a53ff, #72bee4);
+  font-size: 110%;
+  font-family: 'Antic', sans-serif;
+}
+
 .main-content {
-  /*display: inline;*/
+  border: solid black 1px;
 }
 
 .content-box {
-  /*border: solid 2px green;*/
-  /*border-radius: 15%;*/
-  /*margin-bottom: 3%;*/
-  /*padding: 5%;*/
+  display: inline-block;
+  margin-bottom: 3%;
+  padding: 5%;
 }
 
-.content-box > h2 {
-  /*padding-bottom: 5%;*/
+.content-box > h1 {
+  padding-bottom: 5%;
 }
 
 #managing {
-  /*float: left;*/
+  float: left;
 }
 
 .exchange-listing {
-  /*color: green;*/
-  /*border: solid 1px black;*/
-  /*margin-bottom: 3%;*/
+  background-color: #c3e9c9;
+  border: solid 2px green;
+  border-radius: 4%;
+  padding: 2%;
+  margin-bottom: 3%;
 }
 
 #plan-form {
-  /*float: right;*/
-  /*margin-right: 0%;*/
+  float: right;
+  margin-right: 20%;
 }
 
 .form-input {
-  /*padding-bottom: 5%;*/
-}
-
-.form-input > textarea {
-  /*float: right;*/
-  /*margin-left: -3%;*/
+  border: solid 1px black;
+  padding: 5%;
+  border-radius: 5%;
+  background-color: #e9c3c3;
 }
