@@ -65,7 +65,7 @@ class SingleExchange extends Component {
               <div className="content-box single-ex">
                 <h1 className="header-font">Current attendees</h1>
                 {
-                  exchange.members
+                  exchange.members && exchange.members.length > 0
                     ? exchange.members.map(member =>
                       <div className="listing" key={member.id}>
                         {member.firstName} {member.lastName}
@@ -84,7 +84,7 @@ class SingleExchange extends Component {
 
                       </div>
                     )
-                    : null
+                    : <div><h2 className="header-font">No members yet!</h2></div>
                 }
               </div>
               <div className="content-box single-ex">

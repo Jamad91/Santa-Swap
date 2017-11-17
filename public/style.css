@@ -7,7 +7,8 @@ body > h1 {
   text-align: center;
   color: #f2f2f2;
   font-size: 550%;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 
 body, html {
   height: 100%;
@@ -108,10 +109,6 @@ body, html {
   padding: 0 5% 5% 5%;
 }
 
-.content-box > h1 {
-  padding-bottom: 5%;
-}
-
 #managing {
   float: left;
 }
@@ -182,12 +179,24 @@ body, html {
   margin-top: 2%;
 }
 
+.toggle-btn {
+  background: linear-gradient(160deg, #f66565, #cc0000);
+  border: solid 1px #bc1010;
+  border-radius: 33%;
+  /*padding: 0% 1.5% 0 %;*/
+  padding: 3%;
+  font-size: 150%;
+  /*width: 21%;*/
+  float: left;
+  /*margin-bottom: 105%;*/
+}
+
 .list-entry {
   border: solid 2px #bc1010;
-  padding: 5%;
+  /*padding: 4%;*/
   border-radius: 5%;
   background-color: #e9c3c3;
-  margin-right: -50%;
+  margin-right: -10%;
 }
 
 #join-title {

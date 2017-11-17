@@ -59,7 +59,7 @@ class Restrictions extends Component {
           ? this.props.exchange.restrictions.map(restriction =>
             <div className="listing" key={`${this.personFinder(restriction[0]).id}-${this.personFinder(restriction[1]).id}`}>{this.personFinder(restriction[0]).firstName} {this.personFinder(restriction[0]).lastName} &  {this.personFinder(restriction[1]).firstName} {this.personFinder(restriction[1]).lastName}<div className="delete-btn restriction-delete" onClick={this.deleteRestriction} id={`${this.personFinder(restriction[0]).id}-${this.personFinder(restriction[1]).id}`}>Delete</div></div>
           )
-          : <span>No Restrictions Made Yet!</span>
+          : <h2 className="header-font">No Restrictions Made Yet!</h2>
         }
 
         <form>
