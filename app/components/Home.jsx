@@ -17,8 +17,9 @@ class Home extends Component {
       <div className="page-content">
         {
           this.props.user
-            ? <div>
-                <h1 className="header-font" id="greeting">Welcome, {this.props.user.name}!</h1>
+            ? <div id="home-signedin">
+            <SantaBox />
+                <h1 className="header-font" id="greeting">Welcome,<br /> {this.props.user.name}!</h1>
                 <div className="main-content">
                   <LoginInfo />
                   <Exchanges/>
@@ -27,7 +28,6 @@ class Home extends Component {
               </div>
             : <div>
                 <SantaBox />
-                <div></div>
                 <div id="home-columns">
                   <div id="home-left">
                     <h1 className="header-font" id="home-greeting">Ho ho ho! Welcome!</h1>
