@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {addPersonToExchange} from 'APP/app/reducers/exchanges'
 import { Link } from 'react-router'
+import SantaBox from '../SantaBox'
 
 class JoinForm extends Component {
   constructor(props) {
@@ -55,63 +56,91 @@ class JoinForm extends Component {
     return (
       <div>
         <div className="page-content">
-          <div className="main-content">
-        <h1 className="header-font">Join {this.props.exchange.title}</h1>
-        <form>
-          <input
+          <div className="signedin-body">
+
+            <SantaBox />
+          <div>
+        <div id="join-title">
+          <h1 className="header-font page-greeting">Join {this.props.exchange.title}</h1>
+          <div className="links">
+            <Link href='/home'>Home</Link>
+          </div>
+        </div>
+        <div className="content-box" id="join-form-box">
+
+        <form id="plan-form">
+          <div className="join-form-row">
+            <div className="join-form-col">
+              First Name: <input
+                className="join-form-input"
+                onChange={this.handleChange}
+                name="firstName"
+                value={this.state.firstName}
+              />
+            </div>
+            <div className="join-form-col">
+              Last Name: <input
+                className="join-form-input"
+                onChange={this.handleChange}
+                name="lastName"
+                value={this.state.lastName}
+              />
+            </div>
+          </div>
+          <div className="join-form-row">
+            <div className="join-form-col">
+              Email: <input
+                className="join-form-input"
+                onChange={this.handleChange}
+                name="email"
+                value={this.state.email}
+              />
+            </div>
+            <div className="join-form-col">
+              Phone Number: <input
+                className="join-form-input"
+                onChange={this.handleChange}
+                name="phone"
+                value={this.state.phone}
+              />
+            </div>
+          </div>
+        <div className="join-form-row">
+          <div className="join-form-col">
+            Address Line 1: <input
+              className="join-form-input"
+              onChange={this.handleChange}
+              name="address1"
+              value={this.state.address1}
+            />
+          </div>
+          <div className="join-form-col">
+            Address Line 2: <input
+              className="join-form-input"
+              onChange={this.handleChange}
+              name="address2"
+              value={this.state.address2}
+            />
+          </div>
+        </div>
+        <div className="join-form-row single-row">Things you like: <textarea rows="2" cols="43"
+            className="join-form-input"
             onChange={this.handleChange}
-            placeholder="First Name"
-            name="firstName"
-            value={this.state.firstName}
-          />
-          <input
-            onChange={this.handleChange}
-            placeholder="Last Name"
-            name="lastName"
-            value={this.state.lastName}
-          /><br />
-          <input
-            onChange={this.handleChange}
-            placeholder="Email"
-            name="email"
-            value={this.state.email}
-          />
-          <input
-            onChange={this.handleChange}
-            placeholder="Phone"
-            name="phone"
-            value={this.state.phone}
-          /><br />
-          <input
-            onChange={this.handleChange}
-            placeholder="Address Line 1"
-            name="address1"
-            value={this.state.address1}
-          />
-          <input
-            onChange={this.handleChange}
-            placeholder="Address Line 2"
-            name="address2"
-            value={this.state.address2}
-          /><br />
-          <textarea rows="2" cols="50"
-            onChange={this.handleChange}
-            placeholder="likes"
             name="likes"
             value={this.state.likes}
-          /><br />
-          <textarea rows="2" cols="50"
+          /></div>
+        <div className="join-form-row single-row">Things you dislike: <textarea rows="2" cols="43"
+            className="join-form-input"
             onChange={this.handleChange}
-            placeholder="dislikes"
             name="dislikes"
             value={this.state.dislikes}
-          /><br />
-          <textarea rows="2" cols="50"
+          /></div>
+        <div className="join-form-row single-row">Anything else we should know? <textarea rows="2" cols="43"
+            className="join-form-input"
             onChange={this.handleChange}
-            placeholder="misc"
             name="misc"
             value={this.state.misc}
-          /><br />
+          /></div>
         {
           this.state.firstName &&
           this.state.lastName &&
@@ -126,7 +155,9 @@ class JoinForm extends Component {
             : null
         }
         </form>
-        <Link href='/home'>Home</Link>
+
+      </div>
+      </div>
       </div>
       </div>
       </div>

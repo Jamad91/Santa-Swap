@@ -57,7 +57,7 @@ class SingleExchange extends Component {
           <div className="signedin-body">
             <SantaBox />
             <h1 className="header-font page-greeting">Manage {this.props.exchange.title}</h1>
-            <div id="links">
+            <div className="links">
               <Link href={`/exchanges/${exchange.id}/join`}>Join Form</Link><br />
               <Link href="/home">Home</Link>
             </div>

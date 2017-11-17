@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  /*border: solid black 1px;*/
 }
 
 body > h1 {
@@ -106,6 +107,7 @@ body, html {
   display: inline-block;
   margin-top: 3%;
   padding: 0 5% 5% 5%;
+  /*border: solid 1px black;*/
 }
 
 .content-box > h1 {
@@ -162,7 +164,7 @@ body, html {
   margin-top: -0.7%;
 }
 
-#links {
+.links {
   margin: -3% 0 0% 7%;
   font-size: 130%;
   font-family: 'Antic', sans-serif;
@@ -170,6 +172,7 @@ body, html {
 
 .main-content {
   display: flex;
+  border: solid 1px black;
 }
 
 .single-ex {
@@ -188,4 +191,40 @@ body, html {
   border-radius: 5%;
   background-color: #e9c3c3;
   margin-right: -50%;
+}
+
+#join-title {
+  width: 100%;
+}
+
+#join-form-box {
+  width: 33%;
+  /*border: solid black 1px;*/
+  margin-left: 2%;
+}
+
+#join-form {
+  display: block;
+}
+
+.join-form-row {
+  width: 100%;
+  display: inline-flex;
+}
+
+.join-form-col {
+  width: 100%;
+}
+
+.single-row {
+  display: block;
+}
+
+.join-form-input {
+  border: solid 2px #bc1010;
+  margin-bottom: 5%;
+  display: block;
+  border-radius: 5%;
+  /*background-color: #e9c3c3;*/
+  font-size: 110%;
 }
