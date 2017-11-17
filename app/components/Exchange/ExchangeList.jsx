@@ -77,29 +77,30 @@ class ExchangeList extends Component {
           this.props.exchange.list.length === 0
             ? <div>
                 <h2 className="header-font">No list made yet!</h2>
-                <div onClick={() => this.matchMaker(this.props.members, this.props.exchange.restrictions)}>Make List</div>
+                <div id="make-list-btn" onClick={() => this.matchMaker(this.props.members, this.props.exchange.restrictions)}>Make List</div>
               </div>
             : <div>
                 <h2>List Made!</h2>
-              </div>
-        }
-        {
-          this.state.hidden
-            ? <div className="toggle-btn" onClick={() => this.toggleHidden()}>See it!</div>
-            : <div>
-                <div className="toggle-btn" onClick={()=>this.toggleHidden()}>Hide list!</div><br /><br /><br />
-                {this.props.exchange.list.map(match =>
-                  <div key={match.giver.id}>
-                    <div className="list-entry">
-                      <span>Giver: {match.giver.firstName} {match.giver.lastName}</span><br />
-                      <span>Receiver: {match.receiver.firstName} {match.receiver.lastName}</span>
+                {
+                  this.state.hidden
+                  ? <div className="toggle-btn" onClick={() => this.toggleHidden()}>See it!</div>
+                  : <div>
+                  <div className="toggle-btn" onClick={()=>this.toggleHidden()}>Hide list!</div><br /><br /><br />
+                  {this.props.exchange.list.map(match =>
+                    <div key={match.giver.id}>
+                      <div className="list-entry">
+                        <span>Giver: {match.giver.firstName} {match.giver.lastName}</span><br />
+                        <span>Receiver: {match.receiver.firstName} {match.receiver.lastName}</span>
+                      </div>
+                      <hr />
                     </div>
-                    <hr />
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
 
+              }
+              </div>
         }
+
       </div>
     )
   }

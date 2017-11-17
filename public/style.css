@@ -179,21 +179,27 @@ body, html {
   margin-top: 2%;
 }
 
+#make-list-btn {
+  background: linear-gradient(160deg, #c3e9c9, #3fde57);
+  background-color: #c3e9c9;
+  /*border: solid 2px green;*/
+  border-radius: 33%;
+  padding: 3%;
+  font-size: 150%;
+  float: left;
+}
+
 .toggle-btn {
   background: linear-gradient(160deg, #f66565, #cc0000);
   border: solid 1px #bc1010;
   border-radius: 33%;
-  /*padding: 0% 1.5% 0 %;*/
   padding: 3%;
   font-size: 150%;
-  /*width: 21%;*/
   float: left;
-  /*margin-bottom: 105%;*/
 }
 
 .list-entry {
   border: solid 2px #bc1010;
-  /*padding: 4%;*/
   border-radius: 5%;
   background-color: #e9c3c3;
   margin-right: -10%;
