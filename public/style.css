@@ -179,6 +179,19 @@ body, html {
   margin-top: 2%;
 }
 
+.restrict-btn {
+  background: linear-gradient(160deg, #c3e9c9, #3fde57);
+  background-color: #c3e9c9;
+  border-radius: 33%;
+  padding: 3%;
+  font-size: 75%;
+}
+
+#cant-click {
+  background: linear-gradient(160deg, rgba(195, 233, 201, 0.44), rgba(63, 222, 87, 0.44));
+  color: rgba(0, 0, 0, 0.44)
+}
+
 #make-list-btn {
   background: linear-gradient(160deg, #c3e9c9, #3fde57);
   background-color: #c3e9c9;

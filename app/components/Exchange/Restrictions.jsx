@@ -88,8 +88,8 @@ class Restrictions extends Component {
               </select><br />
             {
               this.state.person1 === 0 || this.state.person2 === 0 || this.state.person1 === this.state.person2 || !this.goodMatch(this.props.exchange.restrictions, this.state.person1, this.state.person2)
-              ? <span>Please Select a match</span>
-              : <span onClick={this.onAddNew}>Add New Restriction</span>
+              ? <button className="restrict-btn" id="cant-click">Add</button>
+              : <button className="restrict-btn" onClick={this.onAddNew}>Add</button>
             }
           </div>
         </form>
