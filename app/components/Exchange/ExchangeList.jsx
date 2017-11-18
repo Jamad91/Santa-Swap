@@ -49,13 +49,8 @@ class ExchangeList extends Component {
       }
     }
 
-
-    // this.setState({
-    //   list: exchange
-    // })
     this.props.makeList(this.props.exchange.id, exchange);
-    // window.location.reload();
-    // return exchange
+    window.location.reload();
   }
 
   shuffle(a) {

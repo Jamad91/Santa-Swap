@@ -4,6 +4,7 @@ const db = require('APP/db');
 const Exchange = db.model('exchanges')
 const router = require('express').Router();
 const nodemailer = require('nodemailer')
+const email_template = require('./email_template.js');
 const login_info = require('./login_info');
 const twilio = require('twilio');
 const twilio_info = require('./twilio_info');
@@ -50,46 +51,54 @@ router.put('/:id', (req, res, next) => {
         for (var i = 0; i < req.body.length; i++) {
           let currentGiver = req.body[i].giver
           let currentReceiver = req.body[i].receiver
-          // console.log(currentGiver);
           // client.messages.create({
           //   to: currentGiver.phone,
           //   from: '+12017343979',
           //   body: `Hello, ${currentGiver.firstName}. You are getting a present for ${currentReceiver.firstName} ${currentReceiver.lastName}. Please check your email for more information. Text Jimmy to confirm message.`
           // });
-          // console.log('Client',client.httpClient);
-          // console.log('------------------------------');
-          // console.log('Messages',client.messages);
-          // let mailOptions = {
-          //   from: 'santaswap25@gmail.com',
-          //   to: currentGiver.email,
-          //   subject: `Test Email for ${currentGiver.firstName}`,
-          //   text: `
-          //     <div>
-          //       Hello ${currentGiver.firstName}. You are getting a present for ${currentReceiver.firstName} ${currentReceiver.lastName}<br />
-          //       Their address is: <br />
-          //       ${currentReceiver.address1}<br />
-          //       ${currentReceiver.address2}<br />
-          //       <br />
-          //       They like: <br />
-          //       ${currentReceiver.likes}
-          //       <br />
-          //       They dislike: <br />
-          //       ${currentReceiver.dislikes}
-          //       <br /><br />
-          //       Anything else to know about them: <br />
-          //       ${currentReceiver.misc}
-          //     </div>
-          //   `
-          // }
+          console.log('Client',client.httpClient);
+          console.log('------------------------------');
+          console.log('Messages',client.messages);
+          let mailOptions = {
+            from: 'santaswap25@gmail.com',
+            to: currentGiver.email,
+            subject: `Secret Santa Info for  ${currentGiver.firstName}`,
+            // html: `
+            // <link rel="stylesheet" href="../public/style.css">
+            // <link rel="stylesheet" href="../public/present.css">
+            // <link href="https://fonts.googleapis.com/css?family=Alegreya+SC|Antic|Carter+One|Happy+Monkey|Racing+Sans+One|Viga" rel="stylesheet">
+            // <style>
+            // .header-font {
+            //   font-family: 'Alegreya SC', serif;
+            // }
+            // </style>
+            //     <div><h1 class="header-font">Hello, ${currentGiver.firstName}.</h1></div>
+            //     You are getting a present for ${currentReceiver.firstName} ${currentReceiver.lastName}.
+            //     Their address is:
+            //     ${currentReceiver.address1}
+            //     ${currentReceiver.address2}
+            //
+            //
+            //     They like: <br />
+            //     ${currentReceiver.likes}
+            //     <br />
+            //     They dislike: <br />
+            //     ${currentReceiver.dislikes}
+            //     <br /><br />
+            //     Anything else to know about them: <br />
+            //     ${currentReceiver.misc}
+            //   </div>
+            // `
+            html: email_template(currentGiver, currentReceiver)
+          }
 
-          // transporter.sendMail(mailOptions, function(error, info){
-          //   if(error){
-          //     console.log('ERROR:', error);
-          //   }else{
-          //     // console.log('Message sent: ' + info.response);
-          //     res.json({yo: info.response});
-          //   };
-          // });
+          transporter.sendMail(mailOptions, function(error, info){
+            if(error){
+              console.log('ERROR:', error);
+            }else{
+              res.json({yo: info.response});
+            };
+          });
         }
 
 
