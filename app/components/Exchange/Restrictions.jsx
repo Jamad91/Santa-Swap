@@ -27,7 +27,7 @@ class Restrictions extends Component {
   onAddNew(e) {
     let newRestriction = [parseInt(this.state.person1), parseInt(this.state.person2)]
     this.props.restrictPair(this.props.exchange.id, newRestriction)
-    window.location.reload();
+    // window.location.reload();
   }
 
   deleteRestriction(e) {
@@ -42,12 +42,11 @@ class Restrictions extends Component {
   goodMatch(arr, id1, id2) {
 
     for (var i = 0; i < arr.length; i++) {
-      if ((arr[i][0] === id1 && arr[i][1] === id2) || (arr[i][0] === id2 && arr[i][1] === id1)) {
-        console.log('BAD MATCh', id1, id2);
+      if (arr[i][0] == id1 && arr[i][1] == id2 || arr[i][0] == id2 && arr[i][1] == id1) {
+        alert('Restriction already exists')
         return false
       }
     }
-    console.log('MATCH uP');
     return true
   }
 
