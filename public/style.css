@@ -106,7 +106,7 @@ body, html {
 .content-box {
   display: inline-block;
   margin-top: 3%;
-  padding: 0 5% 5% 5%;
+  padding: 0 4% 5% 7%;
 }
 
 #managing {
@@ -223,7 +223,6 @@ body, html {
 
 #join-form-box {
   width: 33%;
-  margin-left: 2%;
 }
 
 #join-form {
