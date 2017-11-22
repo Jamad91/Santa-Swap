@@ -16,6 +16,9 @@ const Exchange = db.define('exchanges', {
   },
   restrictions: {
     type: Sequelize.ARRAY(Sequelize.ARRAY(Sequelize.INTEGER))
+  },
+  dueDate: {
+    type: Sequelize.STRING
   }
 })
 

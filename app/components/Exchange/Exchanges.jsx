@@ -17,7 +17,8 @@ class Exchanges extends Component {
                   <div>
                     <h2 className="header-font">{exchange.title}</h2>
                     <p className="exchange-info">Members: {exchange.members.length}</p>
-                    <p className="exchange-info">List Made: {exchange.list.length > 0 ? <span>Yes</span> : <span>No</span>}
+                    {}
+                    <p className="exchange-info">List Made: {exchange.list && exchange.list.length > 0 ? <span>Yes</span> : <span>No</span>}
                     </p>
                   </div>
                 </Link>
