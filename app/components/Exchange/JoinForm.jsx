@@ -151,7 +151,7 @@ class JoinForm extends Component {
           this.state.likes &&
           this.state.dislikes &&
           this.state.misc
-            ? <button onClick={this.handleSubmit}>Go</button>
+            ? <button id="join-button" onClick={this.handleSubmit}>Join!</button>
             : null
         }
         </form>

@@ -71,7 +71,7 @@ class CreateExchange extends Component {
             <textarea rows="3" cols="20" name="title" value={this.state.title} onChange={this.handleChange} /><br />
             <span>What is the due date?</span><br />
             <textarea onChange={this.handleChange} name="dueDate" value={this.state.dueDate} placeholder="MM/DD/YY"/><br />
-            <input type="submit" value="Create" />
+            <button id="create-btn" onClick={this.handleSubmit}>Create</button>
           </div>
         </form>
       </div>

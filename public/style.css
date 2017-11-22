@@ -153,9 +153,19 @@ body, html {
   background: linear-gradient(160deg, #f66565, #cc0000);
   border: solid 1px #bc1010;
   border-radius: 33%;
-  padding: 0% 1.5% 0 1%;
+  padding: 0% 0% 0 2.5%;
   width: 21%;
   float: right;
+  margin-top: -0.7%;
+}
+
+#create-btn {
+  background: linear-gradient(160deg, #f66565, #cc0000);
+  border: solid 1px #bc1010;
+  border-radius: 33%;
+  font-size: 70%;
+  padding: 1%;
+  width: 21%;
   margin-top: -0.7%;
 }
 
@@ -183,7 +193,7 @@ body, html {
   background: linear-gradient(160deg, #c3e9c9, #3fde57);
   background-color: #c3e9c9;
   border-radius: 33%;
-  padding: 3%;
+  padding: 3% 8% 3% 3%;
   font-size: 75%;
 }
 
@@ -252,6 +262,14 @@ body, html {
   margin-bottom: 5%;
   display: block;
   font-size: 110%;
+}
+
+#join-button {
+  background: linear-gradient(160deg, #c3e9c9, #3fde57);
+  background-color: #c3e9c9;
+  border-radius: 33%;
+  padding: 3%;
+  font-size: 125%;
 }
 
 #denied-access {
