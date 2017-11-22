@@ -68,7 +68,11 @@ class SingleExchange extends Component {
                   exchange.members && exchange.members.length > 0
                     ? exchange.members.map(member =>
                       <div className="listing" key={member.id}>
-                        {member.firstName} {member.lastName}
+                        {member.firstName} {member.lastName}<br />
+                        {member.phone}<br />
+                        {member.email}<br />
+                        {member.address1}<br />
+                        {member.address2}
                         {
                           this.props.auth
                             ?
