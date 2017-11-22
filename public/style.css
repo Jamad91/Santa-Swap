@@ -279,3 +279,16 @@ body, html {
   align-items: center;
   justify-content: center;
 }
+
+#submitted {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 10%;
+}
+
+#submitted-home-link {
+  font-size: 130%;
+  font-family: 'Antic', sans-serif;
+}
