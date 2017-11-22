@@ -9,6 +9,7 @@ const login_info = require('./login_info');
 const twilio = require('twilio');
 const twilio_info = require('./twilio_info');
 const client = new twilio(twilio_info.API_KEY, twilio_info.SECRET);
+const inlineCss = require('nodemailer-juice');
 
 router.get('/', (req, res, next) => {
   Exchange.findAll()
@@ -44,7 +45,8 @@ router.put('/:id', (req, res, next) => {
 
         var transporter = nodemailer.createTransport({
           service: 'gmail',
-          auth: login_info
+          auth: login_info,
+      
           //login_info is an exported object with a user and a password key
           // info corresponds to a google account, in this case santaswap25
         });
