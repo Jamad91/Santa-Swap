@@ -63,7 +63,7 @@ const seedExchanges = () => db.Promise.map([
       dislikes: "Andrew Zeni",
       misc: "must be hand delivered, but beware of Al"
     }
-  ], list: [], restrictions: [[1,2,1]],owner_id: 1},
+  ], list: [], restrictions: [[1,2,1]],owner_id: 1, dueDate: '12/25/17'},
   {title: 'Second One', members: [], list: [], owner_id: 2}
 ], exchange => db.model('exchanges').create(exchange))
 

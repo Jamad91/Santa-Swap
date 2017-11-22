@@ -1,4 +1,4 @@
-module.exports = function (giver, receiver) {
+module.exports = function (giver, receiver, exchange) {
   return (
     `
 
@@ -10,7 +10,7 @@ module.exports = function (giver, receiver) {
 <img src='https://i.imgur.com/aDbNXjl.png' /><br /><br /><br />
 <img src='https://i.imgur.com/084Oq3e.png' style="width: 20%;"/>
 
-<h2 style="font-family: cursive; font-size: 200%;">Thanks again for participating in Secret Santa 2017!</h2>
+<h2 style="font-family: cursive; font-size: 200%;">Thanks again for participating in ${exchange.title}!</h2>
 
 
 <div style="border: solid 3px red; border-radius: 10%; background-color: #9eeba9; padding-bottom: 2%;">
@@ -44,6 +44,15 @@ module.exports = function (giver, receiver) {
     <span style="font-size: 150%">${receiver.misc}</span>
   </p>
 </div>
+
+<div>
+  <p>
+    <h2>The due date for this ${exchange.dueDate}</h2>
+    <h3>Don't forget to get in touch with your organizer to let them know of any status updates! e.g. sent/received present, delays, etc.</h3>
+    <h2>Good luck!</h2>
+  </p>
+</div>
+
 </div>
 
 </div>

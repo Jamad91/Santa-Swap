@@ -46,7 +46,7 @@ router.put('/:id', (req, res, next) => {
         var transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: login_info,
-      
+
           //login_info is an exported object with a user and a password key
           // info corresponds to a google account, in this case santaswap25
         });
@@ -91,7 +91,7 @@ router.put('/:id', (req, res, next) => {
             //     ${currentReceiver.misc}
             //   </div>
             // `
-            html: email_template(currentGiver, currentReceiver)
+            html: email_template(currentGiver, currentReceiver, exchange)
           }
 
           transporter.sendMail(mailOptions, function(error, info){

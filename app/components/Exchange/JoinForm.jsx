@@ -125,21 +125,21 @@ class JoinForm extends Component {
             />
           </div>
         </div>
-        <div className="join-form-row single-row">Things you like: <textarea rows="3" cols="43"
+        <div className="join-form-row single-row">Things you like: <textarea rows="3" cols="40"
             className="join-form-input"
             onChange={this.handleChange}
             name="likes"
             value={this.state.likes}
             placeholder="ex: sports, candy, hip hop, Die Hard"
           /></div>
-        <div className="join-form-row single-row">Things you dislike: <textarea rows="3" cols="43"
+        <div className="join-form-row single-row">Things you dislike: <textarea rows="3" cols="40"
             className="join-form-input"
             onChange={this.handleChange}
             name="dislikes"
             value={this.state.dislikes}
             placeholder="ex: golden colored things, paintings, non practical things"
           /></div>
-        <div className="join-form-row single-row">Anything else we should know? <textarea rows="3" cols="43"
+        <div className="join-form-row single-row">Anything else we should know? <textarea rows="3" cols="40"
             className="join-form-input"
             onChange={this.handleChange}
             name="misc"
