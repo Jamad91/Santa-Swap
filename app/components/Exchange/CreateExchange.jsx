@@ -25,12 +25,23 @@ class CreateExchange extends Component {
   }
 
   handleSubmit(evt) {
+    let newId = Math.floor(Math.random() * 10000) + 1
+    for (let i = 0; i < this.props.exchanges.length; i++) {
+      if (newId === this.props.exchanges[i].newId) {
+        newId = Math.floor(Math.random() * 10000) + 1
+        i = -1
+      }
+    }
+
     let date = this.state.dueDate.split('/')
     if (date.length === 3 && date[0].length === 2 && typeof(parseInt(date[0])) === 'number' && date[1].length === 2 && typeof(parseInt(date[1])) === 'number' && date[2].length === 2 && typeof(parseInt(date[2])) === 'number' && this.state.title.length > 0)
+
+
     {
       evt.preventDefault();
 
       let newState = {
+        id: newId,
         title: this.state.title,
         dueDate: this.state.dueDate,
         members: this.state.members,
@@ -44,7 +55,7 @@ class CreateExchange extends Component {
         dueDate: "",
         members: []
       })
-      window.location.reload()
+      // window.location.reload()
     } else {
       alert( `Please enter a valid date format`)
     }
@@ -70,7 +81,8 @@ class CreateExchange extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.auth
+    user: state.auth,
+    exchanges: state.exchangeReducer.exchanges
   }
 }
 
