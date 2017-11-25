@@ -50,7 +50,11 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       break
     case RESTRICT_PAIR:
       dummy = newState.selectedExchange
-      dummy.restrictions.push(action.newRestriction)
+      if (dummy.restrictions) {
+        dummy.restrictions.push(action.newRestriction)
+      } else {
+        dummy.restrictions = action.newRestriction
+      }
       newState.restrictions = dummy.restrictions
       break
     case REMOVE_RESTRICTION:

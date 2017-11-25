@@ -28,7 +28,12 @@ router.put('/:id', (req, res, next) => {
       console.log(req.body);
       let newMembers = exchange.members
       let newList = exchange.newList
-      let newRestrictions = exchange.restrictions
+      let newRestrictions
+      if (exchange.restrictions) {
+        newRestrictions = exchange.restrictions
+      } else {
+        newRestrictions = []
+      }
       let idx
       let objectKeys = Object.keys(req.body)
       if (objectKeys.length > 1 && objectKeys[0] === 'id') {
@@ -84,7 +89,7 @@ router.put('/:id', (req, res, next) => {
 
       }
       else if (req.body.length === 3) {
-        console.log(req.body);
+        console.log('RESTRICTIONS',req.body);
         if (req.body[2] === 0) {
           for (var i = 0; i < newRestrictions.length && !idx; i++) {
             if (newRestrictions[i][0] === req.body[0] && newRestrictions[i][1] === req.body[1]) {
@@ -94,6 +99,7 @@ router.put('/:id', (req, res, next) => {
           newRestrictions.splice(idx, 1)
         } else {
           console.log('restrict', req.body);
+
           newRestrictions.push(req.body)
         }
 

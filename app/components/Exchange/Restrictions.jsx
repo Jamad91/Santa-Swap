@@ -22,6 +22,7 @@ class Restrictions extends Component {
     let newState = {}
     newState[e.target.name] = e.target.value
     this.setState(newState)
+    console.log(newState);
   }
 
   onAddNew(e) {
@@ -40,11 +41,12 @@ class Restrictions extends Component {
   }
 
   goodMatch(arr, id1, id2) {
-
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i][0] == id1 && arr[i][1] == id2 || arr[i][0] == id2 && arr[i][1] == id1) {
-        alert('Restriction already exists')
-        return false
+    if (arr) {
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i][0] == id1 && arr[i][1] == id2 || arr[i][0] == id2 && arr[i][1] == id1) {
+          alert('Restriction already exists')
+          return false
+        }
       }
     }
     return true
