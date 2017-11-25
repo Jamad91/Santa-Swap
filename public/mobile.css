@@ -28,26 +28,29 @@ body > h1 {
   position: absolute;
   z-index: 2;
   margin: 7% 0 0 45%;
+  width: 30%;
   border: solid 2px #bc1010;
-  padding: 3% 5% 3% 5%;
+  /*padding: 3% 5% 3% 5%;*/
+  padding: 2%;
   border-radius: 5%;
   background-color: #e9c3c3;
 }
 
 #login-box {
-  font-size: 175%;
+  font-size: 200%;
 }
 
 .login-field {
-  margin-right: 50%;
-  font-size: 65%;
+  margin: 5% 5% 5% 0%;
+  font-size: 100%;
+  width: 80%;
 }
 
 #login-button {
   background: linear-gradient(160deg, #f66565, #cc0000);
   border-radius: 33%;
-  font-size: 65%;
-  padding: 2%;
+  font-size: 95%;
+  padding: 5%;
 }
 
 a {
