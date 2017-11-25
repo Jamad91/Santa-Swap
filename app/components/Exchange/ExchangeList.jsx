@@ -20,7 +20,6 @@ class ExchangeList extends Component {
 
   matchMaker(givers, restrictions) {
     let receivers = this.shuffle(givers.slice());
-    console.log('R',receivers);
     let exchange = [];
     let restrictObject = {}
 

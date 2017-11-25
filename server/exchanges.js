@@ -65,7 +65,7 @@ router.put('/:id', (req, res, next) => {
           client.messages.create({
             to: currentGiver.phone,
             from: '+12017343979',
-            body: `Hello, ${currentGiver.firstName}. You are getting a present for ${currentReceiver.firstName} ${currentReceiver.lastName}. Please check your email for more information. Text Jimmy to confirm message.`
+            body: `Hello, ${currentGiver.firstName}. You are getting a present for ${currentReceiver.firstName} ${currentReceiver.lastName}. Please check your email for more information. Text the exchange organizer to confirm message.`
           });
           console.log('Client',client.httpClient);
           console.log('------------------------------');
