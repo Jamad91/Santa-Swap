@@ -1,0 +1,71 @@
+body > h1 {
+  text-align: center;
+  color: #f2f2f2;
+  font-size: 850%;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.page-greeting {
+  margin: -15% 0 3.25% 7%;
+  font-size: 500%;
+  padding-right: 40%;
+}
+
+a {
+  font-size: 200%;
+}
+
+#join-title {
+  width: 100%;
+}
+
+#join-form-box {
+  width: 43%;
+}
+
+#join-form {
+  background-color: #c3e9c9;
+  border: solid 2px green;
+  border-radius: 4%;
+  padding: 2%;
+  margin-right: -40%;
+  font-family: 'Antic', sans-serif;
+}
+
+.join-form-row {
+  width: 100%;
+  display: block;
+}
+
+.join-form-col {
+  width: 100%;
+}
+
+.join-form-col > input {
+  width: 73%;
+  font-size: 220%;
+}
+
+.join-form-text {
+  font-size: 250%;
+}
+
+.single-row {
+  display: block;
+}
+
+.join-form-input {
+  border: solid 2px #bc1010;
+  margin-bottom: 5%;
+  display: block;
+  width: 90%;
+  font-size: 200%;
+}
+
+#join-button {
+  background: linear-gradient(160deg, #c3e9c9, #3fde57);
+  background-color: #c3e9c9;
+  border-radius: 33%;
+  padding: 3%;
+  font-size: 250%;
+}

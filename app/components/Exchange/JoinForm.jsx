@@ -161,19 +161,8 @@ class JoinForm extends Component {
             placeholder="ex: please include a note, prefer delivered via mail rather than in person if applicable"
           />
         </div>
-        {
-          this.state.firstName &&
-          this.state.lastName &&
-          this.state.email &&
-          this.state.phone &&
-          this.state.address1 &&
-          this.state.address2 &&
-          this.state.likes &&
-          this.state.dislikes &&
-          this.state.misc
-            ? <button id="join-button" onClick={this.handleSubmit}>Join!</button>
-            : null
-        }
+    <button id="join-button" onClick={this.handleSubmit}>Join!</button>
+            
         </form>
 
       </div>
