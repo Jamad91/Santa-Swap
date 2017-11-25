@@ -7,6 +7,11 @@ const {resolve} = require('path')
 const passport = require('passport')
 const PrettyError = require('pretty-error')
 const finalHandler = require('finalhandler')
+const http = require('http')
+
+setInterval(function() {
+    http.get("https://santa-swap.herokuapp.com");
+}, 300000);
 // PrettyError docs: https://www.npmjs.com/package/pretty-error
 
 // Bones has a symlink from node_modules/APP to the root of the app.
