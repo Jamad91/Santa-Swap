@@ -73,7 +73,8 @@ class JoinForm extends Component {
         <form id="join-form">
           <div className="join-form-row">
             <div className="join-form-col">
-              First Name: <input
+              <span className="join-form-text">First Name:</span>
+              <input
                 className="join-form-input"
                 onChange={this.handleChange}
                 name="firstName"
@@ -81,7 +82,8 @@ class JoinForm extends Component {
               />
             </div>
             <div className="join-form-col">
-              Last Name: <input
+              <span className="join-form-text">Last Name:</span>
+               <input
                 className="join-form-input"
                 onChange={this.handleChange}
                 name="lastName"
@@ -91,7 +93,8 @@ class JoinForm extends Component {
           </div>
           <div className="join-form-row">
             <div className="join-form-col">
-              Email: <input
+              <span className="join-form-text">Email:</span>
+              <input
                 className="join-form-input"
                 onChange={this.handleChange}
                 name="email"
@@ -99,7 +102,8 @@ class JoinForm extends Component {
               />
             </div>
             <div className="join-form-col">
-              Phone Number: <input
+              <span className="join-form-text">Phone Number:</span>
+              <input
                 className="join-form-input"
                 onChange={this.handleChange}
                 name="phone"
@@ -109,7 +113,8 @@ class JoinForm extends Component {
           </div>
         <div className="join-form-row">
           <div className="join-form-col">
-            Address Line 1: <input
+            <span className="join-form-text">Address Line 1:</span>
+            <input
               className="join-form-input"
               onChange={this.handleChange}
               name="address1"
@@ -117,7 +122,8 @@ class JoinForm extends Component {
             />
           </div>
           <div className="join-form-col">
-            Address Line 2: <input
+            <span className="join-form-text">Address Line 2:</span>
+            <input
               className="join-form-input"
               onChange={this.handleChange}
               name="address2"
@@ -125,27 +131,36 @@ class JoinForm extends Component {
             />
           </div>
         </div>
-        <div className="join-form-row single-row">Things you like: <textarea rows="3" cols="40"
+        <div className="join-form-row single-row">
+          <span className="join-form-text">Things you like:</span>
+          <textarea rows="3" cols="40"
             className="join-form-input"
             onChange={this.handleChange}
             name="likes"
             value={this.state.likes}
             placeholder="ex: sports, candy, hip hop, Die Hard"
-          /></div>
-        <div className="join-form-row single-row">Things you dislike: <textarea rows="3" cols="40"
+          />
+        </div>
+        <div className="join-form-row single-row">
+          <span className="join-form-text">Things you dislike:</span>
+          <textarea rows="3" cols="40"
             className="join-form-input"
             onChange={this.handleChange}
             name="dislikes"
             value={this.state.dislikes}
             placeholder="ex: golden colored things, paintings, non practical things"
-          /></div>
-        <div className="join-form-row single-row">Anything else we should know? <textarea rows="3" cols="40"
+          />
+        </div>
+        <div className="join-form-row single-row">
+          <span className="join-form-text">Anything else we should know?</span>
+          <textarea rows="3" cols="40"
             className="join-form-input"
             onChange={this.handleChange}
             name="misc"
             value={this.state.misc}
             placeholder="ex: please include a note, prefer delivered via mail rather than in person if applicable"
-          /></div>
+          />
+        </div>
         {
           this.state.firstName &&
           this.state.lastName &&
