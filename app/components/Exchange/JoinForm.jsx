@@ -57,7 +57,6 @@ class JoinForm extends Component {
   }
 
   render() {
-    console.log(this.props.exchange);
     return (
       <div>
         <div className="page-content">

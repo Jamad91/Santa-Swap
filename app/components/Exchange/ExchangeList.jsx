@@ -67,7 +67,6 @@ class ExchangeList extends Component {
   }
 
   sentList(list) {
-    console.log('ID',this.props.exchange);
     this.setState({sentList: true})
     this.props.sendList(this.props.exchange.id, list)
     window.location.reload();
@@ -75,7 +74,6 @@ class ExchangeList extends Component {
 
   render() {
     let exchange = this.props.exchange
-    console.log(exchange);
     return (
       <div>
         <h1 className="header-font">List</h1 >
