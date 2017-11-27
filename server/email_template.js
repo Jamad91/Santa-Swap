@@ -48,7 +48,7 @@ module.exports = function (giver, receiver, exchange) {
 <div>
   <p>
     <h2>The due date for this ${exchange.dueDate}</h2>
-    <h3>Don't forget to get in touch with your organizer to let them know of any status updates! e.g. sent/received present, delays, etc.</h3>
+    <h3>Don't forget to get in touch with your organizer to let them know of any status updates! <br />(e.g. sent/received present, delays, etc.)</h3>
     <h2>Good luck!</h2>
   </p>
 </div>

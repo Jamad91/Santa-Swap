@@ -45,7 +45,9 @@ class CreateExchange extends Component {
         title: this.state.title,
         dueDate: this.state.dueDate,
         members: this.state.members,
-        owner_id: this.props.user.id
+        owner_id: this.props.user.id,
+        list: [],
+        restrictions: []
       }
 
       this.props.createExchange(newState)

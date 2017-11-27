@@ -16,12 +16,7 @@ class SingleExchange extends Component {
       madeList: false,
     }
 
-    if (this.props.list) {
-      this.setState({madeList: true})
-    }
-
     this.memberRemoval = this.memberRemoval.bind(this)
-    this.makeList = this.makeList.bind(this)
   }
 
   memberRemoval(exchangeId, memberId) {
@@ -43,14 +38,9 @@ class SingleExchange extends Component {
 
   }
 
-  makeList() {
-    this.setState({madeList: true})
-  }
-
   render() {
 
     let exchange = this.props.exchange
-
     if (this.props.auth) {
       return (
         <div className="page-content">
@@ -75,7 +65,7 @@ class SingleExchange extends Component {
                         {member.address1}<br />
                         {member.address2}
                         {
-                          this.props.auth
+                          this.props.auth && !exchange.sentList
                             ?
                               <span>
                                 <div className="delete-btn"onClick={() => {

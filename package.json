@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Organize Secret Santas with friends",
   "main": "index.js",
+  "engines": {
+    "node": "8.9.1"
+  },
   "scripts": {
     "validate": "check-node-version --node '>= 6.7.0'",
     "setup": "./bin/setup",
