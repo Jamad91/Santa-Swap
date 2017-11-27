@@ -70,6 +70,7 @@ class ExchangeList extends Component {
     console.log('ID',this.props.exchange);
     this.setState({sentList: true})
     this.props.sendList(this.props.exchange.id, list)
+    window.location.reload();
   }
 
   render() {

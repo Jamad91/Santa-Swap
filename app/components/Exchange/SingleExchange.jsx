@@ -65,7 +65,7 @@ class SingleExchange extends Component {
                         {member.address1}<br />
                         {member.address2}
                         {
-                          this.props.auth
+                          this.props.auth && !exchange.sentList
                             ?
                               <span>
                                 <div className="delete-btn"onClick={() => {

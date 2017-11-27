@@ -52,47 +52,50 @@ class Restrictions extends Component {
   }
 
   render() {
-
+    let exchange = this.props.exchange
     return (
       <div id="restrictions">
         <h1 className="header-font">Restrictions</h1>
         {
-          this.props.exchange.restrictions && this.props.exchange.restrictions.length > 0
-          ? this.props.exchange.restrictions.map(restriction =>
+          exchange.restrictions && exchange.restrictions.length > 0
+          ? exchange.restrictions.map(restriction =>
             <div className="listing" key={`${this.personFinder(restriction[0]).id}-${this.personFinder(restriction[1]).id}`}>{this.personFinder(restriction[0]).firstName} {this.personFinder(restriction[0]).lastName} &  {this.personFinder(restriction[1]).firstName} {this.personFinder(restriction[1]).lastName}<div className="delete-btn restriction-delete" onClick={this.deleteRestriction} id={`${this.personFinder(restriction[0]).id}-${this.personFinder(restriction[1]).id}`}>Delete</div></div>
           )
-          : <h2 className="header-font">No Restrictions Made Yet!</h2>
+          : <h2 className="header-font">No Restrictions Made!</h2>
         }
+        {
+          exchange.sentList
+            ? null
+            : <form>
+              <h2 className="header-font">Add a new restriction</h2>
+                <div className="form-input">
+                  Person 1: <select name="person1" onChange={this.onSelectPerson}>
+                    <option value="0" checked>----------------------</option>
+                    {exchange.members
+                      ? exchange.members.map(member =>
+                          <option key={`select-one${member.id}`} value={member.id}>{member.firstName} {member.lastName}</option>
+                        )
+                      : null
+                    }
+                  </select><br />
+                Person 2: <select name="person2" onChange={this.onSelectPerson}>
 
-        <form>
-          <h2 className="header-font">Add a new restriction</h2>
-            <div className="form-input">
-              Person 1: <select name="person1" onChange={this.onSelectPerson}>
-                <option value="0" checked>----------------------</option>
-                {this.props.exchange.members
-                  ? this.props.exchange.members.map(member =>
-                      <option key={`select-one${member.id}`} value={member.id}>{member.firstName} {member.lastName}</option>
-                    )
-                  : null
+                    <option value="0" checked>----------------------</option>
+                    {exchange.members
+                      ? exchange.members.map(member =>
+                        <option key={`select-two${member.id}`} value={member.id}>{member.firstName} {member.lastName}</option>
+                      )
+                      : null
+                    }
+                  </select><br />
+                {
+                  this.state.person1 === 0 || this.state.person2 === 0 || this.state.person1 === this.state.person2 || !this.goodMatch(exchange.restrictions, this.state.person1, this.state.person2)
+                  ? <button className="restrict-btn" id="cant-click">Add</button>
+                  : <button className="restrict-btn" onClick={this.onAddNew}>Add</button>
                 }
-              </select><br />
-            Person 2: <select name="person2" onChange={this.onSelectPerson}>
-
-                <option value="0" checked>----------------------</option>
-                {this.props.exchange.members
-                  ? this.props.exchange.members.map(member =>
-                    <option key={`select-two${member.id}`} value={member.id}>{member.firstName} {member.lastName}</option>
-                  )
-                  : null
-                }
-              </select><br />
-            {
-              this.state.person1 === 0 || this.state.person2 === 0 || this.state.person1 === this.state.person2 || !this.goodMatch(this.props.exchange.restrictions, this.state.person1, this.state.person2)
-              ? <button className="restrict-btn" id="cant-click">Add</button>
-              : <button className="restrict-btn" onClick={this.onAddNew}>Add</button>
-            }
-          </div>
-        </form>
+              </div>
+            </form>
+        }
       </div>
     )
   }
