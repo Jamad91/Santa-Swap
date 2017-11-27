@@ -73,7 +73,11 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       newState.selectedExchange = dummy
       break
     case SEND_LIST:
-      newState.selectedExchange.sentList = true
+    console.log('pre newsatte', newState.selectedExchange.sentList);
+      dummy = newState.selectedExchange
+      dummy.sentList = true
+      newState.selectedExchange = dummy
+      console.log('newsatte', newState.selectedExchange.sentList);
       break
   }
 
@@ -186,11 +190,15 @@ export const makeList = (exchangeId, listInfo) =>{
 
 const contactMember = (exchangeId) => ({
   type: SEND_LIST,
-  exchangeId,
+  exchangeId
 })
 
 export const sendList = (exchangeId) => {
-  dispatch(contactMember(exchangeId))
-  return axios.put(`/api/exchanges/${exchangeId}`)
-    .catch(err => console.error("Wasn't able to send out list"))
+  console.log('exchangeId', exchangeId);
+  let contacted = {contacted: true}
+  return dispatch => {
+    dispatch(contactMember(exchangeId))
+    return axios.put(`/api/exchanges/${exchangeId}`, contacted)
+      .catch(err => console.error("Wasn't able to send out list"))
+  }
 }

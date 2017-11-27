@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import store from 'APP/app/store'
-import { makeList } from 'APP/app/reducers/exchanges'
+import { makeList, sendList } from 'APP/app/reducers/exchanges'
 
 class ExchangeList extends Component {
   constructor(props) {
@@ -85,7 +85,7 @@ class ExchangeList extends Component {
                       : <div style={{margin:'2%'}} id="make-list-btn" onClick={() => this.matchMaker(this.props.members, exchange.restrictions)}>New List?</div>
                   }
                 <br />
-                <div style={{marginBottom: '3%', marginTop: '2%'}} id="make-list-btn">Contact Members</div>
+                <div style={{marginBottom: '3%', marginTop: '2%'}} id="make-list-btn" onClick={() => this.props.sendList(exchange.id)}>Contact Members</div>
                 {
                   this.state.hidden
                   ? <div className="toggle-btn" onClick={() => this.toggleHidden()}>See it!</div>
@@ -117,4 +117,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {makeList})(ExchangeList)
+export default connect(mapStateToProps, {makeList, sendList})(ExchangeList)
