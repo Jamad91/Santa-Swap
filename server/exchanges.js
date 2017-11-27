@@ -40,8 +40,42 @@ router.put('/:id', (req, res, next) => {
       if (objectKeys.length > 1 && objectKeys[0] === 'id') {
         newMembers.push(req.body)
       }
-      else if (objectKeys.length === 1 && objectKeys[0] === 'contacted' && req.body.contacted === true) {
+      else if (req.body.length === 2 && Object.keys(req.body[0])[0] === 'contacted') {
         sentList = true
+        console.log('hitting');
+        var transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: login_info,
+
+          //login_info is an exported object with a user and a password key
+          // info corresponds to a google account, in this case santaswap25
+        });
+        for (var i = 0; i < req.body[1].length; i++) {
+          let currentGiver = req.body[1][i].giver
+          let currentReceiver = req.body[1][i].receiver
+          client.messages.create({
+            to: currentGiver.phone,
+            from: '+12017343979',
+            body: `Hello, ${currentGiver.firstName}. You are getting a present for ${currentReceiver.firstName} ${currentReceiver.lastName}. Please check your email for more information. Text the exchange organizer to confirm message.`
+          });
+          console.log('Client',client.httpClient);
+          console.log('------------------------------');
+          console.log('Messages',client.messages);
+          let mailOptions = {
+            from: 'santaswap25@gmail.com',
+            to: currentGiver.email,
+            subject: `Secret Santa Info for  ${currentGiver.firstName}`,
+            html: email_template(currentGiver, currentReceiver, exchange)
+          }
+
+          transporter.sendMail(mailOptions, function(error, info){
+            if(error){
+              console.log('ERROR:', error);
+            }else{
+              res.json({yo: info.response});
+            };
+          });
+        }
       }
       else if (objectKeys.length === 1) {
         let id = parseInt(Object.keys(req.body))
@@ -54,42 +88,6 @@ router.put('/:id', (req, res, next) => {
       }
       else if (Object.keys(req.body[0])[0] === 'giver') {
         newList = req.body;
-
-        var transporter = nodemailer.createTransport({
-          service: 'gmail',
-          auth: login_info,
-
-          //login_info is an exported object with a user and a password key
-          // info corresponds to a google account, in this case santaswap25
-        });
-        // for (var i = 0; i < req.body.length; i++) {
-        //   let currentGiver = req.body[i].giver
-        //   let currentReceiver = req.body[i].receiver
-        //   client.messages.create({
-        //     to: currentGiver.phone,
-        //     from: '+12017343979',
-        //     body: `Hello, ${currentGiver.firstName}. You are getting a present for ${currentReceiver.firstName} ${currentReceiver.lastName}. Please check your email for more information. Text the exchange organizer to confirm message.`
-        //   });
-        //   console.log('Client',client.httpClient);
-        //   console.log('------------------------------');
-        //   console.log('Messages',client.messages);
-        //   let mailOptions = {
-        //     from: 'santaswap25@gmail.com',
-        //     to: currentGiver.email,
-        //     subject: `Secret Santa Info for  ${currentGiver.firstName}`,
-        //     html: email_template(currentGiver, currentReceiver, exchange)
-        //   }
-        //
-        //   transporter.sendMail(mailOptions, function(error, info){
-        //     if(error){
-        //       console.log('ERROR:', error);
-        //     }else{
-        //       res.json({yo: info.response});
-        //     };
-        //   });
-        // }
-
-
       }
       else if (req.body.length === 3) {
         console.log('RESTRICTIONS',req.body);

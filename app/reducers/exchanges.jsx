@@ -177,7 +177,7 @@ export const unrestrictPair = (exchangeId, restrictedPair) =>
 const addList = (exchangeId, listInfo) => ({
   type: MAKE_LIST,
   exchangeId,
-  listInfo,
+  listInfo
 })
 
 export const makeList = (exchangeId, listInfo) =>{
@@ -188,17 +188,18 @@ export const makeList = (exchangeId, listInfo) =>{
   }
 }
 
-const contactMember = (exchangeId) => ({
+const contactMember = (exchangeId, listInfo) => ({
   type: SEND_LIST,
-  exchangeId
+  exchangeId,
+  listInfo
 })
 
-export const sendList = (exchangeId) => {
-  console.log('exchangeId', exchangeId);
+export const sendList = (exchangeId, listInfo) => {
   let contacted = {contacted: true}
   return dispatch => {
-    dispatch(contactMember(exchangeId))
-    return axios.put(`/api/exchanges/${exchangeId}`, contacted)
+    console.log('listInfo', listInfo);
+    dispatch(contactMember(exchangeId, listInfo))
+    return axios.put(`/api/exchanges/${exchangeId}`, [contacted, listInfo])
       .catch(err => console.error("Wasn't able to send out list"))
   }
 }

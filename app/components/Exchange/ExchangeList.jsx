@@ -7,11 +7,12 @@ class ExchangeList extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {list: [], hidden: true}
+    this.state = {list: [], hidden: true, sentList: false}
 
     this.matchMaker = this.matchMaker.bind(this)
     this.shuffle = this.shuffle.bind(this)
     this.toggleHidden = this.toggleHidden.bind(this)
+    this.sentList = this.sentList.bind(this)
   }
 
   componentWillUpdate() {
@@ -65,6 +66,12 @@ class ExchangeList extends Component {
     this.setState({hidden: !bool})
   }
 
+  sentList(list) {
+    console.log('ID',this.props.exchange);
+    this.setState({sentList: true})
+    this.props.sendList(this.props.exchange.id, list)
+  }
+
   render() {
     let exchange = this.props.exchange
     console.log(exchange);
@@ -78,31 +85,37 @@ class ExchangeList extends Component {
                 <div id="make-list-btn" onClick={() => this.matchMaker(this.props.members, exchange.restrictions)}>Make List</div>
               </div>
             : <div>
-                <h2>List Made!</h2>
-                  {
-                    exchange.sentList
-                      ? null
-                      : <div style={{margin:'2%'}} id="make-list-btn" onClick={() => this.matchMaker(this.props.members, exchange.restrictions)}>New List?</div>
-                  }
-                <br />
-                <div style={{marginBottom: '3%', marginTop: '2%'}} id="make-list-btn" onClick={() => this.props.sendList(exchange.id)}>Contact Members</div>
-                {
-                  this.state.hidden
-                  ? <div className="toggle-btn" onClick={() => this.toggleHidden()}>See it!</div>
-                  : <div>
-                  <div className="toggle-btn" onClick={()=>this.toggleHidden()}>Hide list!</div><br /><br /><br />
-                  {exchange.list.map(match =>
-                    <div key={match.giver.id}>
-                      <div className="list-entry">
-                        <span>Giver: {match.giver.firstName} {match.giver.lastName}</span><br />
-                        <span>Receiver: {match.receiver.firstName} {match.receiver.lastName}</span>
-                      </div>
-                      <hr />
-                    </div>
-                  )}
-                </div>
 
-              }
+                  {
+                    exchange.sentList || this.state.sentList
+                      ? <div>
+                          <h2 style={{marginBottom: '-35%'}}>List Made And Sent!</h2>
+                        </div>
+                      : <div>
+                          <h2>List Made But Not Sent!</h2>
+                          <div style={{margin:'2%'}} id="make-list-btn" onClick={() => this.matchMaker(this.props.members, exchange.restrictions)}>New List?</div>
+                          <br />
+                          <div style={{marginBottom: '3%', marginTop: '2%'}} id="make-list-btn" onClick={() => this.sentList(exchange.list) }>Contact Members</div>
+                        </div>
+                  }
+                  <div style={{marginTop: '35%'}}>
+                    {
+                      this.state.hidden
+                      ? <div className="toggle-btn" onClick={() => this.toggleHidden()}>See it!</div>
+                      : <div>
+                          <div className="toggle-btn" onClick={()=>this.toggleHidden()}>Hide list!</div><br /><br /><br />
+                            {exchange.list.map(match =>
+                              <div key={match.giver.id}>
+                                <div className="list-entry">
+                                  <span>Giver: {match.giver.firstName} {match.giver.lastName}</span><br />
+                                  <span>Receiver: {match.receiver.firstName} {match.receiver.lastName}</span>
+                                </div>
+                                <hr />
+                              </div>
+                            )}
+                        </div>
+                    }
+                  </div>
               </div>
         }
 

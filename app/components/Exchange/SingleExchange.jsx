@@ -17,7 +17,6 @@ class SingleExchange extends Component {
     }
 
     this.memberRemoval = this.memberRemoval.bind(this)
-    this.makeList = this.makeList.bind(this)
   }
 
   memberRemoval(exchangeId, memberId) {
@@ -37,10 +36,6 @@ class SingleExchange extends Component {
       this.props.removeMember(exchangeId, memberId)
     }
 
-  }
-
-  makeList() {
-    // this.setState({madeList: true})
   }
 
   render() {

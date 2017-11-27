@@ -36,32 +36,8 @@ const seedExchanges = () => db.Promise.map([
       likes: "pigeons",
       dislikes: "scruples",
       misc: "don't care for beaches"
-    },
-    {
-      id: 3,
-      firstName: "Gary",
-      lastName: "Donofrio",
-      email: "jdicolandrea@gmail.com",
-      phone: "3472556257",
-      address1: "Gary's House",
-      address2: "Maspeth, NY",
-      likes: "punisher",
-      dislikes: "donald's bitching and moaning",
-      misc: "has to be shipped in several boxes, regardless of size"
-    },
-    {
-      id: 4,
-      firstName: "Matt",
-      lastName: "Putre",
-      email: "jdicolandrea@gmail.com",
-      phone: "3472556257",
-      address1: "Matt's House",
-      address2: "Middle Village, NY",
-      likes: "Paul Freck",
-      dislikes: "Andrew Zeni",
-      misc: "must be hand delivered, but beware of Al"
     }
-  ], list: [], restrictions: [[1,2,1]],owner_id: 1, dueDate: '12/25/17'}
+  ], list: [], restrictions: [],owner_id: 1, dueDate: '12/25/17'}
 ], exchange => db.model('exchanges').create(exchange))
 
 db.didSync
