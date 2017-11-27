@@ -9,7 +9,8 @@ import {
   REMOVE_PERSON_FROM_EXCHANGE,
   RESTRICT_PAIR,
   REMOVE_RESTRICTION,
-  MAKE_LIST
+  MAKE_LIST,
+  SEND_LIST
 } from '../constants'
 
 const DEFAULT_STATE = {
@@ -70,19 +71,9 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
       dummy = newState.selectedExchange
       dummy.list = action.listInfo
       newState.selectedExchange = dummy
-
-
-      // let newArr = this.shuffle(arr.slice());
-      // let exchange = [];
-      // for (var i = 0; i < arr.length; i++) {
-      //   if (arr[i].id === newArr[i].id) {
-      //     newArr = this.shuffle(newArr);
-      //     i = -1;
-      //     exchange = [];
-      //   } else {
-      //     exchange.push({ giver: arr[i], receiver: newArr[i] });
-      //   }
-      // }
+      break
+    case SEND_LIST:
+      newState.selectedExchange.sentList = true
       break
   }
 
@@ -183,7 +174,6 @@ const addList = (exchangeId, listInfo) => ({
   type: MAKE_LIST,
   exchangeId,
   listInfo,
-
 })
 
 export const makeList = (exchangeId, listInfo) =>{
@@ -192,4 +182,15 @@ export const makeList = (exchangeId, listInfo) =>{
     return axios.put(`/api/exchanges/${exchangeId}`, listInfo)
       .catch(err => console.error("Wasn't able to create list!"))
   }
+}
+
+const contactMember = (exchangeId) => ({
+  type: SEND_LIST,
+  exchangeId,
+})
+
+export const sendList = (exchangeId) => {
+  dispatch(contactMember(exchangeId))
+  return axios.put(`/api/exchanges/${exchangeId}`)
+    .catch(err => console.error("Wasn't able to send out list"))
 }
