@@ -14,6 +14,10 @@ const Exchange = db.define('exchanges', {
   list: {
     type: Sequelize.ARRAY(Sequelize.JSON)
   },
+  sentList: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
   restrictions: {
     type: Sequelize.ARRAY(Sequelize.ARRAY(Sequelize.INTEGER))
   },

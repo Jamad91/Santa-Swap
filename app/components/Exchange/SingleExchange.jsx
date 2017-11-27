@@ -16,10 +16,6 @@ class SingleExchange extends Component {
       madeList: false,
     }
 
-    if (this.props.list) {
-      this.setState({madeList: true})
-    }
-
     this.memberRemoval = this.memberRemoval.bind(this)
     this.makeList = this.makeList.bind(this)
   }
@@ -44,13 +40,12 @@ class SingleExchange extends Component {
   }
 
   makeList() {
-    this.setState({madeList: true})
+    // this.setState({madeList: true})
   }
 
   render() {
 
     let exchange = this.props.exchange
-
     if (this.props.auth) {
       return (
         <div className="page-content">

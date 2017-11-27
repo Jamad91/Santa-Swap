@@ -205,7 +205,7 @@ body, html {
 #make-list-btn {
   background: linear-gradient(160deg, #c3e9c9, #3fde57);
   background-color: #c3e9c9;
-  border-radius: 33%;
+  border-radius: 10%;
   padding: 3%;
   font-size: 150%;
   float: left;

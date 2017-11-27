@@ -66,23 +66,32 @@ class ExchangeList extends Component {
   }
 
   render() {
+    let exchange = this.props.exchange
+    console.log(exchange);
     return (
       <div>
         <h1 className="header-font">List</h1 >
         {
-          this.props.exchange.list.length === 0
+          exchange.list.length === 0
             ? <div>
                 <h2 className="header-font">No list made yet!</h2>
-                <div id="make-list-btn" onClick={() => this.matchMaker(this.props.members, this.props.exchange.restrictions)}>Make List</div>
+                <div id="make-list-btn" onClick={() => this.matchMaker(this.props.members, exchange.restrictions)}>Make List</div>
               </div>
             : <div>
                 <h2>List Made!</h2>
+                  {
+                    exchange.sentList
+                      ? null
+                      : <div style={{margin:'2%'}} id="make-list-btn" onClick={() => this.matchMaker(this.props.members, exchange.restrictions)}>New List?</div>
+                  }
+                <br />
+                <div style={{marginBottom: '3%', marginTop: '2%'}} id="make-list-btn">Contact Members</div>
                 {
                   this.state.hidden
                   ? <div className="toggle-btn" onClick={() => this.toggleHidden()}>See it!</div>
                   : <div>
                   <div className="toggle-btn" onClick={()=>this.toggleHidden()}>Hide list!</div><br /><br /><br />
-                  {this.props.exchange.list.map(match =>
+                  {exchange.list.map(match =>
                     <div key={match.giver.id}>
                       <div className="list-entry">
                         <span>Giver: {match.giver.firstName} {match.giver.lastName}</span><br />
