@@ -57,130 +57,135 @@ class JoinForm extends Component {
   }
 
   render() {
+    console.log(this.props.exchange);
     return (
       <div>
         <div className="page-content">
           <div className="signedin-body">
 
             <SantaBox />
-          <div>
-        <div id="join-title">
-          <h1 className="header-font page-greeting">Join {this.props.exchange.title}</h1>
-          <div className="links">
-            <Link href='/home'>Home</Link>
-          </div>
-        </div>
-        <div className="content-box" id="join-form-box">
+            <div id="join-title">
+              <h1 className="header-font page-greeting">Join {this.props.exchange.title}</h1>
+              <div className="links">
+                <Link href='/home'>Home</Link>
+              </div>
+            </div>
+            {
+              this.props.exchange.sentList
+              ? <h2 className="header-font" style={{paddingBottom: '20%', paddingTop: "5%", marginLeft: "7%"}}>I'm sorry but {this.props.exchange.title} can no longer be joined. <br />Happy Holidays!</h2>
+              : <div>
+                <div className="content-box" id="join-form-box">
 
-        <form id="join-form">
-          <div className="join-form-row">
-            <div className="join-form-col">
-              <span className="join-form-text">First Name:</span>
-              <input
-                className="join-form-input"
-                onChange={this.handleChange}
-                name="firstName"
-                value={this.state.firstName}
-              />
-            </div>
-            <div className="join-form-col">
-              <span className="join-form-text">Last Name:</span>
-               <input
-                className="join-form-input"
-                onChange={this.handleChange}
-                name="lastName"
-                value={this.state.lastName}
-              />
-            </div>
-          </div>
-          <div className="join-form-row">
-            <div className="join-form-col">
-              <span className="join-form-text">Email:</span>
-              <input
-                className="join-form-input"
-                onChange={this.handleChange}
-                name="email"
-                value={this.state.email}
-              />
-            </div>
-            <div className="join-form-col">
-              <span className="join-form-text">Phone Number:</span>
-              <input
-                className="join-form-input"
-                onChange={this.handleChange}
-                name="phone"
-                value={this.state.phone}
-              />
-            </div>
-          </div>
-        <div className="join-form-row">
-          <div className="join-form-col">
-            <span className="join-form-text">Address Line 1:</span>
-            <input
-              className="join-form-input"
-              onChange={this.handleChange}
-              name="address1"
-              value={this.state.address1}
-            />
-          </div>
-          <div className="join-form-col">
-            <span className="join-form-text">Address Line 2:</span>
-            <input
-              className="join-form-input"
-              onChange={this.handleChange}
-              name="address2"
-              value={this.state.address2}
-            />
-          </div>
-        </div>
-        <div className="join-form-row single-row">
-          <span className="join-form-text">Things you like:</span>
-          <textarea rows="3" cols="40"
-            className="join-form-input"
-            onChange={this.handleChange}
-            name="likes"
-            value={this.state.likes}
-            placeholder="ex: sports, candy, hip hop, Die Hard"
-          />
-        </div>
-        <div className="join-form-row single-row">
-          <span className="join-form-text">Things you dislike:</span>
-          <textarea rows="3" cols="40"
-            className="join-form-input"
-            onChange={this.handleChange}
-            name="dislikes"
-            value={this.state.dislikes}
-            placeholder="ex: golden colored things, paintings, non practical things"
-          />
-        </div>
-        <div className="join-form-row single-row">
-          <span className="join-form-text">Anything else we should know?</span>
-          <textarea rows="3" cols="40"
-            className="join-form-input"
-            onChange={this.handleChange}
-            name="misc"
-            value={this.state.misc}
-            placeholder="ex: please include a note, prefer delivered via mail rather than in person if applicable"
-          />
-        </div>
-        {
-          this.state.firstName &&
-          this.state.lastName &&
-          this.state.email &&
-          this.state.phone &&
-          this.state.address1 &&
-          this.state.address2 &&
-          this.state.likes &&
-          this.state.dislikes
-            ? <button id="join-button" onClick={this.handleSubmit}>Join!</button>
-            : null
-        }
-        </form>
+                <form id="join-form">
+                  <div className="join-form-row">
+                    <div className="join-form-col">
+                      <span className="join-form-text">First Name:</span>
+                      <input
+                        className="join-form-input"
+                        onChange={this.handleChange}
+                        name="firstName"
+                        value={this.state.firstName}
+                      />
+                    </div>
+                    <div className="join-form-col">
+                      <span className="join-form-text">Last Name:</span>
+                       <input
+                        className="join-form-input"
+                        onChange={this.handleChange}
+                        name="lastName"
+                        value={this.state.lastName}
+                      />
+                    </div>
+                  </div>
+                  <div className="join-form-row">
+                    <div className="join-form-col">
+                      <span className="join-form-text">Email:</span>
+                      <input
+                        className="join-form-input"
+                        onChange={this.handleChange}
+                        name="email"
+                        value={this.state.email}
+                      />
+                    </div>
+                    <div className="join-form-col">
+                      <span className="join-form-text">Phone Number:</span>
+                      <input
+                        className="join-form-input"
+                        onChange={this.handleChange}
+                        name="phone"
+                        value={this.state.phone}
+                      />
+                    </div>
+                  </div>
+                <div className="join-form-row">
+                  <div className="join-form-col">
+                    <span className="join-form-text">Address Line 1:</span>
+                    <input
+                      className="join-form-input"
+                      onChange={this.handleChange}
+                      name="address1"
+                      value={this.state.address1}
+                    />
+                  </div>
+                  <div className="join-form-col">
+                    <span className="join-form-text">Address Line 2:</span>
+                    <input
+                      className="join-form-input"
+                      onChange={this.handleChange}
+                      name="address2"
+                      value={this.state.address2}
+                    />
+                  </div>
+                </div>
+                <div className="join-form-row single-row">
+                  <span className="join-form-text">Things you like:</span>
+                  <textarea rows="3" cols="40"
+                    className="join-form-input"
+                    onChange={this.handleChange}
+                    name="likes"
+                    value={this.state.likes}
+                    placeholder="ex: sports, candy, hip hop, Die Hard"
+                  />
+                </div>
+                <div className="join-form-row single-row">
+                  <span className="join-form-text">Things you dislike:</span>
+                  <textarea rows="3" cols="40"
+                    className="join-form-input"
+                    onChange={this.handleChange}
+                    name="dislikes"
+                    value={this.state.dislikes}
+                    placeholder="ex: golden colored things, paintings, non practical things"
+                  />
+                </div>
+                <div className="join-form-row single-row">
+                  <span className="join-form-text">Anything else we should know?</span>
+                  <textarea rows="3" cols="40"
+                    className="join-form-input"
+                    onChange={this.handleChange}
+                    name="misc"
+                    value={this.state.misc}
+                    placeholder="ex: please include a note, prefer delivered via mail rather than in person if applicable"
+                  />
+                </div>
+                {
+                  this.state.firstName &&
+                  this.state.lastName &&
+                  this.state.email &&
+                  this.state.phone &&
+                  this.state.address1 &&
+                  this.state.address2 &&
+                  this.state.likes &&
+                  this.state.dislikes
+                    ? <button id="join-button" onClick={this.handleSubmit}>Join!</button>
+                    : null
+                }
+                </form>
 
-      </div>
-      </div>
-      </div>
-      </div>
+              </div>
+              </div>
+            }
+          </div>
+        </div>
       </div>
     )
   }
