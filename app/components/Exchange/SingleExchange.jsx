@@ -65,8 +65,8 @@ class SingleExchange extends Component {
                         {member.email}<br />
                         {member.houseNum}<br />
                         {
-                          member.apartment.length > 0
-                          ? <span>{member.apartment}<br /></span> 
+                          member.apartment && member.apartment.length > 0
+                          ? <span>{member.apartment}<br /></span>
                           : null
                         }
                         {member.city}, {member.state} {member.zip}
