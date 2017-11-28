@@ -41,6 +41,7 @@ class SingleExchange extends Component {
   render() {
 
     let exchange = this.props.exchange
+    console.log(exchange);
     if (this.props.auth) {
       return (
         <div className="page-content">
@@ -62,8 +63,13 @@ class SingleExchange extends Component {
                         {member.firstName} {member.lastName}<br />
                         {member.phone}<br />
                         {member.email}<br />
-                        {member.address1}<br />
-                        {member.address2}
+                        {member.houseNum}<br />
+                        {
+                          member.apartment.length > 0
+                          ? <span>{member.apartment}<br /></span> 
+                          : null
+                        }
+                        {member.city}, {member.state} {member.zip}
                         {
                           this.props.auth && !exchange.sentList
                             ?

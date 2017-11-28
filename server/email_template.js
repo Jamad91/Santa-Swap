@@ -1,4 +1,22 @@
 module.exports = function (giver, receiver, exchange) {
+  let addressStr;
+  if (receiver.apartment) {
+    addressStr = `
+    <span style="font-size: 150%">
+      ${receiver.houseNum}<br />
+      ${receiver.apartment}<br />
+      ${receiver.city}, ${receiver.state} ${receiver.zip}
+    </span>
+    `
+  } else {
+    addressStr = `
+    <span style="font-size: 150%">
+      ${receiver.houseNum}<br />
+      ${receiver.city}, ${receiver.state} ${receiver.zip}
+    </span>
+    `
+  }
+
   return (
     `
 
@@ -20,8 +38,7 @@ module.exports = function (giver, receiver, exchange) {
 
 <div>
   <h2>Their address is:</h2>
-  <span style="font-size: 150%">${receiver.address1}<br />
-  ${receiver.address2}</span>
+  ${addressStr}
 </div>
 
 <div>

@@ -12,8 +12,10 @@ const seedUsers = () => db.Promise.map([
 //       lastName: "DiColandrea",
 //       email: "jdicolandrea@gmail.com",
 //       phone: "3472556257",
-//       address1: "Jimmy's House",
-//       address2: "Cincinnati, OH",
+//       houseNum: "Jimmy's House",
+//       city: "Cincinnati"
+//       state: "OH",
+//       zip: "45202",
 //       likes: "jimmy's things",
 //       dislikes: "not jimmy's things",
 //       misc: "no mushrooms"
@@ -24,8 +26,11 @@ const seedUsers = () => db.Promise.map([
 //       lastName: "DiColandrea",
 //       email: "jdicolandrea@gmail.com",
 //       phone: "3472556257",
-//       address1: "Joey's House",
-//       address2: "Bedstuy, NY",
+//       houseNum: "87 Bainbridge",
+//       apartment: "Apt 3"
+//       city: "Brooklyn",
+//       state: "NY",
+//       zip: "11385",
 //       likes: "pigeons",
 //       dislikes: "scruples",
 //       misc: "don't care for beaches"

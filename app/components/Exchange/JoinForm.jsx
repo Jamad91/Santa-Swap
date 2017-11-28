@@ -13,8 +13,11 @@ class JoinForm extends Component {
       lastName: "",
       email: "",
       phone: "",
-      address1: "",
-      address2: "",
+      houseNum: "",
+      apartment: "",
+      city: "",
+      state: "",
+      zip: "",
       likes: "",
       dislikes: "",
       misc: "",
@@ -44,8 +47,11 @@ class JoinForm extends Component {
       lastName: this.state.lastName,
       email: this.state.email,
       phone: this.state.phone,
-      address1: this.state.address1,
-      address2: this.state.address2,
+      houseNum: this.state.houseNum,
+      apartment: this.state.apartment,
+      city: this.state.city,
+      state: this.state.state,
+      zip: this.state.zip,
       likes: this.state.likes,
       dislikes: this.state.dislikes,
       misc: this.state.misc
@@ -116,25 +122,58 @@ class JoinForm extends Component {
                       />
                     </div>
                   </div>
-                <div className="join-form-row">
-                  <div className="join-form-col">
-                    <span className="join-form-text">Address Line 1:</span>
-                    <input
-                      className="join-form-input"
-                      onChange={this.handleChange}
-                      name="address1"
-                      value={this.state.address1}
-                    />
+                  <div className="join-form-row">
+                    <div className="join-form-col">
+                      <span className="join-form-text">Street:</span>
+                      <input
+                        className="join-form-input"
+                        onChange={this.handleChange}
+                        name="houseNum"
+                        value={this.state.houseNum}
+                        />
+                    </div>
+                    <div className="join-form-col">
+                      <span className="join-form-text">(Optional) Apartment:</span>
+                      <input
+                        className="join-form-input"
+                        onChange={this.handleChange}
+                        name="apartment"
+                        value={this.state.apartment}
+                        />
+                    </div>
                   </div>
-                  <div className="join-form-col">
-                    <span className="join-form-text">Address Line 2:</span>
-                    <input
-                      className="join-form-input"
-                      onChange={this.handleChange}
-                      name="address2"
-                      value={this.state.address2}
-                    />
+                  <div className="join-form-row">
+                    <div className="join-form-col">
+                      <span className="join-form-text">City:</span>
+                      <input
+                        className="join-form-input"
+                        onChange={this.handleChange}
+                        name="city"
+                        value={this.state.city}
+                        />
+                    </div>
+                    <div className="join-form-col">
+                      <span className="join-form-text">State:</span>
+                      <input
+                        className="join-form-input"
+                        onChange={this.handleChange}
+                        name="state"
+                        value={this.state.state}
+                        />
+                    </div>
                   </div>
+
+                  <div className="join-form-row">
+                    <div className="join-form-col">
+                      <span className="join-form-text">Zip Code:</span>
+                      <input
+                        className="join-form-input"
+                        onChange={this.handleChange}
+                        name="zip"
+                        value={this.state.zip}
+                        style={{padding: "0.5%"}}
+                      />
+                    </div>
                 </div>
                 <div className="join-form-row single-row">
                   <span className="join-form-text">Things you like:</span>
@@ -171,8 +210,10 @@ class JoinForm extends Component {
                   this.state.lastName &&
                   this.state.email &&
                   this.state.phone &&
-                  this.state.address1 &&
-                  this.state.address2 &&
+                  this.state.houseNum &&
+                  this.state.city &&
+                  this.state.state &&
+                  this.state.zip &&
                   this.state.likes &&
                   this.state.dislikes
                     ? <button id="join-button" onClick={this.handleSubmit}>Join!</button>
