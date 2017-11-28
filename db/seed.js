@@ -4,7 +4,7 @@ const seedUsers = () => db.Promise.map([
   {name: 'Admin', email: 'santaswap25@gmail.com', password: 'merry christmas', isAdmin: true},
 ], user => db.model('users').create(user))
 
-const seedExchanges = () => db.Promise.map([
+// const seedExchanges = () => db.Promise.map([
 //   {title: 'Main One', members: [
 //     {
 //       id: 1,
