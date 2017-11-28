@@ -6,12 +6,12 @@ module.exports = function (giver, receiver, exchange) {
 <div style="align-items: center;  text-align: center;">
 <div>
 <div>
-<h1 style="font-family: cursive; font-size: 250%;;">Hello, ${giver.firstName}!</h1>
+
+<h1 style="font-family: cursive; font-size: 250%;">Hello, ${giver.firstName}!</h1>
 <img src='https://i.imgur.com/aDbNXjl.png' /><br /><br /><br />
-<img src='https://i.imgur.com/084Oq3e.png' style="width: 30%;"/>
+<img src='https://i.imgur.com/VOndIt5.png' style="width: 225px"/>
 
 <h2 style="font-family: cursive; font-size: 200%;">Thanks again for participating in ${exchange.title}!</h2>
-
 
 <div style="border: solid 3px red; border-radius: 10%; background-color: #9eeba9; padding-bottom: 2%;">
 

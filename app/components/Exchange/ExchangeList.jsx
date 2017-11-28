@@ -88,13 +88,12 @@ class ExchangeList extends Component {
                   {
                     exchange.sentList || this.state.sentList
                       ? <div>
-                          <h2 style={{marginBottom: '-35%'}}>List Made And Sent!</h2>
+                          <h2>List Made And Sent!</h2>
                         </div>
-                      : <div>
+                      : <div style={{display: 'block'}}>
                           <h2>List Made But Not Sent!</h2>
-                          <div style={{margin:'2%'}} id="make-list-btn" onClick={() => this.matchMaker(this.props.members, exchange.restrictions)}>New List?</div>
-                          <br />
-                          <div style={{marginBottom: '3%', marginTop: '2%'}} id="make-list-btn" onClick={() => this.sentList(exchange.list) }>Contact Members</div>
+                          <div style={{display: 'block'}} className="make-list-btn" onClick={() => this.matchMaker(this.props.members, exchange.restrictions)}>New List?</div><br /><br /><br />
+                          <div className="make-list-btn" id="send-list-btn" onClick={() => this.sentList(exchange.list) }><p>Send List</p></div>
                         </div>
                   }
                   <div style={{marginTop: '35%'}}>
