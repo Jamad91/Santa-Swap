@@ -81,7 +81,7 @@ class ExchangeList extends Component {
           exchange.list.length === 0
             ? <div>
                 <h2 className="header-font">No list made yet!</h2>
-                <div id="make-list-btn" onClick={() => this.matchMaker(this.props.members, exchange.restrictions)}>Make List</div>
+                <div className="make-list-btn" onClick={() => this.matchMaker(this.props.members, exchange.restrictions)}>Make List</div>
               </div>
             : <div>
 
