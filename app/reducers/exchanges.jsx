@@ -8,6 +8,7 @@ import {
   REMOVE_EXCHANGE,
   ADD_PERSON_TO_EXCHANGE,
   REMOVE_PERSON_FROM_EXCHANGE,
+  CONTACT_PERSON,
   RESTRICT_PAIR,
   REMOVE_RESTRICTION,
   MAKE_LIST,
@@ -210,7 +211,7 @@ export const makeList = (exchangeId, listInfo) =>{
   }
 }
 
-const contactMember = (exchangeId, listInfo) => ({
+const contactMembers = (exchangeId, listInfo) => ({
   type: SEND_LIST,
   exchangeId,
   listInfo
@@ -219,8 +220,20 @@ const contactMember = (exchangeId, listInfo) => ({
 export const sendList = (exchangeId, listInfo) => {
   let contacted = {contacted: true}
   return dispatch => {
-    dispatch(contactMember(exchangeId, listInfo))
+    dispatch(contactMembers(exchangeId, listInfo))
     return axios.put(`/api/exchanges/${exchangeId}`, [contacted, listInfo])
       .catch(err => console.error("Wasn't able to send out list"))
   }
 }
+
+const messageMember = (exchangeId, listInfo) => ({
+  type: CONTACT_PERSON,
+  exchangeId,
+  listInfo
+})
+
+export const contactPerson = (exchangeId, listInfo) =>
+  dispatch => {
+    dispatch(messageMember(exchangeId, listInfo))
+    return axios.put(`/api/exchanges/${exchangeId}`, {contact_giver: listInfo})
+  }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import store from 'APP/app/store'
-import { makeList, sendList } from 'APP/app/reducers/exchanges'
+import { makeList, sendList, contactPerson } from 'APP/app/reducers/exchanges'
 
 class ExchangeList extends Component {
   constructor(props) {
@@ -107,6 +107,10 @@ class ExchangeList extends Component {
                                 <div className="list-entry">
                                   <span>Giver: {match.giver.firstName} {match.giver.lastName}</span><br />
                                   <span>Receiver: {match.receiver.firstName} {match.receiver.lastName}</span>
+                                  <div className="restrict-btn" style={{width: '15%', fontSize: '100%'}} onClick={() => {
+                                    alert(`Contacted ${match.giver.firstName} ${match.giver.lastName}!`)
+                                    this.props.contactPerson(exchange.id, match)
+                                  }}>Contact Giver</div>
                                 </div>
                                 <hr />
                               </div>
@@ -128,4 +132,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {makeList, sendList})(ExchangeList)
+export default connect(mapStateToProps, {makeList, sendList, contactPerson})(ExchangeList)
