@@ -25,7 +25,7 @@ router.get('/:id', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   Exchange.findById(req.params.id)
     .then(exchange => {
-      console.log('req.data',req.data);
+      // console.log('req.data',req);
       let newMembers = exchange.members
       let newList = exchange.newList
       let sentList = exchange.sendList
@@ -52,11 +52,11 @@ router.put('/:id', (req, res, next) => {
         for (var i = 0; i < req.body[1].length; i++) {
           let currentGiver = req.body[1][i].giver
           let currentReceiver = req.body[1][i].receiver
-          // client.messages.create({
-          //   to: currentGiver.phone,
-          //   from: '+12017343979',
-          //   body: `Hello, ${currentGiver.firstName}. You are getting a present for ${currentReceiver.firstName} ${currentReceiver.lastName}. Please check your email for more information. Text the exchange organizer to confirm message.`
-          // });
+          client.messages.create({
+            to: currentGiver.phone,
+            from: '+12017343979',
+            body: `Hello, ${currentGiver.firstName}. You are getting a present for ${currentReceiver.firstName} ${currentReceiver.lastName}. Please check your email for more information. Text the exchange organizer to confirm message.`
+          });
           console.log('Client',client.httpClient);
           console.log('------------------------------');
           console.log('Messages',client.messages);
