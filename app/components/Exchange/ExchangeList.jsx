@@ -107,7 +107,7 @@ class ExchangeList extends Component {
                                 <div className="list-entry">
                                   <span>Giver: {match.giver.firstName} {match.giver.lastName}</span><br />
                                   <span>Receiver: {match.receiver.firstName} {match.receiver.lastName}</span>
-                                  <div className="restrict-btn" style={{width: '15%', fontSize: '100%'}} onClick={() => {
+                                  <div className="restrict-btn" style={{width: '45%', fontSize: '100%', paddingLeft: '10%'}} onClick={() => {
                                     alert(`Contacted ${match.giver.firstName} ${match.giver.lastName}!`)
                                     this.props.contactPerson(exchange.id, match)
                                   }}>Contact Giver</div>
