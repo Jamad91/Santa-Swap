@@ -25,7 +25,7 @@ router.get('/:id', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   Exchange.findById(req.params.id)
     .then(exchange => {
-      // console.log('req.data',req);
+      console.log('req.body',req.body);
       let newMembers = exchange.members
       let newList = exchange.newList
       let sentList = exchange.sendList
@@ -40,6 +40,15 @@ router.put('/:id', (req, res, next) => {
       if (objectKeys.length > 1 && objectKeys[0] === 'id') {
         newMembers.push(req.body)
       }
+      // if (objectKeys.length === 1 && objectKeys[0] === 'remove') {
+      //   let id = parseInt(Object.keys(req.body))
+      //   for (var i = 0; i < exch.length && !idx; i++) {
+      //     if (id === newMembers[i].id) {
+      //       idx = i
+      //     }
+      //   }
+      //   newMembers.splice(idx, 1)
+      // }
       else if (req.body.length === 2 && Object.keys(req.body[0])[0] === 'contacted') {
         sentList = true
         var transporter = nodemailer.createTransport({

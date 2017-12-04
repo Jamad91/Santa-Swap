@@ -5,12 +5,13 @@ import {
   RECEIVE_USERS_EXCHANGES,
   RECEIVE_SINGLE_EXCHANGE,
   CREATE_EXCHANGE,
+  REMOVE_EXCHANGE,
   ADD_PERSON_TO_EXCHANGE,
   REMOVE_PERSON_FROM_EXCHANGE,
   RESTRICT_PAIR,
   REMOVE_RESTRICTION,
   MAKE_LIST,
-  SEND_LIST
+  SEND_LIST,
 } from '../constants'
 
 const DEFAULT_STATE = {
@@ -32,6 +33,17 @@ export const exchangeReducer = (state = DEFAULT_STATE, action) => {
     case CREATE_EXCHANGE:
       dummy = newState.exchanges.slice()
       dummy.push(action.exchangeInfo)
+      newState.exchanges = dummy
+      break
+    case REMOVE_EXCHANGE:
+      dummy = newState.exchanges
+      for (var i = 0; !idx && i < dummy.length; i++) {
+        if (action.exchangeId === dummy[i].id) {
+          idx = i
+        }
+      }
+      dummy.splice(idx, 1)
+      console.log(dummy);
       newState.exchanges = dummy
       break
     case ADD_PERSON_TO_EXCHANGE:
@@ -116,6 +128,18 @@ export const createExchange = exchangeInfo =>
     dispatch(addExchange(exchangeInfo))
     axios.post('/api/exchanges', exchangeInfo)
       .catch(err => console.error("Wasn't able to create exchange!"))
+  }
+
+const deleteExchange = exchangeId => ({
+  type: REMOVE_EXCHANGE,
+  exchangeId
+})
+
+export const removeExchange = exchangeId =>
+  dispatch => {
+    dispatch(deleteExchange(exchangeId))
+    return axios.delete(`api/exchanges/${exchangeId}`, {remove: exchangeId})
+      .catch(err => console.error("Wasn't able to remove exchange!"))
   }
 
 const addUserToExchange = (exchangeId, exchangeInfo) => ({

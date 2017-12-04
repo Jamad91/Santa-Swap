@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router';
+import {removeExchange} from 'APP/app/reducers/exchanges';
 
 class Exchanges extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.removeExchange = this.removeExchange.bind(this)
+  }
+
+  removeExchange(id) {
+    console.log(id);
+    this.props.removeExchange(id)
+  }
 
   render() {
     const exchanges = this.props.exchanges;
@@ -22,6 +34,13 @@ class Exchanges extends Component {
                     </p>
                   </div>
                 </Link>
+                <span>
+                  <div style={{marginTop: '-5%', width: '15%'}} className="delete-btn" onClick={() =>{
+                    this.props.removeExchange(exchange.id)
+                    window.location.reload()
+                  }}>Delete</div>
+
+                  </span>
               </div>
             )
           }}
@@ -38,4 +57,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Exchanges)
+export default connect(mapStateToProps, {removeExchange})(Exchanges)
