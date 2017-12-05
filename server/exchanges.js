@@ -19,11 +19,11 @@ let transporter = nodemailer.createTransport({
 });
 
 function contactMember(giver, receiver, exchange) {
-  client.messages.create({
-    to: giver.phone,
-    from: '+12017343979',
-    body: `Hello, ${giver.firstName}. You are getting a present for ${receiver.firstName} ${receiver.lastName}. Please check your email for more information. Text the exchange organizer to confirm message.`
-  });
+  // client.messages.create({
+  //   to: giver.phone,
+  //   from: '+12017343979',
+  //   body: `Hello, ${giver.firstName}. You are getting a present for ${receiver.firstName} ${receiver.lastName}. Please check your email for more information. Text the exchange organizer to confirm message.`
+  // });
   console.log('Client',client.httpClient);
   console.log('------------------------------');
   console.log('Messages',client.messages);
